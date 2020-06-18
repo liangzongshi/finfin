@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+				<li class="breadcrumb-item active">Notification</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Notification</h1>
+			<!-- end page-header -->
+			
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-8 col-lg-8 offset-xl-2 offset-lg-2">
+					<!-- begin nav-tabs -->
+					<ul class="nav nav-tabs">
+						<li class="nav-item">
+							<a href="#all_noti" data-toggle="tab" class="nav-link active">
+								<span class="d-sm-none">Tab 1</span>
+								<span class="d-sm-block d-none"><i class="fa fa-list text-grey"></i> All <small class="text-green">(<%= countAll %>)</small></span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#trade_noti" data-toggle="tab" class="nav-link">
+								<span class="d-sm-none">Tab 2</span>
+								<span class="d-sm-block d-none"><i class="fa fa-exchange-alt"></i> Trades <small class="text-green">(<%= countTrade %>)</small></span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#activities_noti" data-toggle="tab" class="nav-link">
+								<span class="d-sm-none">Tab 3</span>
+								<span class="d-sm-block d-none"><i class="fa fa-tasks"></i> Activities <small class="text-green">(<%= countActivities %>)</small></span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#systems_noti" data-toggle="tab" class="nav-link">
+								<span class="d-sm-none">Tab 4</span>
+								<span class="d-sm-block d-none"><i class="fa fa-server"></i> Systems <small class="text-green">(<%= countSystem %>)</small></span>
+							</a>
+						</li>
+					</ul>
+					<!-- end nav-tabs -->
+					<!-- begin tab-content -->
+					<div class="tab-content">
+						<!-- begin tab-pane -->
+						<div class="tab-pane fade active show" id="all_noti">
+							<!-- begin #accordion -->
+							<div id="accordion_all_noti" class="accordion">
+								<% userInfo.notification.forEach(function(item){%>
+								<!-- begin card -->
+								<div class="card bg-gray text-white">
+									<div class="click_noti card-header bg-gray-dark pointer-cursor d-flex align-items-center" data-nid="<%= item.notiId %>" data-toggle="collapse" data-target="#collapse_all_<%= item.notiId %>">
+										<h4 class="col-8 text-left "><i id="watch_color_<%= item.notiId %>" class="<%= (!item.status)? "fa fa-circle fa-fw text-green mr-2 f-s-8" : "fa fa-circle fa-fw text-grey mr-2 f-s-8" %>"></i> <%= item.sub %></h4>
+										<div class="col-4 text-right"><%= item.times.toISOString().split("T")[0] %></div>
+									</div>
+									<div id="collapse_all_<%= item.notiId %>" class="collapse" data-parent="#accordion_all_noti">
+										<div class="card-body p-30 p-b-10">
+											<%= item.content %>
+										</div>
+									</div>
+								</div>
+								<!-- end card -->
+								<% }); %>
+							</div>
+							
+							<!-- end #accordion -->
+						</div>
+						<!-- end tab-pane -->
+						<!-- begin tab-pane -->
+						<div class="tab-pane fade" id="trade_noti">
+							<!-- begin #accordion -->
+							<div id="accordion_trades_noti" class="accordion">
+								<% userInfo.notification.filter(n => n.type == "trade").forEach(function(item){%>
+								<!-- begin card -->
+								<div class="card bg-gray text-white">
+									<div class="click_noti card-header bg-gray-dark pointer-cursor d-flex align-items-center" data-nid="<%= item.notiId %>" data-toggle="collapse" data-target="#collapse_trades_<%= item.notiId %>">
+										<h4 class="col-8 text-left "><i id="watch_color_<%= item.notiId %>" class="<%= (!item.status)? "fa fa-circle fa-fw text-green mr-2 f-s-8" : "fa fa-circle fa-fw text-grey mr-2 f-s-8" %>"></i> <%= item.sub %></h4>
+										<div class="col-4 text-right"><%= item.times.toISOString().split("T")[0] %></div>
+									</div>
+									<div id="collapse_trades_<%= item.notiId %>" class="collapse" data-parent="#accordion_trades_noti">
+										<div class="card-body p-30 p-b-10">
+											<%= item.content %>
+										</div>
+									</div>
+								</div>
+								<!-- end card -->
+								<% }); %>
+							</div>
+							<!-- end #accordion -->
+						</div>
+						<!-- end tab-pane -->
+						<!-- begin tab-pane -->
+						<div class="tab-pane fade" id="activities_noti">
+							<!-- begin #accordion -->
+							<div id="accordion_activities_noti" class="accordion">
+								<% userInfo.notification.filter(n => n.type == "activities").forEach(function(item){%>
+								<!-- begin card -->
+								<div class="card bg-gray text-white">
+									<div class="click_noti card-header bg-gray-dark pointer-cursor d-flex align-items-center" data-nid="<%= item.notiId %>" data-toggle="collapse" data-target="#collapse_activities_<%= item.notiId %>">
+										<h4 class="col-8 text-left "><i id="watch_color_<%= item.notiId %>" class="<%= (!item.status)? "fa fa-circle fa-fw text-green mr-2 f-s-8" : "fa fa-circle fa-fw text-grey mr-2 f-s-8" %>"></i> <%= item.sub %></h4>
+										<div class="col-4 text-right"><%= item.times.toISOString().split("T")[0] %></div>
+									</div>
+									<div id="collapse_activities_<%= item.notiId %>" class="collapse" data-parent="#accordion_activities_noti">
+										<div class="card-body p-30 p-b-10">
+											<%= item.content %>
+										</div>
+									</div>
+								</div>
+								<!-- end card -->
+								<% }); %>
+							</div>
+							<!-- end #accordion -->
+						</div>
+						<!-- end tab-pane -->
+						<!-- begin tab-pane -->
+						<div class="tab-pane fade" id="systems_noti">
+							<!-- begin #accordion -->
+							<div id="accordion_systems_noti" class="accordion">
+								<% userInfo.notification.filter(n => n.type == "system").forEach(function(item){%>
+								<!-- begin card -->
+								<div class="card bg-gray text-white">
+									<div class="click_noti card-header bg-gray-dark pointer-cursor d-flex align-items-center" data-nid="<%= item.notiId %>" data-toggle="collapse" data-target="#collapse_systems_<%= item.notiId %>">
+										<h4 class="col-8 text-left "><i id="watch_color_<%= item.notiId %>" class="<%= (!item.status)? "fa fa-circle fa-fw text-green mr-2 f-s-8" : "fa fa-circle fa-fw text-grey mr-2 f-s-8" %>"></i> <%= item.sub %></h4>
+										<div class="col-4 text-right"><%= item.times.toISOString().split("T")[0] %></div>
+									</div>
+									<div id="collapse_systems_<%= item.notiId %>" class="collapse" data-parent="#accordion_systems_noti">
+										<div class="card-body p-30 p-b-10">
+											<%= item.content %>
+										</div>
+									</div>
+								</div>
+								<!-- end card -->
+								<% }); %>
+							</div>
+							<!-- end #accordion -->
+						</div>
+						<!-- end tab-pane -->
+					</div>
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/seeAll.js"></script>	
+	<script src="../custom/sidebar.js"></script>	
+</body>
+</html>

@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<link href="../assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet">
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Tools</a></li>
+				<li class="breadcrumb-item active">Finance Manager<ment/li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Finance Management</h1>
+			<!-- end page-header -->
+			<% if(userInfo.kyc === true){ %>
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL ASSETS</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="finance_total_value" data-animation="number" data-value="<%= UserFinance.total %>">0</span></h2>
+										<div class="ml-auto">
+											<div id="conversion-rate-sparkline"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
+									</div>
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">CONSUMPTION FUND</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin store-session -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="finance_sump_value" data-animation="number" data-value="<%= UserFinance.Sump  %>">0</span></h2>
+										<div class="ml-auto">
+											<div id="store-session-sparkline"></div>
+										</div>
+									</div>
+									<!-- end store-session -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
+									</div>
+									<!-- end percentage -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">SAVING FUND</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="finance_save_value" data-animation="number" data-value="<%= UserFinance.Save %>">0</span></h2>
+										<div class="ml-auto">
+											<div id="conversion-rate-sparkline"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
+									</div>
+									<!-- end percentage -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">EDUCATION FUND</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin store-session -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="finance_edu_value" data-animation="number" data-value="<%= UserFinance.Edu %>">0</span></h2>
+										<div class="ml-auto">
+											<div id="store-session-sparkline"></div>
+										</div>
+									</div>
+									<!-- end store-session -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
+									</div>
+									<!-- end percentage -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">PLAYING FUND</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="finance_play_value" data-animation="number" data-value="<%= UserFinance.Play %>">0.00</span></h2>
+										<div class="ml-auto">
+											<div id="conversion-rate-sparkline"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
+									</div>
+									<!-- end percentage -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">INVESTMENT FUND</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin store-session -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="finance_inv_value" data-animation="number" data-value="<%= UserFinance.Inv %>">0</span></h2>
+										<div class="ml-auto">
+											<div id="store-session-sparkline"></div>
+										</div>
+									</div>
+									<!-- end store-session -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
+									</div>
+									<!-- end percentage -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">LOAN TOTALS</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="finance_loan_value" data-animation="number" data-value="<%= UserFinance.Loan %>">0</span></h2>
+										<div class="ml-auto">
+											<div id="conversion-rate-sparkline"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
+									</div>
+									<!-- end percentage -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">DEBT TOTALS</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin store-session -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="finance_debt_value" data-animation="number" data-value="<%= UserFinance.Debt %>">0</span></h2>
+										<div class="ml-auto">
+											<div id="store-session-sparkline"></div>
+										</div>
+									</div>
+									<!-- end store-session -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
+									</div>
+									<!-- end percentage -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<div class="row">
+				<div class="col-lg-12 mt-3 mb-3">
+					<a class="btn btn-danger" href="javascript: void(0);" data-toggle="modal" data-target="#add_sump">Add Sumption </a>
+					<a class="btn btn-warning" href="javascript: void(0);" data-toggle="modal" data-target="#add_new_loan">Add New Loan/Debt </a>
+					<a class="btn btn-success" href="javascript: void(0);" data-toggle="modal" data-target="#add_new_income">Add New Income </a>
+					<a class="btn btn-primary" href="javascript: void(0);" data-toggle="modal" data-target="#swap_fund">Swap Fund </a>
+				</div>
+			</div>
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-8 -->
+				<div class="col-xl-8">
+					<!-- begin panel -->
+					<div class="panel panel-inverse" data-sortable-id="chart-js-2">
+						<div class="panel-body p-0">
+							<div id="apex-column-chart"></div>
+						</div>
+					</div>
+					<!-- end panel -->
+
+				</div>
+				<!-- end col-8 -->
+				<div class="col-xl-4">
+					<!-- begin panel -->
+					<div class="panel panel-inverse" data-sortable-id="chart-js-10">
+						<div class="panel-body p-0">
+							<div id="apex-pie-chart1"></div>
+						</div>
+					</div>
+					<!-- end panel -->
+				</div>
+			</div>
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-8 -->
+				<div class="col-xl-12">
+					<!-- begin tabs -->
+					<ul class="nav nav-tabs nav-tabs-inverse nav-justified nav-justified-mobile" data-sortable-id="index-2">
+						<li class="nav-item"><a href="#latest-post" data-toggle="tab" class="nav-link active"><i class="fa fa-life-ring fa-lg m-r-5"></i> <span class="d-none d-md-inline">New Consumption</span></a></li>
+						<li class="nav-item"><a href="#purchase" data-toggle="tab" class="nav-link"><i class="fa fa-money-check fa-lg m-r-5"></i> <span class="d-none d-md-inline">New Received Assets</span></a></li>
+						<li class="nav-item"><a href="#email" data-toggle="tab" class="nav-link"><i class="fa fa-deaf fa-lg m-r-5"></i> <span class="d-none d-md-inline">New Loan/Debt</span></a></li>
+					</ul>
+					<div class="tab-content" data-sortable-id="index-3">
+						<div class="tab-pane fade active show" id="latest-post">
+							<!-- begin col-10 -->
+							<div class="col-xl-12">
+								<div class="panel panel-inverse">
+									<!-- begin panel-body -->
+									<div class="panel-body">
+										<table id="data-table-combine" class="table table-striped table-bordered table-td-valign-middle text-center">
+											<thead>
+												<tr>
+													<th width="1%" data-orderable="false">Type</th>
+													<th class="text-nowrap">Title</th>
+													<th class="text-nowrap">Value</th>
+													<th class="text-nowrap">Date</th>
+													<th class="text-nowrap">Action</th>
+												</tr>
+											</thead>
+											<tbody id="tby_sump">
+												<% UserFinance.histories.forEach(function(item){ if(item.type === "SUMP" || item.type === "EDU" || item.type === "PLAY"){ %>
+
+													<tr class="odd gradeX" id="<%= item.hisId %>">
+														<td width="1%" class="with-img" id="type_<%= item.hisId%>"> <%= item.type %></td>
+														<td id="title_<%= item.hisId%>"> <%= item.title %> </td>
+														<td id="value_<%= item.hisId%>"> <%= new Intl.NumberFormat().format(item.value) %> %> </td>
+														<td id="date_<%= item.hisId%>"> <%= item.date.toISOString().split('T')[0] %> </td>
+														<td> 
+															<a class="btn btn-default" href="javascript: void(0);" data-toggle="modal" data-target="#fix_his_<%= item.hisId  %>"><i class="fa fa-pen text-blue"></i></a>
+															<a class="btn btn-default" href="javascript: void(0);" data-toggle="modal" data-target="#del_his_<%= item.hisId  %>"><i class="fa fa-trash text-red"></i></a>	
+														</td>
+													</tr>
+												<% }}) %>
+											</tbody>
+										</table>
+										
+									</div>
+									<!-- end panel-body -->
+								</div>
+							</div>
+							<!-- end col-10 -->
+						</div>
+						<div class="tab-pane fade" id="purchase">
+							<!-- begin col-10 -->
+							<div class="col-xl-12">
+								<div class="panel panel-inverse">
+									<!-- begin panel-body -->
+									<div class="panel-body">
+										<table id="data-table-combine1" class="table table-striped table-bordered table-td-valign-middle text-center">
+											<thead>
+												<tr>
+													<th width="1%" data-orderable="false">Type</th>
+													<th class="text-nowrap">Title</th>
+													<th class="text-nowrap">Value</th>
+													<th class="text-nowrap">Date</th>
+													<th class="text-nowrap">Action</th>
+												</tr>
+											</thead>
+											<tbody id="inc_history_table">
+												<% UserFinance.histories.forEach(function(item){ if(item.type === "INC"){ %>
+
+													<tr class="odd gradeX" id="<%= item.hisId %>">
+														<td width="1%" class="with-img" id="type_<%= item.hisId%>"> <%= item.type %></td>
+														<td id="title_<%= item.hisId%>"> <%= item.title %> </td>
+														<td id="value_<%= item.hisId%>"> <%= new Intl.NumberFormat().format(item.value) %> %> </td>
+														<td id="date_<%= item.hisId%>"> <%= item.date.toISOString().split('T')[0] %> </td>
+														<td> 
+															<a class="btn btn-default" href="javascript: void(0);" data-toggle="modal" data-target="#fix_his_<%= item.hisId  %>"><i class="fa fa-pen text-blue"></i></a>
+															<a class="btn btn-default" href="javascript: void(0);" data-toggle="modal" data-target="#del_his_<%= item.hisId  %>"><i class="fa fa-trash text-red"></i></a>	
+														</td>
+													</tr>
+												<% }}) %>
+											</tbody>
+										</table>
+										
+									</div>
+									<!-- end panel-body -->
+								</div>
+							</div>
+							<!-- end col-10 -->
+						</div>
+						<div class="tab-pane fade" id="email">
+							<!-- begin col-10 -->
+							<div class="col-xl-12">
+								<div class="panel panel-inverse">
+									<!-- begin panel-body -->
+									<div class="panel-body">
+										<table id="data-table-combine2" class="table table-striped table-bordered table-td-valign-middle text-center">
+											<thead>
+												<tr>
+													<th width="1%" data-orderable="false">Type</th>
+													<th class="text-nowrap">Title</th>
+													<th class="text-nowrap">Value</th>
+													<th class="text-nowrap">Date</th>
+													<th class="text-nowrap">Action</th>
+												</tr>
+											</thead>
+											<tbody id="tby_loan_debt">
+												<% UserFinance.histories.forEach(function(item){ if(item.type === "LOAN" || item.type === "DEBT"){ %>
+													<tr class="odd gradeX" id="<%= item.hisId %>">
+														<td id="type_<%= item.hisId %>" width="1%" class="with-img"><%= item.type %></td>
+														<td id="title_<%= item.hisId %>"> <%= item.title %> </td>
+														<td id="value_<%= item.hisId %>"> <%= new Intl.NumberFormat().format(item.value) %> </td>
+														<td id="date_<%= item.hisId %>"> <%= item.date.toISOString().split('T')[0] %> </td>
+														<td> 
+															<a class="btn btn-default" href="javascript: void(0);" data-toggle="modal" data-target="#fix_his_<%= item.hisId  %>"><i class="fa fa-pen text-blue"></i></a>
+															<a class="btn btn-default" href="javascript: void(0);" data-toggle="modal" data-target="#del_his_<%= item.hisId  %>"><i class="fa fa-trash text-red"></i></a>	
+														</td>
+													</tr>
+												<% }}) %>
+											</tbody>
+										</table>
+										
+									</div>
+									<!-- end panel-body -->
+								</div>
+							</div>
+							<!-- end col-10 -->
+						</div>
+					</div>
+					<!-- end tabs -->
+				</div>
+				<!-- end col-8 -->
+			</div>
+			<% }else{ %>
+			<!-- end row -->
+			<div class="row">
+				<div class="col-lg-4 col-lg-offset-4">
+					<a href="/kyc" class="btn btn-warning">START KYC</a>
+				</div>
+			</div>
+			<% } %>
+		</div>
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	<div class="modal fade" id="add_sump" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+					<div class="modal-header">
+							<h5 class="modal-title">Add Your New Sumption</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+						</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<form action="/finance" method="POST" class="margin-bottom-0">
+							<div class="row">
+								<!-- begin col-6 -->
+								<div class="col-xl-12">
+									<!-- begin panel -->
+									<div class="panel panel-inverse" data-sortable-id="form-validation-2">
+										<!-- begin panel-body -->
+										<div class="panel-body">
+											<form data-parsley-validate="true">
+												<div class="form-group row m-b-15">
+													<label class="col-md-4 col-sm-4 col-form-label">New Type Sumption :</label>
+													<div class="col-md-8 col-sm-8">
+														<select class="form-control" id="add_sump_type" name="selectBox" data-parsley-required="true">
+															<option value="SUMP" selected>Sumption</option>
+															<option value="EDU">Education</option>
+															<option value="PLAY">Playing</option>
+														</select>
+													</div>
+												</div>
+												<!-- <div class="form-group row m-b-15">
+													<label class="col-md-4 col-sm-4 col-form-label">Required Radio Button :</label>
+													<div class="col-md-8 col-sm-8">
+														<div class="form-check">
+															<input type="radio" class="form-check-input" name="radiorequired" value="foo" id="radio-required" data-parsley-required="true" />
+															<label class="form-check-label">Radio Button 1</label>
+														</div>
+														<div class="form-check">
+															<input type="radio" class="form-check-input" name="radiorequired" id="radio-required2" value="bar" />
+															<label class="form-check-label">Radio Button 2</label>
+														</div>
+														<div class="form-check">
+															<input type="radio" class="form-check-input" name="radiorequired" id="radio-required3" value="key" /> 
+															<label class="form-check-label">Radio Button 2</label>
+														</div>
+													</div>
+												</div>
+												<div class="form-group row m-b-15">
+													<label class="col-md-4 col-sm-4 col-form-label">Check at least 2 checkboxes :</label>
+													<div class="col-md-8 col-sm-8">
+														<div class="form-check">
+															<input type="checkbox" class="form-check-input" id="mincheck" name="mincheck[]" data-parsley-mincheck="2" value="foo" required /> 
+															<label class="form-check-label">Checkbox 1</label>
+														</div>
+														<div class="form-check">
+															<input type="checkbox" class="form-check-input" name="mincheck[]" value="bar" /> 
+															<label class="form-check-label">Checkbox 2</label>
+														</div>
+														<div class="form-check">
+															<input type="checkbox" class="form-check-input" name="mincheck[]" value="baz" />
+															<label class="form-check-label">Checkbox 3</label>
+														</div>
+													</div>
+												</div> -->
+												<div class="form-group row m-b-15">
+													<label class="col-md-4 col-sm-4 col-form-label">Describtion :</label>
+													<div class="col-md-8 col-sm-8">
+														<input class="form-control parsley-validated" type="text" id="add_sump_des" data-parsley-pattern="#[A-Fa-f0-9]{6}" placeholder="Describe Your New Sumption" data-required="true" />
+													</div>
+												</div>
+												<div class="form-group row m-b-15">
+													<label class="col-md-4 col-sm-4 col-form-label">Amounts :</label>
+													<div class="col-md-8 col-sm-8">
+														<input class="form-control parsley-validated" type="number" id="add_sump_amount" min="1" placeholder="Enter Your Amounts" data-required="true" />
+													</div>
+												</div>
+												<div class="form-group row m-b-15">
+													<label class="col-lg-4 col-form-label">Date picker</label>
+													<div class="col-lg-8">
+														<input type="text" class="form-control" id="datepicker-default" name="add_sump_date" placeholder="Select Date" value="" />
+													</div>
+												</div>
+												<div class="form-group row m-b-0">
+													<label class="col-md-4 col-sm-4 col-form-label">&nbsp;</label>
+													<div class="col-md-8 col-sm-8">
+														<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+														<button id="btn_add_sump" type="submit" class="btn btn-danger" >Submit</button>
+													</div>
+												</div>
+											</form>
+										</div>
+										<!-- end panel-body -->
+
+									</div>
+									<!-- end panel -->
+								</div>
+								<!-- end col-6 -->
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="add_new_loan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Add New Loan/Debt</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<form data-parsley-validate="true">
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">Type :</label>
+								<div class="col-md-8 col-sm-8">
+									<select class="form-control" id="add_loan_type" name="selectBox" data-parsley-required="true">
+										<option value="LOAN" selected>Loan</option>
+										<option value="DEBT">Debt</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">Describtion :</label>
+								<div class="col-md-8 col-sm-8">
+									<input class="form-control parsley-validated" type="text" id="add_loan_des" data-parsley-pattern="#[A-Fa-f0-9]{6}" placeholder="Describe Your New Sumption" data-required="true" />
+								</div>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">Amounts :</label>
+								<div class="col-md-8 col-sm-8">
+									<input class="form-control parsley-validated" type="number" id="add_loan_amount" min="1" placeholder="Enter Your Amounts" data-required="true" />
+								</div>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-lg-4 col-form-label">Date picker</label>
+								<div class="col-lg-8">
+									<input type="text" class="form-control" id="datepicker-default1" name="add_loan_date" placeholder="Select Date" value="" />
+								</div>
+							</div>
+							<div class="form-group row m-b-0">
+								<label class="col-md-4 col-sm-4 col-form-label">&nbsp;</label>
+								<div class="col-md-8 col-sm-8">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button id="btn_add_loan" type="submit" class="btn btn-danger" >Submit</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="add_new_income" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+					<div class="modal-header">
+							<h5 class="modal-title">Add New Imcomes</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+						</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<form action="/finance" method="POST" class="margin-bottom-0">
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">Describtion :</label>
+								<div class="col-md-8 col-sm-8">
+									<input class="form-control parsley-validated" type="text" id="add_inc_des" data-parsley-pattern="#[A-Fa-f0-9]{6}" placeholder="Describe Your New Sumption" data-required="true" />
+								</div>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">Amounts :</label>
+								<div class="col-md-8 col-sm-8">
+									<input class="form-control parsley-validated" type="number" id="add_inc_amount" min="1" placeholder="Enter Your Amounts" data-required="true" />
+								</div>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-lg-4 col-form-label">Date picker</label>
+								<div class="col-lg-8">
+									<input type="text" class="form-control" id="datepicker-default2" name="add_inc_date" placeholder="Select Date" value="" />
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button id="btn_add_inc" type="submit" class="btn btn-danger" >Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="swap_fund" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+					<div class="modal-header">
+							<h5 class="modal-title">Swap TO Other Fund</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+						</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<form action="/finance" method="POST" class="margin-bottom-0">
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">To :</label>
+								<div class="col-md-8 col-sm-8">
+									<select class="form-control" id="swap_fund_from" name="selectBox" data-parsley-required="true">
+										<option value="SUMP" selected>Sumption Fund</option>
+										<option value="EDU">Education Fund</option>
+										<option value="INV">Investment Fund </option>
+										<option value="PLAY">Playing Fund </option>
+										<option value="SAVE">Saving Fund </option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">From :</label>
+								<div class="col-md-8 col-sm-8">
+									<select class="form-control" id="swap_fund_to" name="selectBox" data-parsley-required="true">
+										<option value="SUMP" >Sumption Fund</option>
+										<option value="EDU" selected>Education Fund</option>
+										<option value="INV">Investment Fund </option>
+										<option value="PLAY">Playing Fund </option>
+										<option value="SAVE">Saving Fund </option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">Amounts :</label>
+								<div class="col-md-8 col-sm-8">
+									<input class="form-control parsley-validated" type="number" id="swap_fund_amount" min="1" placeholder="Enter Your Amounts" data-required="true" />
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button id="btn_swap_fund" type="submit" class="btn btn-danger" >Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<% if(UserFinance){ %>
+	<% UserFinance.histories.forEach(function(item){ %>	
+		<!-- Modal  fix history-->
+		<div class="modal fade" id="fix_his_<%= item.hisId  %>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Change Your Histories</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+								<div class="row">
+									<!-- begin col-6 -->
+									<div class="col-xl-12">
+										<!-- begin panel -->
+										<div class="panel panel-inverse" data-sortable-id="form-validation-2">
+											<!-- begin panel-body -->
+											<div class="panel-body">
+												<form data-parsley-validate="true" action="/update-history/<%= item.hisId %>" method="">
+													<div class="form-group row m-b-15">
+														<label class="col-md-4 col-sm-4 col-form-label">Type :</label>
+														<div class="col-md-8 col-sm-8">
+															<input id="type_fix_his_<%= item.hisId %>" class="form-control parsley-validated" type="text" name="type_his" data-parsley-pattern="#[A-Fa-f0-9]{6}" placeholder="Describe Your New Sumption" data-required="true" value="<%= item.type %>" readonly/>
+														</div>
+													</div>
+													<div class="form-group row m-b-15">
+														<label class="col-md-4 col-sm-4 col-form-label">Describtion :</label>
+														<div class="col-md-8 col-sm-8">
+															<input id="des_fix_his_<%= item.hisId %>" class="form-control parsley-validated" type="text" name="des_his" data-parsley-pattern="#[A-Fa-f0-9]{6}" placeholder="Describe Your New Sumption" data-required="true" value="<%= item.title %>" />
+														</div>
+													</div>
+													<div class="form-group row m-b-15">
+														<label class="col-md-4 col-sm-4 col-form-label">Amounts :</label>
+														<div class="col-md-8 col-sm-8">
+															<input id="value_fix_his_<%= item.hisId %>" class="form-control parsley-validated" type="number" name="value_his" min="1" placeholder="Enter Your Amounts" data-required="true" value="<%= item.value %>"/>
+														</div>
+													</div>
+													<div class="form-group row m-b-15">
+														<label class="col-lg-4 col-form-label">Date picker</label>
+														<div class="col-lg-8">
+															<input id="date_fix_his_<%= item.hisId %>" type="text" class="form-control" id="datepicker-default" name="date_his" placeholder="Select Date" value="<%= item.date.toISOString().split('T')[0] %>" />
+														</div>
+													</div>
+													<div class="form-group row m-b-0">
+														<label class="col-md-4 col-sm-4 col-form-label">&nbsp;</label>
+														<div class="col-md-8 col-sm-8">
+															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+															<button type="submit" data-fid="<%= item.hisId %>" class="btn btn-danger btn_fix_his" >Submit</button>
+														</div>
+													</div>
+												</form>
+											</div>
+											<!-- end panel-body -->
+	
+										</div>
+										<!-- end panel -->
+									</div>
+									<!-- end col-6 -->
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal delete history -->
+		<div class="modal fade" id="del_his_<%= item.hisId  %>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Delete Your Histories</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+								<div class="row">
+									<!-- begin col-6 -->
+									<div class="col-xl-12">
+										<!-- begin panel -->
+										<div class="panel panel-inverse" data-sortable-id="form-validation-2">
+											<!-- begin panel-body -->
+											<div class="panel-body">
+												<form data-parsley-validate="true"  action="/delete-history/<%= item.hisId %>" method="">
+													<div class="form-group row m-b-15">
+														<label class="col-md-4 col-sm-4 col-form-label">Type :</label>
+														<div class="col-md-8 col-sm-8">
+															<input id="type_his_<%= item.hisId %>" class="form-control parsley-validated" type="text" name="type_his" data-parsley-pattern="#[A-Fa-f0-9]{6}" placeholder="Describe Your New Sumption" data-required="true" value="<%= item.type %>" readonly/>
+														</div>
+													</div>
+													<div class="form-group row m-b-15">
+														<label class="col-md-4 col-sm-4 col-form-label">Describtion :</label>
+														<div class="col-md-8 col-sm-8">
+															<input id="des_his_<%= item.hisId %>" class="form-control parsley-validated" type="text" name="des_his" data-parsley-pattern="#[A-Fa-f0-9]{6}" placeholder="Describe Your New Sumption" data-required="true" value="<%= item.title %>" readonly/>
+														</div>
+													</div>
+													<div class="form-group row m-b-15">
+														<label class="col-md-4 col-sm-4 col-form-label">Amounts :</label>
+														<div class="col-md-8 col-sm-8">
+															<input id="value_his_<%= item.hisId %>" class="form-control parsley-validated" type="number" name="value_his" min="1" placeholder="Enter Your Amounts" data-required="true" value="<%= item.value %>" readonly/>
+														</div>
+													</div>
+													<div class="form-group row m-b-15">
+														<label class="col-lg-4 col-form-label">Date picker</label>
+														<div class="col-lg-8">
+															<input id="date_his_<%= item.hisId %>" type="text" class="form-control" id="datepicker-default" name="date_his" placeholder="Select Date" value="<%= item.date.toISOString().split('T')[0] %>" readonly/>
+														</div>
+													</div>
+													<div class="form-group row m-b-15">
+														<h3>ARE YOU SURE TO DELETE HISTORY?</h3>
+													</div>
+													
+													<div class="form-group row m-b-0">
+														<label class="col-md-4 col-sm-4 col-form-label">&nbsp;</label>
+														<div class="col-md-8 col-sm-8">
+															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+															<button type="submit" data-did="<%= item.hisId %>" class="btn btn-danger btn_del_his" >Submit</button>
+														</div>
+													</div>
+												</form>
+											</div>
+											<!-- end panel-body -->
+	
+										</div>
+										<!-- end panel -->
+									</div>
+									<!-- end col-6 -->
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% })} %>
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+	<script src="../assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+	<script src="../assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+	<script src="../assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+	<script src="../assets/plugins/datatables.net-colreorder/js/dataTables.colreorder.min.js"></script>
+	<script src="../assets/plugins/datatables.net-colreorder-bs4/js/colreorder.bootstrap4.min.js"></script>
+	<script src="../assets/plugins/datatables.net-rowreorder/js/dataTables.rowreorder.min.js"></script>
+	<script src="../assets/plugins/datatables.net-rowreorder-bs4/js/rowreorder.bootstrap4.min.js"></script>
+	<script src="../assets/plugins/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="../assets/plugins/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+	<script src="../assets/plugins/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+	<script src="../assets/plugins/datatables.net-buttons/js/buttons.flash.min.js"></script>
+	<script src="../assets/plugins/datatables.net-buttons/js/buttons.html5.min.js"></script>
+	<script src="../assets/plugins/datatables.net-buttons/js/buttons.print.min.js"></script>
+	<script src="../assets/plugins/pdfmake/build/pdfmake.min.js"></script>
+	<script src="../assets/plugins/pdfmake/build/vfs_fonts.js"></script>
+	<script src="../assets/plugins/jszip/dist/jszip.min.js"></script>
+	<script src="../assets/js/demo/table-manage-combine.demo.js"></script>
+	<script src="../assets/js/demo/dashboard-v3.js"></script>
+	<script src="../assets/plugins/d3/d3.min.js"></script>
+	<script src="../assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="../assets/plugins/moment/min/moment.min.js"></script>
+	<script src="../assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+	<script src="../assets/plugins/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+	<script src="../assets/plugins/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+	<script src="../assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+	<script src="../assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script src="../assets/plugins/pwstrength-bootstrap/dist/pwstrength-bootstrap.min.js"></script>
+	<script src="../assets/plugins/@danielfarrell/bootstrap-combobox/js/bootstrap-combobox.js"></script>
+	<script src="../assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	<script src="../assets/plugins/tag-it/js/tag-it.min.js"></script>
+	<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="../assets/plugins/select2/dist/js/select2.min.js"></script>
+	<script src="../assets/plugins/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="../assets/plugins/bootstrap-show-password/dist/bootstrap-show-password.js"></script>
+	<script src="../assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+	<script src="../assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.js"></script>
+	<script src="../assets/plugins/clipboard/dist/clipboard.min.js"></script>
+	<script src="../assets/js/demo/form-plugins.demo.js"></script>
+	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script>
+		Apex.grid = {
+			borderColor: 'rgba(255,255,255,0.25)'
+		};
+		Apex.title = {
+			style: {
+				color: '#fff'
+			}
+		}
+		Apex.legend = {
+			labels: {
+				colors: '#fff'
+			}
+		}
+		Apex.xaxis = {
+			labels: {
+				style: {
+					colors: '#fff'
+				}
+			},
+			title: {
+				style: {
+					color: '#fff'
+				}
+			}
+		}
+		Apex.yaxis = {
+			labels: {
+				style: {
+					color: '#fff'
+				}
+			},
+			title: {
+				style: {
+					color: '#fff'
+				}
+			}
+		}
+	</script>
+	<script src="../assets/js/demo/chart-apex.demo.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/finance.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

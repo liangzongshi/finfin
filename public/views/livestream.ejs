@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE CSS STYLE ================== -->
+	<link href="../assets/plugins/countdown/jquery.countdown.css" rel="stylesheet" />
+	<!-- ================== END PAGE CSS STYLE ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Lab</a></li>
+				<li class="breadcrumb-item active">Livestream</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Livestream</small></h1>
+			<!-- end page-header -->
+			<div class="coming-soon">
+				<!-- begin coming-soon-header -->
+				<div class="coming-soon-header" style="background: none">
+					<div class="brand w-100">
+						<span class="w-100"><img class="img-responsive m-auto" src="assets-home/home/logo.png" width="200" alt="logo"></span>
+					</div>
+					<div class="desc">
+						Our website is almost there and it’s rebuilt from scratch! A lot of great new features <br />and improvements are coming.
+					</div>
+					<div class="timer">
+						<div id="timer_livestream_page"></div>
+					</div>
+				</div>
+				<!-- end coming-soon-header -->
+				<!-- begin coming-soon-content -->
+				<div class="coming-soon-content">
+					<p>
+						<a href="javascript:;" class="text-info" style="font-size: 20px;"><i class="fab fa-twitter fa-lg fa-fw text-info"></i></a>
+						<a href="javascript:;" class="text-blue" style="font-size: 20px;"><i class="fab fa-facebook-square fa-lg fa-fw text-blue"></i></a>
+						<a href="javascript:;" class="text-red" style="font-size: 20px;"><i class="fab fa-youtube-square fa-lg fa-fw text-red"></i></a>
+						<a href="javascript:;" class="text-info" style="font-size: 20px;"><i class="fab fa-telegram fa-lg fa-fw text-blue-lighter"></i></a>
+					</p>
+				</div>
+				<!-- end coming-soon-content -->
+			</div>
+			
+		</div>
+		<!-- end #content -->
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/countdown/jquery.plugin.min.js"></script>
+	<script src="../assets/plugins/countdown/jquery.countdown.min.js"></script>
+	<script src="../assets/js/demo/coming-soon.demo.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

@@ -1,0 +1,100 @@
+<footer id="footer" class="footer_main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="footer_logo">
+                    <img src="assets-home/home/logo.png" alt="#">
+                </div>
+                <p class="footer_desc">Hedge fund platform
+                    transparent, secret and trusted.
+                    The future of digital assets.</p>
+                <ul class="social_icons">
+                    <li class="social-icon fb"><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                    <li class="social-icon tw"><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                    <li class="social-icon gp"><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="main-heading left_text">
+                    <h2>Company</h2>
+                </div>
+                <ul class="footer-menu" style="width:50%;">
+                    <li><a href="/about"><i class="fa fa-angle-right"></i> About</a></li>
+                    <li><a href="/service"><i class="fa fa-angle-right"></i> Service</a></li>
+                    <!-- <li><a href="/team"><i class="fa fa-angle-right"></i> Manager Team</a></li> -->
+                    <li><a href="/help"><i class="fa fa-angle-right"></i> Help Center</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="main-heading left_text">
+                    <h2>Products</h2>
+                </div>
+                <ul class="footer-menu" style="width:50%;">
+                    <li><a href="/platform"><i class="fa fa-angle-right"></i> FinFine Platform</a></li>
+                    <li><a href="/bot"><i class="fa fa-angle-right"></i> FinFineBot</a></li>
+                    <li><a href="/exchange"><i class="fa fa-angle-right"></i>FinFine Exchange</a></li>
+                    <li><a href="/stock"><i class="fa fa-angle-right"></i> Stock</a></li>
+                </ul>            
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="main-heading left_text">
+                    <h2>Investment Fund</h2>
+                </div>
+                <ul class="footer-menu" style="width:50%;">
+                    <li><a href="/term"><i class="fa fa-angle-right"></i> Terms</a></li>
+                    <li><a href="/invest-info"><i class="fa fa-angle-right"></i> Invest</a></li>
+                    <li><a href="/partner"><i class="fa fa-angle-right"></i> Partner</a></li>
+                </ul>            
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 pull-left">
+                <p class="text-center">Made by FINFINE. 2020 All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- search form -->
+<!-- Modal -->
+<div class="modal fade" id="search_form" role="dialog">
+    <button type="button" class="cross_btn close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+    <div class="search_bar_inner">
+        <form class="search_bar_inner_form" action="#">
+            <div class="field_form">
+                <input type="text" placeholder="Search">
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up"></i></a>
+
+<!-- end search form -->
+<!-- jQuery (necessary for Bootstrap's JavaScript) -->
+<script src="assets-home/jquery.min.js"></script>
+<!-- custom js -->
+<script src="assets-home/custom.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="custom/market.js"></script>
+<script>// ===== Scroll to Top ==== 
+    $(window).scroll(function() {
+        if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+            $('#return-to-top').fadeIn(200);    // Fade in the arrow
+        } else {
+            $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+        }
+    });
+    $('#return-to-top').click(function() {      // When arrow is clicked
+        $('body,html').animate({
+            scrollTop : 0                       // Scroll to top of body
+        }, 500);
+    });
+</script>
+
+</body>
+</html>

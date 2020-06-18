@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Register Page</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+</head>
+<body class="pace-top">
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade show">
+		<span class="spinner"></span>
+	</div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade">
+		<!-- begin register -->
+		<div class="register register-with-news-feed">
+			<!-- begin news-feed -->
+			<div class="news-feed">
+				<div class="news-image" style="background-image: url(../assets/img/login-bg/login-bg-15.jpg)"></div>
+				<div class="news-caption">
+					<h4 class="caption-title"><b>FINFINE</b> hedger Capitals</h4>
+				</div>
+			</div>
+			<!-- end news-feed -->
+			<!-- begin right-content -->
+			<div class="right-content">
+				<!-- begin register-header -->
+				<h1 class="register-header">
+					Sign Up
+				</h1>
+				<!-- end register-header -->
+				<!-- begin register-content -->
+				<div class="register-content">
+					<form action="/dashboard" method="POST" class="margin-bottom-0">
+						<label class="control-label">Name <span class="text-danger">*</span></label>
+						<div class="row row-space-10">
+							<div class="col-md-6 m-b-15">
+								<input type="text" class="form-control" name="first_name" placeholder="First name" required />
+							</div>
+							<div class="col-md-6 m-b-15">
+								<input type="text" class="form-control" name="last_name" placeholder="Last name" required />
+							</div>
+						</div>
+
+						<label class="control-label">Email <span class="text-danger">*</span> <span id="check_register" style="color: hsl(51, 100%, 75%);"></span></label>
+						<div class="row row-space-10">
+							<div class="col-md-6 m-b-15">
+								<input type="text" class="form-control" name="email" placeholder="Email address" required />
+							</div>
+
+							<div class="col-md-2 m-b-15">
+								<button type="button" class="btn btn-default" id="send" >Send</button>
+							</div>
+							<div class="col-md-4 m-b-15">
+								<input type="text" class="form-control" name="code" placeholder="Verify code" required />
+							</div>
+						</div>
+
+						<!-- <label class="control-label">Email <span class="text-danger">*</span></label>
+						<div class="row m-b-15">
+							<div class="col-md-12">
+								<input type="text" class="form-control" name="email" placeholder="Email address" required />
+							</div>
+						</div> -->
+
+						<label class="control-label">Password <span class="text-danger">*</span><span id="check_password" style="color: hsl(51, 100%, 75%);"></span></label>
+						<div class="row m-b-15">
+							<div class="col-md-12">
+								<input type="password" class="form-control" name="password" placeholder="Password (between 8 and 20 characters)" required />
+							</div>
+						</div>
+
+						<label class="control-label">Re-enter Password <span class="text-danger">*</span><span id="check_repassword" style="color: hsl(51, 100%, 75%);"></span></label>
+						<div class="row m-b-15">
+							<div class="col-md-12">
+								<input type="password" class="form-control" name="re_password" placeholder="Re-enter password" required />
+							</div>
+						</div>
+
+						<label class="control-label">Referral <span class="text-danger"></span><span id="check_ref" style="color: hsl(51, 100%, 75%);"></span></label>
+						<div class="row m-b-15">
+							<div class="col-md-12">
+								<input type="text" class="form-control" name="referral" placeholder="Referral code" value="<%= referral %>" />
+							</div>
+						</div>
+
+						<div class="checkbox checkbox-css m-b-30">
+							<div class="checkbox checkbox-css m-b-30">
+								<input type="checkbox" id="agreement_checkbox" value="">
+								<label for="agreement_checkbox">
+								By clicking Sign Up, you agree to our <a href="/term" target="_blank">Terms</a> and that you have read our <a href="/term" target="_blank">Data Policy</a>, including our <a href="/term" target="_blank">Cookie Use</a>.
+								</label>
+							</div>
+						</div>
+						<div class="register-buttons">
+							<button type="submit" class="btn btn-primary btn-block btn-lg" id="signup" disabled>Sign Up</button>
+						</div>
+						<div class="m-t-30 m-b-30 p-b-30">
+							Already a member? Click <a href="/login">here</a> to login.
+						</div>
+						<hr />
+						<p class="text-center mb-0">
+							&copy; FinFine All Right Reserved 2020
+						</p>
+					</form>
+				</div>
+				<!-- end register-content -->
+			</div>
+			<!-- end right-content -->
+		</div>
+		<!-- end register -->
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/register.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</body>
+</html>

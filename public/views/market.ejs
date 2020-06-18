@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
+				<li class="breadcrumb-item"><a href="javascript:;">Market</a></li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header mb-3">Market</h1>
+			<!-- end page-header -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">BTC</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="btc_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/btc.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="btc_info_market">Bitcoin</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="btc_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="btc_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="btc_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">ETH</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="eth_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/eth.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="eth_info_market">Etherium</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="eth_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="eth_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="eth_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">BNB</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="bnb_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/bnb.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="bnb_info_market">Binance Coin</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="bnb_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="bnb_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="bnb_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">BCH</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="bch_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/bch.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="bch_info_market">Bitcoin Cash</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="bch_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="bch_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="bch_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">EOS</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="eos_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/eos.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="eos_info_market">Eos</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="eos_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="eos_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="eos_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">XRP</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="xrp_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/xrp.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="xrp_info_market">Ripple</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="xrp_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="xrp_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="xrp_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">LTC</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="ltc_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/ltc.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="ltc_info_market">Litecoin</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="ltc_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="ltc_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="ltc_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">DASH</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="dash_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/dash.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="dash_info_market">Dash</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="dash_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="dash_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="dash_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">LINK</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="link_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/link.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="link_info_market">Chainlink</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="link_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="link_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="link_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">XTZ</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="xtz_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/xtz.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="xtz_info_market">Tezos</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="xtz_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="xtz_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="xtz_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">ZEC</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="zec_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/zec.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="zec_info_market">Zcash</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="zec_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="zec_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="zec_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">ETC</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0">$ <span id="etc_info_price" data-animation="number" data-value="0.00">0.00</span></h2>
+										<div class="ml-auto">
+											<img src="../assets/coin/etc.png" alt="">
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<span id="etc_info_market">Etherium Classic</span> 
+									</div>
+									<!-- end percentage -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											High(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="etc_info_high" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Low(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="etc_info_low" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+											Volumes(1m)
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-100 text-right pl-2 f-w-600">$ <span id="etc_info_volume" data-animation="number" data-value="0.00">0.00</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/d3/d3.min.js"></script>
+	<script src="../assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/plugins/moment/min/moment.min.js"></script>
+	<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="../assets/js/demo/dashboard-v3.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/market.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

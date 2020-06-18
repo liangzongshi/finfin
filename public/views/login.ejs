@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Login Page</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<link href="../custom/gt.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+</head>
+<body class="pace-top">
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade show">
+		<span class="spinner"></span>
+	</div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade">
+		<!-- begin login -->
+		<div class="login login-with-news-feed">
+			<!-- begin news-feed -->
+			<div class="news-feed">
+				<div class="news-image" style="background-image: url(../assets/img/login-bg/login-bg-11.jpg)"></div>
+				<div class="news-caption">
+					<h4 class="caption-title"><b>FINFINE</b> hedger Capitals</h4>
+				</div>
+			</div>
+			<!-- end news-feed -->
+			<!-- begin right-content -->
+			<div class="right-content">
+				<!-- begin login-header -->
+				<div class="login-header">
+					<div class="brand">
+						<span class="logo"></span> <b style="color:hsl(52, 100%, 87%)">FinFine</b>
+					</div>
+					<div class="icon">
+						<i class="fa fa-sign-in-alt"></i>
+					</div>
+				</div>
+				<!-- end login-header -->
+				<!-- begin login-content -->
+				<div class="login-content">
+					<form action="/invest" method="POST" class="margin-bottom-0">
+						<div class="form-group m-b-15">
+							<label class="control-label"><span id="check_login" style="color: hsl(51, 100%, 75%);"></span></label>
+							<input type="text" class="form-control form-control-lg" name="login_email" placeholder="Email Address" required />
+						</div>
+						<div class="form-group m-b-15">
+							<input type="password" class="form-control form-control-lg" name="login_password" placeholder="Password" data-toggle="password" required />
+						</div>
+						<div class="form-group m-b-15">
+							<input type="text" class="form-control form-control-lg" name="tfa" placeholder="Authentication"/>
+						</div>
+						<div class="form-group m-b-15">
+							<input type="text" class="form-control form-control-lg" name="cef"/>
+						</div>
+
+						<!-- Capcha -->
+						<div class="m-b-15">
+							<div id="captcha">
+								<p id="wait" class=""></p>
+							</div>
+						</div>
+						<!-- End capcha -->
+						<div class="checkbox checkbox-css m-b-30">
+							<input type="checkbox" id="remember_me_checkbox" value="" />
+							<label for="remember_me_checkbox">
+							Remember Me
+							</label>
+						</div>
+						<div class="login-buttons">
+							<button type="submit" class="btn btn-primary btn-block btn-lg" id="login" disabled>Sign me in</button>
+						</div>
+						<div class="m-t-20 m-b-40 p-b-40 text-white">
+							Not a member yet? Click <a href="/register">here</a> to register.
+						</div>
+						<hr />
+						<p class="text-center text-white-transparent-5 mb-0">
+							&copy; Color Admin All Right Reserved 2020
+						</p>
+					</form>
+				</div>
+				<!-- end login-content -->
+			</div>
+			<!-- end right-container -->
+		</div>
+		<!-- end login -->
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/login.js"></script>
+	<script src="../custom/gt.js"></script>
+	<script src="../custom/captcha.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!-- begin #header -->
+<div id="header" class="header navbar-default">
+    <!-- begin navbar-header -->
+    <div class="navbar-header">
+        <a href="/" class="navbar-brand"><img class="img-responsive" src="../../assets-home/home/logo.png" alt="logo"></a>
+        <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <!-- end navbar-header --><!-- begin header-nav -->
+    <ul class="navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                <i class="fa fa-bell"></i>
+                <span class="label"><%= userInfo.notification.filter(n => n.status == false).length %></span>
+            </a>
+            <div class="dropdown-menu media-list dropdown-menu-right">
+                <div class="dropdown-header">NOTIFICATIONS</div>
+                <% userInfo.notification.filter(n => n.status == false).slice(0,8).forEach(function(item){%>
+                    <a href="javascript:;" class="dropdown-item media" data-toggle="modal" data-target="#noti_header_<%= item.notiId %>">
+                        <div class="media-body">
+                            <h6 class="media-heading"><%= item.sub %></h6>
+                            <div class="text-muted f-s-11"><%= (Math.floor((new Date() - item.times)/(3600000))< 24) ? Math.floor((new Date() - item.times)/(3600000)) + "hours ago" : item.times.toISOString().split("T")[0] %></div>
+                        </div>
+                    </a>
+                <% }) %>
+                <div class="dropdown-footer text-center">
+                    <a href="/seeall">See All</a>
+                </div>
+            </div>
+        </li>
+        <li class="dropdown navbar-user">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img id="avatar_header" src="<%= (userInfo.avatar)? `../assets/avatars/${userInfo.avatar}` : "../assets/default.png" %>" alt="" /> 
+                <span class="d-none d-md-inline"><%= userInfo.first_name%> <%= userInfo.last_name%></span> <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="/myprofile" class="dropdown-item"> My Profile</a>
+                <!-- <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a> -->
+                <a href="/kyc" class="dropdown-item"> KYC</a>
+                <a href="/limitfees" class="dropdown-item"> Limit & Fees</a>
+                <a href="/delete" class="dropdown-item"> Delete</a>
+                <div class="dropdown-divider"></div>
+                <a href="/logout" class="dropdown-item">Log Out</a>
+            </div>
+        </li>
+    </ul>
+    <!-- end header navigation right -->
+    <% userInfo.notification.filter(n => n.status == false).slice(0,8).forEach(function(item){%>
+    <!-- Modal -->
+    <div class="modal fade" id="noti_header_<%= item.notiId %>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><%= item.sub %></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><%= item.content %></p>
+                    <p><b>at</b> <small><%= item.times.toISOString().split("T")[0] + " " + item.times.toISOString().split("T")[1].slice(0,8) %></small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</div>
+<!-- end #header -->

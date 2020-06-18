@@ -1,0 +1,13 @@
+- Thong bao: mess tele web
+
+- Them cac trang thai on off tu admmin vao
+
+- Lam them vai lenh tren bot
+
+- set session tren webview
+
+- Bieu do 
+
+- Tao zoom
+
+Dang o Group

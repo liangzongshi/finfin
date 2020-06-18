@@ -1,0 +1,490 @@
+<%- include("./layouts/header");-%>
+    <!-- full slider parallax section -->
+    <section id="full_slider" class="full_slider_inner padding_0">
+        <div class="main_slider">
+            <div id="bootstrap-touch-slider" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
+                <!-- Wrapper For Slides -->
+                <div class="carousel-inner" role="listbox">
+                    <!-- first Slide -->
+                    <div class="item active
+                    ">
+                        <!-- Slide Background -->
+                        <img src="assets-home/slider_img2.png" alt="Bootstrap Touch Slider" class="slide-image">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Slide Text Layer -->
+                                <div class="slide-text slide_style_left white_fonts">
+                                    <h2 data-animation="animated" class="animated">THE WORLD'S LEADING<br>CRYPTOCURRENCY HEDGE<br>FUND PLATFORM</h2>
+                                    <% if(!userInfo){ %>
+                                    <a href="/login" class="btn btn-default active">Login</a>
+                                    <a href="/register" class="btn btn-default">Register</a>
+                                    <% }else{ %>
+                                    <a href="/invest" class="btn btn-default">Dashboard</a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of Slide -->
+                    <!-- second Slide -->
+                    <div class="item">
+                        <!-- Slide Background -->
+                        <img src="assets-home/slider_img1.png" alt="Bootstrap Touch Slider" class="slide-image">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Slide Text Layer -->
+                                <div class="slide-text slide_style_left white_fonts">
+                                    <h2 data-animation="animated" class="animated">INVEST IN THE<br>MARKET STRONGEST<br>GROWTH IN 2020</h2>
+                                    <% if(!userInfo){ %>
+                                    <a href="/login" class="btn btn-default active">Login</a>
+                                    <a href="/register" class="btn btn-default">Register</a>
+                                    <% }else{ %>
+                                    <a href="/invest" class="btn btn-default">Dashboard</a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- second of Slide -->
+                </div>
+                <!-- End of Wrapper For Slides -->
+                <!-- Left Control -->
+                <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+      <span class="fa fa-angle-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+      </a>
+                <!-- Right Control -->
+                <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+      <span class="fa fa-angle-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+      </a>
+            </div>
+            <!-- End  bootstrap-touch-slider Slider -->
+        </div>
+    </section>
+    <!-- end full slider parallax section -->
+    <!-- section -->
+    <section class="padding_0 info_coins light_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="full">
+					  <h3 style="display:none;">heading</h3>
+                        <div class="coin_formation">
+                            <ul>
+                                <li>
+                                    <span class="curr_name">Bitcoin Price</span>
+                                    <span class="curr_price">2395.00 USD</span>
+                                </li>
+                                <li>
+                                    <span class="curr_name">Bitcoin Price</span>
+                                    <span class="curr_price">2321.68 EUR</span>
+                                </li>
+                                <li>
+                                    <span class="curr_name">24H Volume</span>
+                                    <span class="curr_price">1,957.25 BTC</span>
+                                </li>
+                                <li>
+                                    <span class="curr_name">Active Traders</span>
+                                    <span class="curr_price">1,169,857 EUR</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- section -->
+    <section class="layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="full our_work_type">
+                        <div class="center"><img src="assets-home/home/asset_310.png" alt="#"></div>
+                        <div class="center">
+                            <h4>High-Frequency Trading</h4>
+                        </div>
+                        <div class="center">
+                            <p>The FinFineBot system
+                                applies HFT & AI.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="full our_work_type">
+                        <div class="center"><img src="assets-home/home/asset_410.png" alt="#"></div>
+                        <div class="center">
+                            <h4>Transparent</h4>
+                        </div>
+                        <div class="center">
+                            <p>All our transactions are
+                                public on the media.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="full our_work_type">
+                        <div class="center"><img src="assets-home/home/asset_510.png" alt="#"></div>
+                        <div class="center">
+                            <h4>Secure</h4>
+                        </div>
+                        <div class="center">
+                            <p>Strong infrastructure against
+                                transaction fraud.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="full our_work_type">
+                        <div class="center"><img src="assets-home/home/asset_610.png" alt="#"></div>
+                        <div class="center">
+                            <h4>Fast</h4>
+                        </div>
+                        <div class="center">
+                            <p>FFT Token reaches
+                                transaction speed of 1.32s.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- section -->
+    <section class="layout_padding about_bg_compu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-sm-12 col-xs-12">
+                    <div class="full center_text">
+                        <img class="img-responsive" src="assets-home/home/asset_13.png" alt="#">
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-12 col-xs-12">
+                    <div class="full" style="margin-top:70px">
+                        <h2 class="heading_style2" style="color:rgb(224, 224, 94)">FinFineBot Structure</h2>
+                        <p class="left_text" style="font-size:18px; font-weight:200">FinFineBot is a high-frequency trading
+                            system that applies artificial intelligence
+                            algorithms operating in the cryptocurrency
+                            market. We start with 20,000 minimum
+                            transactions for 1 day for the safety of
+                            funds
+                        </p>
+                        <a class="btn main_btn" href="/digibot">More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- section -->
+    <section class="layout_padding light_bg">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="full">
+                        <div class="heading_main">
+                            <h2><span>Demo Dashboard</span></h2>
+                            <p>Operation model of FinFineBot after users create accounts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="full" style="margin-top: 25px; text-align: center;">
+                        <iframe style="position: static; visibility: visible; display: block; width: 800px; height: 600px; padding: 0px; border: none; max-width: 80%; min-width: 80%; min-height: 300px; margin-top: 10px; margin-bottom: 10px; margin-left:10%" src="#"></iframe>
+                    </div>
+                </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- section -->
+    <section class="layout_padding dark_bg white_fonts">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="full">
+                        <div class="heading_main">
+                            <h2><span>Why choose FinFine?</span></h2>
+                            <p>We provide top chooses for traders in the cryptocurrency market.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:20px;">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="full">
+                        <div class="cryto_feature">
+                            <ul>
+                                <li>
+								  <div class="pull-left"><img src="assets-home/home/asset_73.png" alt="#"></div>
+                                    <div>
+                                       <h3>Bot Trading</h3>
+                                       <p>High-frequency trading is our top
+                                        choice method in the
+                                        cryptocurrency market</p>
+                                    </div>
+                                </li>
+                                <li>
+								   <div class="pull-left"><img src="assets-home/home/asset_83.png" alt="#"></div>
+                                    <div>
+                                       <h3>Digital Asset Exchange</h3>
+                                       <p>A future not far from digital asset
+                                        solutions globally</p>
+                                    </div>
+                                </li>
+                                <li>
+								   <div class="pull-left"><img src="assets-home/home/asset_93.png" alt="#"></div>
+                                    <div>
+                                       <h3>Realtime</h3>
+                                       <p>All our transactions are made public
+                                        online in real-time</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="full digital_earth">
+                        <img src="assets-home/home/asset_63.png" alt="#">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="full">
+                        <div class="cryto_feature right_text">
+                            <ul>
+                                <li>
+                                  <div>
+                                     <h3>Secure & Transparent</h3>
+                                       <p>We host properties on many
+                                        different platforms. Transactions
+                                        are always public with users</p>
+                                   </div>
+                                   <div class="pull-right"><img src="assets-home/home/asset_103.png" alt="#"></div>
+                                </li>
+                                <li>
+                                  <div>
+                                     <h3>Powerful extentions</h3>
+                                        <p>The digital media toolkit makes it
+                                            easy for developers to reach their
+                                            customers
+                                            </p>
+                                     </div>
+                                  <div class="pull-right"><img src="assets-home/home/asset_133.png" alt="#"></div>
+                                </li>
+                                <li>
+                                  <div>
+                                     <h3>24/7 Supports</h3>
+                                       <p>Please send requests to us. The
+                                        support team will respond soonest
+                                        and you will not have to wait</p>
+                                       </div>
+                                     <div class="pull-right"><img src="assets-home/home/asset_113.png" alt="#"></div>
+                                 </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+      <!-- section -->
+      <section class="layout_padding about_bg_compu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="full center_text">
+                        <img class="img-responsive" src="assets-home/home/asset_1802.png" alt="#">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="full" style="padding-left:20px">
+                        <h2 class="heading_style2" style="margin-top: 10px; color: rgb(202, 202, 82)">FinFine Payment Gateway</h2>
+                        <p class="left_text" style="color:white; margin-bottom: 10px;">We are confident that the easy-to-use ecosystem
+                            brings users satisfaction. In the future, FinFine
+                            will be full of payment gateways below</p>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• FinFine Token(FFT)</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• USD</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• CNY</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• VND</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• Bitcoin(BTC)</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• Bitcoincash(BCH)</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• Tether(USDT)</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• Ethereum(ETH)</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• Ethereum Classic(ETC)</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• Binance Coin(BNB)</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• DogCoin(DOG)</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• EOS</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• DASH</h4>
+                        <h4 class="left_text" style="color:white; margin-bottom: 5px;">• LTC</h4>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+      <!-- section -->
+      <section class="layout_padding dark_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="full" style="margin-top: 100px">
+                        <h2 class="heading_style2" style="margin-top: 10px; color: rgb(202, 202, 82)">FinFine Online Group</h2>
+                        <p class="left_text">Our developers are working on a completely
+                            new, innovative, and effective platform. We set
+                            up online groups on FinFine for the global
+                            development competition</p>
+                        <h4 class="left_text" style="color:white">• Decentralized autonomy</h4>
+                        <h4 class="left_text" style="color:white">• Big emulation reward</h4>
+                        <h4 class="left_text" style="color:white">• High efficiency</h4>
+                        <h4 class="left_text" style="color:white">• Groundbreaking platform</h4>
+                        <h4 class="left_text" style="color:white">• Easy to manage</h4>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="full center_text">
+                        <img class="img-responsive" src="assets-home/home/asset_1992.png" alt="#">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- section -->
+    <section class="layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="full">
+                        <div class="heading_main">
+                            <h2><span>Investment Fund</span></h2>
+                            <p>Choose the investment package that suits your personal finances</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="full">
+                        <div class="coin_selling_bt">
+                            <ul>
+                                <li><a class="active" href="#">1ST</a></li>
+                            </ul>
+                            <div class="coin_price_table">
+                                <h3>$500 - $999</h3>
+                                <p class="left_text">6%: maximum static profit
+                                    (Airdrop)</p>
+                                <p class="left_text">%35 / 1 transaction of FinFineBot</p>
+                                <p class="left_text">Accept: BTC, ETH, USD, USDT,
+                                    BNB, VND, CNY,etc...</p>
+                                <div class="center">
+                                    <a class="pay_btn" href="/invest">Start</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="full">
+                        <div class="coin_selling_bt">
+                            <ul>
+                                <li><a class="active" href="#">2ND</a></li>
+                            </ul>
+                            <div class="coin_price_table">
+                                <h3>$1000 - $4999</h3>
+                                <p class="left_text">6%: maximum static profit
+                                    (Airdrop)</p>
+                                <p class="left_text">%40 / 1 transaction of FinFineBot</p>
+                                <p class="left_text">Accept: BTC, ETH, USD, USDT,
+                                    BNB, VND, CNY,etc...</p>
+                                <div class="center">
+                                    <a class="pay_btn" href="/invest">Start</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="full">
+                        <div class="coin_selling_bt">
+                            <ul>
+                                <li><a class="active" href="#">3TH</a></li>
+                            </ul>
+                            <div class="coin_price_table">
+                                <h3>$5000 - $19999</h3>
+                                <p class="left_text">6%: maximum static profit
+                                    (Airdrop)</p>
+                                <p class="left_text">%45 / 1 transaction of FinFineBot</p>
+                                <p class="left_text">Accept: BTC, ETH, USD, USDT,
+                                    BNB, VND, CNY,etc...</p>
+                                <div class="center">
+                                    <a class="pay_btn" href="/invest">Start</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="full">
+                        <div class="coin_selling_bt">
+                            <ul class="full">
+                                <li class="full"><a class="active" href="#">4TH</a></li>
+                            </ul>
+                            <div class="coin_price_table">
+                                <h3>$20000 - $49999</h3>
+                                <p class="left_text">6%: maximum static profit
+                                    (Airdrop)</p>
+                                <p class="left_text">%50 / 1 transaction of FinFineBot</p>
+                                <p class="left_text">Accept: BTC, ETH, USD, USDT,
+                                    BNB, VND, CNY,etc...</p>
+                                <div class="center">
+                                    <a class="pay_btn" href="/invest">Start</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="full center">
+                        <a class="btn main_btn" href="/invest-info">More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+  
+    <!-- section -->
+    <section class="layout_padding about_bg_compu" min-height="600px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="full" style="margin-top: 100px">
+                        <h2 class="heading_style2" style="margin-top: 10px; color: rgb(202, 202, 82)">FFT STOCK</h2>
+                        <p class="left_text">We list the FFT Tokens as a transparent stock for
+                            FinFine's future development</p>
+                        <p class="left_text">Using the network architecture and infrastructure
+                            from Ethereum, FFT Tokens is full of features but a
+                            fast, convenient, and completely secure digital
+                            asset.</p>
+                        <p class="left_text">FFT Tokens is stored on most of the market's
+                            cryptocurrency wallets and will be stored directly
+                            on our future FinFineWallet.</p>
+                        <a class="btn main_btn" href="/stock">More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="full center_text">
+                        <img class="img-responsive" src="assets-home/home/asset_143.png" alt="#">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+<%- include("./layouts/footer");-%>

@@ -1,0 +1,209 @@
+<!-- begin #sidebar -->
+<div id="sidebar" class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+        <!-- begin sidebar user -->
+        <ul class="nav">
+            <li class="nav-profile">
+                <a href="javascript:;" data-toggle="nav-profile">
+                    <div class="cover with-shadow"></div>
+                    <div class="image">
+                        <img id="logo_sidebar" src="<%= (userInfo.avatar)? `../assets/avatars/${userInfo.avatar}` : "../assets/default.png" %>" alt="" />
+                    </div>
+                    <div class="info">
+                        <b class="caret pull-right"></b><%= userInfo.first_name%> <%= userInfo.last_name %>
+                        <small>Super Investor</small>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <ul class="nav nav-profile">
+                    <li><a href="/myprofile"><i class="fa fa-id-badge"></i> My Profile</a></li>
+                    <li><a href="/kyc"><i class="fa fa-lock-open"></i> KYC</a></li>
+                    <li><a href="/limitfees"><i class="fa fa-unlink"></i> Limit & Fees</a></li>
+                    <li><a href="/delete"><i class="fa fa-trash"></i> Delete</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- end sidebar user -->
+        <!-- begin sidebar nav -->
+        <ul class="nav"><li class="nav-header">My Panel</li>
+            <% if(role === "admin"){ %>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-th-large"></i>
+                    <span>Management</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="/admin/setting">Settings</a></li>
+                    <li><a href="/admin/info/1">Information</a></li>
+                    <li><a href="/admin/wallet">Wallet</a></li>
+                    <li><a href="/admin/event">Event</a></li>
+                    <li><a href="/admin/set-event">Set Event</a></li>
+                </ul>
+            </li>
+            <% } %>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="/invest">Invest</a></li>
+                    <li><a href="/trading">Trading</a></li>
+                    <li><a href="/market">Market</a></li>
+                    <li><a href="/timeline">Timeline</a></li>
+                    <li><a href="/mybonus">My Bonus</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-university"></i>
+                    <span>Wallet</span> 
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="/balance">Balance <i class="fa fa-paper-plane text-theme"></i></a></li>
+                    <li><a href="/deposit">Deposit</a></li>
+                    <li><a href="/withdraw">Withdraw</a></li>
+                    <li><a href="/swap">Swap</a></li>
+                    <li><a href="/switch">Switch</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="/airdrop">
+                    <!-- <div class="icon-img">
+                        <img src="../assets/img/logo/logo-bs4.png" alt="" />
+                    </div> -->
+                    <i class="fa fa-paper-plane"></i>
+                    <span>Airdrop </span> 
+                </a>
+                <!-- <ul class="sub-menu">
+                </ul> -->
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-pencil-alt"></i>
+                    <span>Tools</span> 
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="/finance">Finance </a></li>
+                    <li><a href="/news/1">News </a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-sitemap"></i>
+                    <span>Network</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="/tree">Tree</a></li>
+                    <li><a href="/list">List</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-users"></i>
+                    <span>Community</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="/map">Map</a></li>
+                    <li><a href="/group">Group</a></li>
+                    <li><a href="/events/1">Events</a></li>
+                    <li><a href="/top">Top</a></li>
+                    <li><a href="/bonus">Bonus</a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="/token">
+                    <i class="fa fa-dot-circle"></i>
+                    <span>Token</span>
+                </a>
+                <!-- <ul class="sub-menu">
+                </ul> -->
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-tv"></i>
+                    <span>Lab </span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="/follow">Follow </a></li>
+                    <li><a href="/livestream">Livestream </a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>Document </span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="/generalinformation/1">General Information </a></li>
+                    <li><a href="/financialreport/1">Financial Report </a></li>
+                    <li><a href="/marketing/1">Marketing </a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="/ai">
+                    <i class="fa fa-space-shuttle"></i>
+                    <span>AI </span>
+                </a>
+                <!-- <ul class="sub-menu">
+                </ul> -->
+            </li>
+
+            <li class="has-sub">
+                <a href="/helper">
+                    <i class="fa fa-question"></i>
+                    <span>Helper</span>
+                </a>
+                <!-- <ul class="sub-menu">
+                </ul> -->
+            </li>
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-wrench"></i>
+                    <span>Settings </span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="/securitynotice">Security & Notice</a></li>
+                    <li><a href="/capitalallocation">Capital Allocation </a></li>
+                    <li><a href="/walletsettings">Wallet Settings </a></li>
+                </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="/logout">
+                    <i class="fa fa-stop"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+            <!-- begin sidebar minify button -->
+            <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+            <!-- end sidebar minify button -->
+        </ul>
+        <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->

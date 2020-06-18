@@ -1,0 +1,29 @@
+{
+  "files.exclude": {
+    ".vscode": true,
+    "https": true,
+    "storage": true,
+    ".gitignore": true,
+    "app.js": true,
+    "auth.js": true,
+    "bottender.config.js": true,
+    "fft.json": true,
+    "usdt.json": true,
+    "test2.js": true,
+    "test1.js": true,
+    "setbot": true,
+    "README.md": true,
+    "pm2.json": true,
+    "package-lock.json": true,
+    "map.js": true,
+    "LICENSE": true,
+    "mail.js": true,
+    "geetest.js": true,
+    "finance.js": true,
+    "public/assets": true,
+    "public/assets-home": true,
+    "public/frame": true,
+    "node_modules": true
+  },
+  "git.ignoreLimitWarning": true
+}

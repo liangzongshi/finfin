@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Document</a></li>
+				<li class="breadcrumb-item active">General Information</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">General Information</h1>
+			<!-- end page-header -->
+			<div class="row">
+				<% docs.forEach(function(item){ %>
+				<div class="col-lg-6 log-sm-12">
+					<div class="courses-container">
+						<div class="course">
+							<div class="course-preview">
+								<div id="stage">
+									<img id="spinner" src="../assets-home/home/loader.png" width="100" alt="">
+									<br>
+								</div>
+								<style>
+									#stage {
+									   margin: 1em auto;
+									   -webkit-perspective: 1200px;
+									   -moz-perspective: 1200px;
+									   -ms-perspective: 1200px;
+									   perspective: 1200px;
+								   }
+								   #spinner{
+									   -webkit-animation-name: spinner;
+									   -webkit-animation-timing-function: linear;
+									   -webkit-animation-iteration-count: infinite;
+									   -webkit-animation-duration: 3s;
+	
+									   animation-name: spinner;
+									   animation-timing-function: linear;
+									   animation-iteration-count: infinite;
+									   animation-duration: 3s;
+	
+									   -webkit-transform-style: preserve-3d;
+									   -moz-transform-style: preserve-3d;
+									   -ms-transform-style: preserve-3d;
+									   transform-style: preserve-3d;
+								   }
+	
+								   #spinner:hover{
+									   -webkit-animation-play-state: paused;
+									   animation-play-state: paused;
+									 }
+									 /* all other browsers */
+								   @keyframes spinner {
+									   from {
+									   -moz-transform: rotateY(0deg);
+									   -ms-transform: rotateY(0deg);
+									   transform: rotateY(0deg);
+									   }
+									   to {
+									   -moz-transform: rotateY(-360deg);
+									   -ms-transform: rotateY(-360deg);
+									   transform: rotateY(-360deg);
+									   }
+	}
+							   </style>
+							</div>
+							<div class="course-info">
+								<h6><%= item.sub %></h6>
+								<a href="../assets/avatars/<%= item.link %>" download><button class="btn-preview"><i class="fa fa-download"></i> Download</button></a>
+								<a href="../assets/avatars/<%= item.link %>" target="_blank"><button class="btn-download"><i class="fa fa-desktop"></i> Preview</button></a>
+							</div>
+						</div>
+					</div>
+					<a href="/edit-document/<%= item.docId %>" class="edit_btn btn btn-xs btn-warning m-l-10 d-none">edit</a>
+				</div>
+			<% }) %>
+			</div>
+					
+			<style>
+				.course {
+					background-color: #2125295c;
+					border-radius: 10px;
+					box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+					display: flex;
+					max-width: 100%;
+					margin: 10px;
+					overflow: hidden;
+				}
+				.course h6 {
+					opacity: 0.6;
+					margin: 0;
+					letter-spacing: 1px;
+					text-transform: uppercase;
+					line-height: 2;
+					color: #fff;
+				}
+				.course h2 {
+					letter-spacing: 1px;
+					margin: 10px 0;
+					color: #2A265F
+				}
+	
+				.course-preview {
+					background-color: #212529;
+					color: #fff;
+					padding: 30px;
+					max-width: 250px;
+				}
+				.course-preview a {
+					color: #fff;
+					display: inline-block;
+					font-size: 12px;
+					opacity: 0.6;
+					margin-top: 30px;
+					text-decoration: none;
+				}
+				.course-info {
+					padding: 30px 10px;
+					position: relative;
+					width: 100%;
+				}
+				.progress-container {
+					position: absolute;
+					top: 30px;
+					right: 30px;
+					text-align: right;
+					width: 150px;
+				}
+	
+				.btn-preview {
+					background-color: #212529;
+					border: 0;
+					border-radius: 50px;
+					box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+					color: #fff;
+					font-size: 14px;
+					padding: 10px 20px;
+					position: absolute;
+					bottom: 30px;
+					right: 30px;
+					letter-spacing: 1px;
+				}
+				.btn-download {
+					background-color: #212529;
+					border: 0;
+					border-radius: 50px;
+					box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+					color: #fff;
+					font-size: 14px;
+					padding: 10px 20px;
+					position: absolute;
+					bottom: 30px;
+					right: 180px;
+					letter-spacing: 1px;
+				}
+				@media (max-width: 576px){
+					.course {
+					background-color: #2125295c;
+					border-radius: 10px;
+					box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+					display: flex;
+					max-width: 100%;
+					overflow: hidden;
+				}
+				.course h6 {
+					opacity: 0.6;
+					margin: 10px 0 30px 0;
+					letter-spacing: 1px;
+					text-transform: uppercase;
+					color: #fff;
+				}
+				.course h2 {
+					letter-spacing: 1px;
+					margin: 10px 0 30px 0;
+					color: #2A265F
+				}
+	
+				.course-preview {
+					display: none
+				}
+		
+				.course-info {
+					position: relative;
+					width: 100%;
+				}
+	
+				.btn-preview {
+					background-color: #212529;
+					border: 0;
+					border-radius: 50px;
+					box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+					color: #fff;
+					font-size: 12px;
+					padding: 10px 20px;
+					bottom: 10px;
+					right: 40px;
+					letter-spacing: 1px;
+				}
+				.btn-download {
+					background-color: #212529;
+					border: 0;
+					border-radius: 50px;
+					box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+					color: #fff;
+					font-size: 12px;
+					padding: 10px 20px;
+					bottom: 10px;
+					left: 40px;
+					letter-spacing: 1px;
+				}
+				}
+			</style>
+			<div class="d-flex m-t-20">
+				<ul class="pagination ml-auto mr-auto mr-lg-0">
+					<% if(current == 1){ %>
+					<li class="page-item disabled"><a href="javascript:;" class="page-link">first</a></li>
+					<li class="page-item disabled"><a href="javascript:;" class="page-link">prev</a></li>
+					<% }else{ %>
+					<li class="page-item"><a href="/financereport/1" class="page-link">first</a></li>
+					<li class="page-item"><a href="/financereport/<%= Number(current) - 1 %>" class="page-link">prev</a></li>
+					<% } %>
+					<% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+					<% if (i !== 1) { %>
+					<li class="page-item disabled"><a href="javascript:;" class="page-link">...</a></li>
+					<% } %>
+					<% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+						<% if (i == current) { %>
+						<li class="page-item active"><a href="javascript:;" class="page-link"><%= i %></a></li>
+						<% } else { %>
+						<li class="page-item"><a href="/financereport/<%= i %>" class="page-link"><%= i %></a></li>
+						<% } %>
+						<% if (i == Number(current) + 4 && i < pages) { %>
+						<li class="page-item disabled"><a href="javascript:;" class="page-link">...</a></li>
+						<% } %>
+					<% } %>
+					<% if (current != pages) { %>
+					<li class="page-item"><a href="/financereport/<%= Number(current) + 1 %>" class="page-link">next</a></li>
+					<li class="page-item"><a href="/financereport/<%= pages %>" class="page-link">last</a></li>
+					<% }else{ %>
+					<li class="page-item disabled"><a href="javascript:;" class="page-link">next</a></li>
+					<li class="page-item disabled"><a href="javascript:;" class="page-link">last</a></li>
+					<% } %>
+					<li class="page-item"><div class="page-link bg-transparent disabled"><span>Total <span><%= pages %></span> pages</span></div></li>
+	
+				</ul>
+			</div>
+			<% if(role === "editor" || role === "admin"){ %>
+			<a class="btn btn-outline-warning" href="/upload-document">Upload Document</a>
+			<a id="edit_doc" class="btn btn-outline-warning" href="javascript:;">Edit Document</a>
+			<a id="cancel_edit_doc" class="btn btn-outline-warning d-none" href="javascript:;">Cancel Edit Document</a>
+			<% } %>
+			</div>
+			<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/d3/d3.min.js"></script>
+	<script src="../assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/plugins/moment/min/moment.min.js"></script>
+	<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="../assets/js/demo/dashboard-v3.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

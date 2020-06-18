@@ -1,0 +1,3 @@
+npx bottender telegram webhook set -w https://finfine.jp.ngrok.io/webhooks/telegram
+
+npx bottender messenger profile set

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+		<!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Management</a></li>
+				<li class="breadcrumb-item active">Settings</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Settings</h1>
+            <!-- end page-header -->
+            <!-- begin row -->
+            <div class="row row-space-6">
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">PHONE</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.phone.status == true){ %>
+                                    <div id="status_phone_notice_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="phone_notice_setting" value="on" checked>
+                                            <label class="custom-control-label" for="phone_notice_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_phone_notice_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="phone_notice_setting" value="off">
+                                            <label class="custom-control-label" for="phone_notice_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled deposit assets futures</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">MESSENGER</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.messenger.status == true){ %>
+                                    <div id="status_messenger_notice_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="messenger_notice_setting" value="on" checked>
+                                            <label class="custom-control-label" for="messenger_notice_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_messenger_notice_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="messenger_notice_setting" value="off">
+                                            <label class="custom-control-label" for="messenger_notice_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled withdraw assets futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">TELEGRAM</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.telegram.status == true){ %>
+                                    <div id="status_telegram_notice_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="telegram_notice_setting" value="on" checked="">
+                                            <label class="custom-control-label" for="telegram_notice_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_telegram_notice_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="telegram_notice_setting" value="off">
+                                            <label class="custom-control-label" for="telegram_notice_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled access dashboard futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">WEBSITE</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.website.status == true){ %>
+                                        <div id="status_website_notice_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="website_notice_setting" value="on" checked="">
+                                                <label class="custom-control-label" for="website_notice_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% }else{ %>
+                                        <div id="status_website_notice_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="website_notice_setting" value="off">
+                                                <label class="custom-control-label" for="website_notice_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled Login account futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <!-- end row -->
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	    <!-- Modal phone -->
+		<div class="modal fade" id="phone_notice_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<h5>Do You Submit To Enabled Or Disabled Recieve Notice With Your Phone Futures</h5>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button id="btn_phone_notice_setting_md" type="button" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal messenger -->
+		<div class="modal fade" id="messenger_notice_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<h5>Do You Submit To Enabled Or Disabled Recieve Notice With Your Messenger Futures</h5>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button id="btn_messenger_notice_setting_md" type="button" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal telegram -->
+		<div class="modal fade" id="telegram_notice_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<h5>Do You Submit To Enabled Or Disabled Recieve Notice With Your Telegram Futures</h5>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button id="btn_telegram_notice_setting_md" type="button" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal website -->
+		<div class="modal fade" id="website_notice_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<h5>Do You Submit To Enabled Or Disabled Recieve Notice With Your Website Futures</h5>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button id="btn_website_notice_setting_md" type="button" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/settingnotice.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

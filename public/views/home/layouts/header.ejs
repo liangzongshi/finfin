@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- Site Metas -->
+    <title><%= title%></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Site Icons -->
+    <link rel="icon" href="assets-home/home/finfine.png" type="image/gif">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets-home/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />    
+    <link rel="stylesheet" href="assets-home/dark_style.css">
+    
+    
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="assets-home/responsive.css">
+    <!-- Colors CSS -->
+    <link rel="stylesheet" href="assets-home/colors.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets-home/custom.css">
+    <!-- Counter CSS -->
+    <link rel="stylesheet" href="assets-home/jquery.countdown.css">
+    <!-- Wow Animation CSS -->
+    <link rel="stylesheet" href="assets-home/animate.css">
+    <!-- Market value slider CSS -->
+    <link rel="stylesheet" type="text/css" href="assets-home/carouselTicker.css" media="screen">
+    <link href="assets-home/animate.min.css" rel="stylesheet" media="all">
+</head>
+
+<body id="default_theme" class="dark_home_page">
+    <!-- loader -->
+    <div class="bg_load">
+        <img class="loader_animation" style="width: 300px;" src="assets-home/home/loader1.png" alt="#">
+    </div>
+    <!-- end loader -->
+    <!-- header -->
+    <header id="default_header" class="header_style_1">
+        <div class="header_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="full">
+                            <ul class="pull-left header_top_menu cutomer_ser">
+                                <li><a href="javascript: void(0);">Info@finfine.io</a></li>
+                                <li><a href="javascript: void(0);"> BTC: <span id="btc_top_price">0</span> $</a></li>
+                                <li><a href="javascript: void(0);"> ETH: <span id="eth_top_price">0</span> $</a></li>
+                                <li><a href="javascript: void(0);"> FFT: <span id="dgg_top_price">0</span> $</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="full">
+                            <ul class="pull-right header_top_menu user_login">
+                                <% if(!userInfo){ %>
+                                <li><a href="/login"><i class="fa fa-sign-in"></i> Login</a></li>
+                                <li><a href="/register"><i class="fa fa-lock"></i> Register</a></li>
+                                <% }else{ %>
+                                <li><a href="/invest"><img src="<%= (userInfo.avatar)? `../../assets/avatars/${userInfo.avatar}` : "../../assets/default.png" %>" style="border-radius: 9999px;" width="30" height="30" />&nbsp;&nbsp;<%= userInfo.first_name %></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="full">
+                    <div class="col-md-2 col-sm-3 col-xs-12">
+                        <!-- logo -->
+                        <div class="logo">
+                            <a href="/"><img class="img-responsive" src="assets-home/home/logo.png" alt="logo"></a>
+                        </div>
+                        <!-- end logo -->
+                    </div>
+                    <div class="col-md-7 col-sm-9 col-xs-12">
+                        <!-- menu -->
+                        <div class="main_menu">
+                            <div id="cssmenu" class="dark_menu">
+                                <ul>
+                                    <li><a href="/">Home</a></li>
+                                    <li class="has-sub">
+                                        <span class="submenu-button"></span>
+                                        <a href="#">Company</a>
+                                        <ul>
+                                            <li><a href="/about">About</a></li>
+                                            <li><a href="/service">Services</a></li>
+                                            <!-- <li><a href="/team">Management Team</a></li> -->
+                                            <li><a href="/help">Help Center</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/stock">Stock</a></li>
+                                    <li class="has-sub">
+                                        <span class="submenu-button"></span>
+                                        <a href="#">Products</a>
+                                        <ul>
+                                            <li><a href="/platform">FinFine Platform</a></li>
+                                            <li><a href="/bot">FinFineBot</a></li>
+                                            <li><a href="/exchange">FinFine Exchange</a></li>
+                                        </ul>
+                                    </li>                                   
+                                    <li class="has-sub">
+                                        <span class="submenu-button"></span>
+                                        <a href="#">Investment Fund</a>
+                                        <ul>
+                                            <li><a href="/term">Terms and condition</a></li>
+                                            <li><a href="/invest-info">Invest</a></li>
+                                            <li><a href="/partner">Partner</a></li>
+                                        </ul>
+                                    </li>                                   
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end menu -->
+                    </div>
+                    <div class="col-md-3 hidden-sm col-xs-12">
+                        <!-- right header section -->
+                        <ul class="social-links">
+                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                        <div class="search_bar">
+                        </div>
+                        <!-- end right header section -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+    <!-- market value slider -->
+    <div id="main-content" class="">
+        <div id="demos">
+            <div id="carouselTicker" class="carouselTicker">
+                <div class="carouselTicker__wrap" style="position: relative; overflow: hidden; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none;">
+                    <ul class="carouselTicker__list">
+                        <li class="carouselTicker__item">
+                            <div class="coin_info">
+                                <div class="inner">
+                                    <div class="coin_name">
+                                        Bitcoin<span id="btc_price_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-danger" style="font-size: 12px">
+                                        Low <span id="btc_low_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-success" style="font-size: 12px">
+                                        High <span id="btc_high_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-primary" style="font-size: 12px">
+                                        Volume <span id="btc_volume_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselTicker__item">
+                            <div class="coin_info">
+                                <div class="inner">
+                                    <div class="coin_name">
+                                        Etherium<span id="eth_price_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-danger" style="font-size: 12px">
+                                        Low <span id="eth_low_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-success" style="font-size: 12px">
+                                        High <span id="eth_high_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-primary" style="font-size: 12px">
+                                        Volume <span id="eth_volume_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselTicker__item">
+                            <div class="coin_info">
+                                <div class="inner">
+                                    <div class="coin_name">
+                                        Binance Coin<span id="bnb_price_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-danger" style="font-size: 12px">
+                                        Low <span id="bnb_low_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-success" style="font-size: 12px">
+                                        High <span id="bnb_high_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-primary" style="font-size: 12px">
+                                        Volume <span id="bnb_volume_home" class="update_change_minus">0</span> $
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselTicker__item">
+                            <div class="coin_info">
+                                <div class="inner">
+                                    <div class="coin_name">
+                                        Bitcoin Cash<span id="bch_price_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-danger" style="font-size: 12px">
+                                        Low <span id="bch_low_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-success" style="font-size: 12px">
+                                        High <span id="bch_high_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-primary" style="font-size: 12px">
+                                        Volume <span id="bch_volume_home" class="update_change_minus">0</span> $
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselTicker__item">
+                            <div class="coin_info">
+                                <div class="inner">
+                                    <div class="coin_name">
+                                        EOS<span id="eos_price_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-danger" style="font-size: 12px">
+                                        Low <span id="eos_low_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-success" style="font-size: 12px">
+                                        High <span id="eos_high_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-primary" style="font-size: 12px">
+                                        Volume <span id="eos_volume_home" class="update_change_minus">0</span> $
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselTicker__item">
+                            <div class="coin_info">
+                                <div class="inner">
+                                    <div class="coin_name">
+                                        Ripple<span id="xrp_price_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-danger" style="font-size: 12px">
+                                        Low <span id="xrp_low_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-success" style="font-size: 12px">
+                                        High <span id="xrp_high_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-primary" style="font-size: 12px">
+                                        Volume <span id="xrp_volume_home" class="update_change_minus">0</span> $
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselTicker__item">
+                            <div class="coin_info">
+                                <div class="inner">
+                                    <div class="coin_name">
+                                        Litecoin<span id="ltc_price_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-danger" style="font-size: 12px">
+                                        Low <span id="ltc_low_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-success" style="font-size: 12px">
+                                        High <span id="ltc_high_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-primary" style="font-size: 12px">
+                                        Volume <span id="ltc_volume_home" class="update_change_minus">0</span> $
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselTicker__item">
+                            <div class="coin_info">
+                                <div class="inner">
+                                    <div class="coin_name">
+                                        Dash<span id="dash_price_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-danger" style="font-size: 12px">
+                                        Low <span id="dash_low_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-success" style="font-size: 12px">
+                                        High <span id="dash_high_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-primary" style="font-size: 12px">
+                                        Volume <span id="dash_volume_home" class="update_change_minus">0</span> $
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselTicker__item">
+                            <div class="coin_info">
+                                <div class="inner">
+                                    <div class="coin_name">
+                                        Zcash<span id="zec_price_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-danger" style="font-size: 12px">
+                                        Low <span id="zec_low_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-success" style="font-size: 12px">
+                                        High <span id="zec_high_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-primary" style="font-size: 12px">
+                                        Volume <span id="zec_volume_home" class="update_change_minus">0</span> $
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="carouselTicker__item">
+                            <div class="coin_info">
+                                <div class="inner">
+                                    <div class="coin_name">
+                                        Etherium Classic<span id="etc_price_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-danger" style="font-size: 12px">
+                                        Low <span id="etc_low_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-success" style="font-size: 12px">
+                                        High <span id="etc_high_home" class="update_change_minus">0</span> $
+                                    </div>
+                                    <div class="text-primary" style="font-size: 12px">
+                                        Volume <span id="etc_volume_home" class="update_change_minus">0</span> $
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .carouselTicker__list{
+            width: 2000px;
+            left: 1500px;
+            position: relative;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+            -webkit-animation-name: ticker;
+            animation-name: ticker;
+            -webkit-animation-duration: 30s;
+            animation-duration: 30s;
+        }
+        @-webkit-keyframes ticker {
+            0% {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+                visibility: visible;
+            }
+            100% {
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0);
+            }
+            }
+        @keyframes ticker {
+            0% {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+                visibility: visible;
+            }
+            100% {
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0);
+            }
+        }
+        @media screen and (max-width: 700px){
+            .carouselTicker__list{
+            width: 2000px;
+            left: 700px;
+            position: relative;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+            -webkit-animation-name: ticker;
+            animation-name: ticker;
+            -webkit-animation-duration: 30s;
+            animation-duration: 30s;
+        }
+        @-webkit-keyframes ticker {
+            0% {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+                visibility: visible;
+            }
+            100% {
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0);
+            }
+            }
+        @keyframes ticker {
+            0% {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+                visibility: visible;
+            }
+            100% {
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0);
+            }
+        }
+        };
+    </style>
+    <!-- market value slider end -->

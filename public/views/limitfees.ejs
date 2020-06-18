@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Information</a></li>
+				<li class="breadcrumb-item"><a href="javascript:;">Limit & Fees</a></li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header mb-3">Limit & Fees</h1>
+			<!-- end page-header -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-4">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 overflow-hidden bg-gray-dark-transparent-9">
+						<!-- begin card-body -->
+						<div class="card-body">
+							<!-- begin row -->
+							<div class="row">
+								<!-- begin col-7 -->
+								<div class="col-xl-12 col-lg-12">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b>YOUR LEVEL</b>
+										<span class="ml-2 f-s-18 f-w-700 text-warning">VIP 1</span>
+									</div>
+									<!-- end title -->
+									<hr class="bg-white-transparent-2" />
+									<!-- begin row -->
+									<div class="row text-truncate">
+										<div class="col-xl-4 col-lg-4 col-md-4 col-xs-6">
+											<div class="f-s-12 text-grey">Deposit/Withdraw Fees</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="5">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-4 col-lg-4 col-md-4 col-xs-6">
+											<div class="f-s-12 text-grey">Investment Limit</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="5000">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-4 col-lg-4 col-md-4 col-xs-6">
+											<div class="f-s-12 text-grey">Term</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">12 Months</div>
+											
+										</div>
+										<!-- end col-6 -->
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end col-7 -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end card-body -->
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 overflow-hidden ">
+						<!-- begin card-body -->
+						<div class="card-body">
+							<!-- begin row -->
+							<div class="row">
+								<!-- begin col-7 -->
+								<div class="col-xl-12 col-lg-12">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b>LEVEL</b>
+										<span class="ml-2 f-s-18 f-w-700 text-warning">VIP 1</span>
+									</div>
+									<!-- end title -->
+									<!-- begin total-sales -->
+									<div class="d-flex mb-1">
+										<h5 class="mb-0">To upgrade to VIP 2, you need to <a href="/kyc">KYC</a></h5>
+									</div>
+									<!-- end total-sales -->
+									<hr class="bg-white-transparent-2" />
+									<!-- begin row -->
+									<div class="row text-truncate">
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Level</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">VIP <span data-animation="number" data-value="1">0</span></div>
+											
+										</div>
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Deposit/Withdraw Fees</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="5">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Investment Limit</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="5000">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Term</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">12 Months</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Annual Events</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">No</div>
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">spoils</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">No</div>
+										</div>
+										<!-- end col-6 -->
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end col-7 -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end card-body -->
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 overflow-hidden ">
+						<!-- begin card-body -->
+						<div class="card-body">
+							<!-- begin row -->
+							<div class="row">
+								<!-- begin col-7 -->
+								<div class="col-xl-12 col-lg-12">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b>LEVEL</b>
+										<span class="ml-2 f-s-18 f-w-700 text-warning">VIP 2</span>
+									</div>
+									<!-- end title -->
+									<!-- begin total-sales -->
+									<div class="d-flex mb-1">
+										<h5 class="mb-0">To upgrade to VIP 3, you need to complete <a href="/airdrop">AIRDROP CAMPAIGN</a></h5>
+									</div>
+									<!-- end total-sales -->
+									<hr class="bg-white-transparent-2" />
+									<!-- begin row -->
+									<div class="row text-truncate">
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Level</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">VIP <span data-animation="number" data-value="2">0</span></div>
+											
+										</div>
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Deposit/Withdraw Fees</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="2">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Investment Limit</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1"><span data-animation="number" data-value="20">0.00</span>% Assets Total</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Term</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">6 Months</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Annual Events</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">No</div>
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">spoils</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">No</div>
+										</div>
+										<!-- end col-6 -->
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end col-7 -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end card-body -->
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 overflow-hidden ">
+						<!-- begin card-body -->
+						<div class="card-body">
+							<!-- begin row -->
+							<div class="row">
+								<!-- begin col-7 -->
+								<div class="col-xl-12 col-lg-12">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b>LEVEL</b>
+										<span class="ml-2 f-s-18 f-w-700 text-warning">VIP 3</span>
+									</div>
+									<!-- end title -->
+									<!-- begin total-sales -->
+									<div class="d-flex mb-1">
+										<h5 class="mb-0">To upgrade to VIP 4, you need to invest minimum 5,000$</a></h5>
+									</div>
+									<!-- end total-sales -->
+									<hr class="bg-white-transparent-2" />
+									<!-- begin row -->
+									<div class="row text-truncate">
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Level</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">VIP <span data-animation="number" data-value="3">0</span></div>
+											
+										</div>
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Deposit/Withdraw Fees</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="1">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Investment Limit</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1"><span data-animation="number" data-value="20">0.00</span>% Assets Total</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Term</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">5 Months</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Annual Events</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">No</div>
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">spoils</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">No</div>
+										</div>
+										<!-- end col-6 -->
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end col-7 -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end card-body -->
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 overflow-hidden ">
+						<!-- begin card-body -->
+						<div class="card-body">
+							<!-- begin row -->
+							<div class="row">
+								<!-- begin col-7 -->
+								<div class="col-xl-12 col-lg-12">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b>LEVEL</b>
+										<span class="ml-2 f-s-18 f-w-700 text-warning">VIP 4</span>
+									</div>
+									<!-- end title -->
+									<!-- begin total-sales -->
+									<div class="d-flex mb-1">
+										<h5 class="mb-0">To upgrade to VIP 5, you need to have minimum 20 refferals</h5>
+									</div>
+									<!-- end total-sales -->
+									<hr class="bg-white-transparent-2" />
+									<!-- begin row -->
+									<div class="row text-truncate">
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Level</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">VIP <span data-animation="number" data-value="4">0</span></div>
+											
+										</div>
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Deposit/Withdraw Fees</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="0">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Investment Limit</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1"><span data-animation="number" data-value="20">0.00</span>% Assets Total</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Term</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">4 Months</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Annual Events</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">No</div>
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">spoils</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">No</div>
+										</div>
+										<!-- end col-6 -->
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end col-7 -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end card-body -->
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 overflow-hidden ">
+						<!-- begin card-body -->
+						<div class="card-body">
+							<!-- begin row -->
+							<div class="row">
+								<!-- begin col-7 -->
+								<div class="col-xl-12 col-lg-12">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b>LEVEL</b>
+										<span class="ml-2 f-s-18 f-w-700 text-warning">VIP 5</span>
+									</div>
+									<!-- end title -->
+									<!-- begin total-sales -->
+									<div class="d-flex mb-1">
+										<h5 class="mb-0">To upgrade to VIP 6, you need to have minimum 50 refferals</h5>
+									</div>
+									<!-- end total-sales -->
+									<hr class="bg-white-transparent-2" />
+									<!-- begin row -->
+									<div class="row text-truncate">
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Level</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">VIP <span data-animation="number" data-value="5">0</span></div>
+											
+										</div>
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Deposit/Withdraw Fees</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="0">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Investment Limit</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1"><span data-animation="number" data-value="20">0.00</span>% Assets Total</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Term</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">3 Months</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Annual Events</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">Yes</div>
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">spoils</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">No</div>
+										</div>
+										<!-- end col-6 -->
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end col-7 -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end card-body -->
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 overflow-hidden ">
+						<!-- begin card-body -->
+						<div class="card-body">
+							<!-- begin row -->
+							<div class="row">
+								<!-- begin col-7 -->
+								<div class="col-xl-12 col-lg-12">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b>LEVEL</b>
+										<span class="ml-2 f-s-18 f-w-700 text-warning">VIP 6</span>
+									</div>
+									<!-- end title -->
+									<!-- begin total-sales -->
+									<div class="d-flex mb-1">
+										<h5 class="mb-0">To upgrade to VIP 7, you need to have minimum 1,000 refferals and invest minimum 50,000$</h5>
+									</div>
+									<!-- end total-sales -->
+									<hr class="bg-white-transparent-2" />
+									<!-- begin row -->
+									<div class="row text-truncate">
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Level</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">VIP <span data-animation="number" data-value="6">0</span></div>
+											
+										</div>
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Deposit/Withdraw Fees</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="0">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Investment Limit</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1"><span data-animation="number" data-value="20">0.00</span>% Assets Total</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Term</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">2 Months</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Annual Events</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">Yes</div>
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">spoils</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1" data-toggle="tooltip" data-placement="top" title="Manager group, join top group events, special gift monthly">Leader</div>
+										</div>
+										<!-- end col-6 -->
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end col-7 -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end card-body -->
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 overflow-hidden ">
+						<!-- begin card-body -->
+						<div class="card-body">
+							<!-- begin row -->
+							<div class="row">
+								<!-- begin col-7 -->
+								<div class="col-xl-12 col-lg-12">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b>LEVEL</b>
+										<span class="ml-2 f-s-18 f-w-700 text-warning">VIP 7</span>
+									</div>
+									<!-- end title -->
+									<!-- begin total-sales -->
+									<div class="d-flex mb-1">
+										<h5 class="mb-0">To upgrade to PREMIUM, you need to keep minimum 100,000,000 FFT</h5>
+									</div>
+									<!-- end total-sales -->
+									<hr class="bg-white-transparent-2" />
+									<!-- begin row -->
+									<div class="row text-truncate">
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Level</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">VIP <span data-animation="number" data-value="7">0</span></div>
+											
+										</div>
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Deposit/Withdraw Fees</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="0">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Investment Limit</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">Unlimit</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Term</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">1 Months</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Annual Events</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">Yes</div>
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">spoils</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1" data-toggle="tooltip" data-placement="top" title="Manager group, join top group events, special gift monthly">10% branchs sales total</div>
+										</div>
+										<!-- end col-6 -->
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end col-7 -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end card-body -->
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 overflow-hidden ">
+						<!-- begin card-body -->
+						<div class="card-body">
+							<!-- begin row -->
+							<div class="row">
+								<!-- begin col-7 -->
+								<div class="col-xl-12 col-lg-12">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b>LEVEL</b>
+										<span class="ml-2 f-s-18 f-w-700 text-warning">PREMIUM</span>
+									</div>
+									<!-- end title -->
+									<!-- begin total-sales -->
+									<div class="d-flex mb-1">
+										<h5 class="mb-0">Max Level</h5>
+									</div>
+									<!-- end total-sales -->
+									<hr class="bg-white-transparent-2" />
+									<!-- begin row -->
+									<div class="row text-truncate">
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Level</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">PREMIUM</div>
+											
+										</div>
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Deposit/Withdraw Fees</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="0">0.00</span></div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Investment Limit</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">Unlimit</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Term</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">1 Months</div>
+											
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">Annual Events</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">Yes</div>
+										</div>
+										<!-- end col-6 -->
+										<!-- begin col-6 -->
+										<div class="col-xl-2 col-lg-2 col-md-2 col-xs-6">
+											<div class="f-s-12 text-grey">spoils</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1" data-toggle="tooltip" data-placement="top" title="receive trading profit entire funds">Big Stockholder</div>
+										</div>
+										<!-- end col-6 -->
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end col-7 -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end card-body -->
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/d3/d3.min.js"></script>
+	<script src="../assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/plugins/moment/min/moment.min.js"></script>
+	<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="../assets/js/demo/dashboard-v3.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

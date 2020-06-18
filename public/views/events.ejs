@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+        <!-- begin #content -->
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+				<li class="breadcrumb-item active">Events</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Events</h1>
+			<!-- end page-header -->
+			
+			<div class="row">
+				<% events.forEach((item)=>{%>
+				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-12">
+					<div class="card-group">
+						<!-- begin card -->
+						<div class="card">
+							<img class="card-img-top" src="../assets/avatars/<%= item.img %>" alt="Card image cap">
+							<div class="card-body">
+								<h4 class="card-title"><%= item.title %></h4>
+								<p class="card-text"><%= (item.description.length < 87 ) ? item.description : item.description.slice(0,84) + "..." %></p>
+								<a href="/details-event/<%= item.link %>-.-<%= item.eventId %>" class=" float-right btn btn-xs btn-outline-grey text-white">Details</a>
+							</div>
+						</div>
+						<!-- end card -->
+					</div>
+					<!-- end card-group -->
+				</div>
+				<% }); %>
+			</div>
+			<!-- end row -->
+			<div class="d-flex m-t-20">
+				<ul class="pagination ml-auto mr-auto mr-lg-0">
+					<% if(current == 1){ %>
+					<li class="page-item disabled"><a href="javascript:;" class="page-link">first</a></li>
+					<li class="page-item disabled"><a href="javascript:;" class="page-link">prev</a></li>
+					<% }else{ %>
+					<li class="page-item"><a href="/events/1" class="page-link">first</a></li>
+					<li class="page-item"><a href="/events/<%= Number(current) - 1 %>" class="page-link">prev</a></li>
+					<% } %>
+					<% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+					<% if (i !== 1) { %>
+					<li class="page-item disabled"><a href="javascript:;" class="page-link">...</a></li>
+					<% } %>
+					<% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+						<% if (i == current) { %>
+						<li class="page-item active"><a href="javascript:;" class="page-link"><%= i %></a></li>
+						<% } else { %>
+						<li class="page-item"><a href="/events/<%= i %>" class="page-link"><%= i %></a></li>
+						<% } %>
+						<% if (i == Number(current) + 4 && i < pages) { %>
+						<li class="page-item disabled"><a href="javascript:;" class="page-link">...</a></li>
+						<% } %>
+					<% } %>
+					<% if (current != pages) { %>
+					<li class="page-item"><a href="/events/<%= Number(current) + 1 %>" class="page-link">next</a></li>
+					<li class="page-item"><a href="/events/<%= pages %>" class="page-link">last</a></li>
+					<% }else{ %>
+					<li class="page-item disabled"><a href="javascript:;" class="page-link">next</a></li>
+					<li class="page-item disabled"><a href="javascript:;" class="page-link">last</a></li>
+					<% } %>
+					<li class="page-item"><div class="page-link bg-transparent disabled"><span>Total <span><%= pages %></span> pages</span></div></li>
+
+				</ul>
+			</div>
+		</div>
+		<!-- end col-8 -->
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+</body>
+</html>

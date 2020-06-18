@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	<!-- ================== BEGIN PAGE CSS ================== -->
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<!-- ================== END PAGE CSS ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+		
+       <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Document</a></li>
+				<li class="breadcrumb-item active">Upload Documents</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">
+				Upload Documents
+			</h1>
+            <!-- end page-header -->
+			<!-- begin row -->
+			<div class="row" id="docs_text">
+				<!-- begin col-6 -->
+				<div class="col-xl-6 col-lg-6 offset-xl-3 offset-lg-3 text-center">
+					<h1>Upload Documents</h1>
+					<p class="text-white text-left bg-aqua-transparent-1 p-10">Tips: <br>Feedback and responses are in your mailbox. Please be precise in selecting the issue type as this will greatly expedite the support process. Always bear in mind that FinFine is only able to provide assistance for account-related issues via info@finfine.io Be wary of accounts imitating Binance staff on social media. FinFine will never ask you to send money to any address for any reason. If someone asks you to do this, they are trying to scam you and they should be ignored. Please report these users to an administrator privately.</p>
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-6 col-lg-6 offset-xl-3 offset-lg-3">
+					<!-- begin panel -->
+					<div class="panel panel-inverse" data-sortable-id="form-plugins-16">
+						<!-- begin panel-body -->
+						<div class="panel-body panel-form">
+							<form class="form-horizontal form-bordered">
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label">Subject<span class="text-red">*</span></label>
+									<div class="col-lg-9">
+										<div class="input-group">
+											<select id="docs_type" class="form-control col-4" name="gender">
+												<option value="general" selected>General Information</option>
+												<option value="report">Finance Reports</option>
+												<option value="marketing">Marketing</option>
+											</select>
+										</div>
+										<br>
+										<p class="upload_doc_check text-red d-none">* This field is required</p>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label">Subcription<span class="text-red">*</span></label>
+									<div class="col-lg-9">
+										<textarea class="form-control m-b-10" id="docs_sub" rows="4" placeholder="Enter Your Details Support Requirement"></textarea>
+										<p class="upload_doc_check text-red d-none">* This field is required</p>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-4 offset-4">
+										<input type="button" id="btn_docs_content" class="btn btn-outline-grey w-100" value="SUBMIT">
+									</div>
+								</div>
+							</form>
+						</div>
+						<!-- end panel-body -->
+					</div>
+					<!-- end panel -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+            <!-- begin row -->
+            <div class="row d-none" id="docs_file">
+				<!-- begin col-6 -->
+				<div class="col-xl-6 col-lg-6 offset-xl-3 offset-lg-3 text-center">
+					<h1>Upload File</h1>
+					<p class="text-white text-left bg-aqua-transparent-1 p-10">Tips: <br>Feedback and responses are in your mailbox. Please be precise in selecting the issue type as this will greatly expedite the support process. Always bear in mind that FinFine is only able to provide assistance for account-related issues via info@finfine.io . Be wary of accounts imitating Binance staff on social media. FinFine will never ask you to send money to any address for any reason. If someone asks you to do this, they are trying to scam you and they should be ignored. Please report these users to an administrator privately.</p>
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-8 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-6 col-lg-6 offset-xl-3 offset-lg-3">
+					<!-- begin panel -->
+					<div class="panel panel-inverse" data-sortable-id="form-plugins-16">
+						<!-- begin panel-body -->
+						<div class="panel-body panel-form">
+							<form class="form-horizontal form-bordered">
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label">Add Files<span class="text-red">*</span></label>
+									<div class="col-lg-9">
+										<input id="upload_file_docs" type="file" placeholder="Enter News Title" class="form-control" required/>										<p class="helper_check text-red d-none">* This field is required</p>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-4 offset-4">
+										<input type="button" id="btn_docs_file" class="btn btn-outline-grey w-100" value="SUBMIT">
+									</div>
+								</div>
+							</form>
+						</div>
+						<!-- end panel-body -->
+					</div>
+					<!-- end panel -->
+				</div>
+            </div>
+            <!-- end row -->
+            
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/d3/d3.min.js"></script>
+	<script src="../assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="../assets/plugins/clipboard/dist/clipboard.min.js"></script>
+	<script src="../assets/plugins/highlight.js/highlight.min.js"></script>
+	<script src="../assets/js/demo/widget.demo.js"></script>
+	<script src="../assets/js/demo/render.highlight.js"></script>
+    <script src="../custom/notify.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="/siofu/client.js"></script>
+	<script src="../custom/uploaddoc.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

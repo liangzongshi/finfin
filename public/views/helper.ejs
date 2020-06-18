@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+				<li class="breadcrumb-item active">Helper</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Helper</small></h1>
+			<!-- end page-header -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-12 col-lg-12">
+					<h2>We Here To Help</h2>
+					<h5 class="text-white text-left">FinFine customer service is online 24/7 to help with your needs.</h5>
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-12 m-t-20">
+					<div class="row">
+						<div class="col-xl-5 col-lg-5 offset-lg-1 offset-xl-1 bg-gray-dark-darker p-20">
+							<h2>Beginners's Guide</h2>
+							<p class="text-white text-left">Learn how to get started using Binance with our simple guides!</p>	
+						</div>
+						<div class="col-xl-5 col-lg-5 bg-gray p-20">
+							<h2>Submit a Request</h2>
+							<p class="text-white text-left">Can't find the solution to your problem? Contact the Binance Customer Support team.</p>	
+						</div>
+					</div>
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-12 m-t-20">
+					<div class="row">
+						<div class="col-xl-5 col-lg-5 offset-lg-1 offset-xl-1 bg-gray p-20">
+							<h2>FAQ</h2>
+							<p class="text-white text-left">Got a Question and got the answer right here.</p>	
+						</div>
+						<div class="col-xl-5 col-lg-5 bg-gray-dark-darker p-20">
+							<h2>Join the Community	</h2>
+							<p class="text-white text-left">Join the discussion on the official Binance Telegram, Facebook, and more.</p>	
+						</div>
+					</div>
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<!-- begin row -->
+			<hr class="bg-white width-200">
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-6 col-lg-6 offset-xl-3 offset-lg-3 text-center">
+					<h1>Helper Center</h1>
+					<p class="text-white text-left bg-aqua-transparent-1 p-10">Tips: <br>Feedback and responses are in your mailbox. Please be precise in selecting the issue type as this will greatly expedite the support process. Always bear in mind that FinFine is only able to provide assistance for account-related issues via info@finfine.io . Be wary of accounts imitating Binance staff on social media. FinFine will never ask you to send money to any address for any reason. If someone asks you to do this, they are trying to scam you and they should be ignored. Please report these users to an administrator privately.</p>
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-16 col-lg-6 offset-xl-3 offset-lg-3">
+					<!-- begin panel -->
+					<div class="panel panel-inverse" data-sortable-id="form-plugins-16">
+						<!-- begin panel-body -->
+						<div class="panel-body panel-form">
+							<form class="form-horizontal form-bordered">
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label">Subject<span class="text-red">*</span></label>
+									<div class="col-lg-9">
+										<div class="input-group">
+											<input id="helper_subject" type="text" class="form-control" value="" placeholder="Enter your Supports Requirement"/>
+											
+										</div>
+										<br>
+										<p class="helper_check text-red d-none">* This field is required</p>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label">Details<span class="text-red">*</span></label>
+									<div class="col-lg-9">
+										<textarea class="form-control m-b-10" id="helper_details" rows="7" placeholder="Enter Your Details Support Requirement"></textarea>
+										<p class="helper_check text-red d-none">* This field is required</p>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-4 offset-4">
+										<input type="button" id="helper_submit_btn" class="btn btn-outline-grey w-100" value="SUBMIT">
+										<div id="helper_fake_btn" class="btn btn-outline-grey d-none">SUBMIT</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<!-- end panel-body -->
+					</div>
+					<!-- end panel -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end #content -->
+		
+		<!-- Modal -->
+		<div class="modal fade" id="event_helper_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="container-fluid">
+							<h5 clas="text-blue">Send Support success,we wil try our best handle this and reply you soon</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/d3/d3.min.js"></script>
+	<script src="../assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/plugins/moment/min/moment.min.js"></script>
+	<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="../assets/js/demo/dashboard-v3.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/helper.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

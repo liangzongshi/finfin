@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="../assets/plugins/smartwizard/dist/css/smart_wizard.css" rel="stylesheet" />
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+		
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Profile</a></li>
+				<li class="breadcrumb-item active">2FA</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">2FA</small></h1>
+			<!-- end page-header -->
+			<!-- begin wizard-form -->
+            <form action="/" method="POST" class="form-control-with-bg">
+                <h2 class="w-100 text-center">Enable Google Authenticator</h2>
+                <br>    
+				<!-- begin wizard -->
+				<div id="wizard">
+					<!-- begin wizard-step -->
+					<ul>
+						<li>
+							<a href="#step-1">
+								<span class="number">1</span> 
+								<span class="info">
+									Download App
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#step-2">
+								<span class="number">2</span> 
+								<span class="info">
+									Scan QR Code
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#step-3">
+								<span class="number">3</span>
+								<span class="info">
+									Backup Key
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#step-4">
+								<span class="number">4</span> 
+								<span class="info">
+									Enabled Google Authenticator
+								</span>
+							</a>
+						</li>
+					</ul>
+					<!-- end wizard-step -->
+					<!-- begin wizard-content -->
+					<div>
+						<!-- begin step-1 -->
+						<div id="step-1">
+							<!-- begin fieldset -->
+							<fieldset>
+								<!-- begin row -->
+								<div class="row">
+									<!-- begin col-8 -->
+									<div class="col-xl-8 offset-xl-2">
+                                        <h3 class="w-100 text-center">Download And Install The Google Authenticator App</h3>
+                                        <br>
+                                        <div class="col-8 offset-2">
+                                            <div class="row">
+
+                                            <div class="col-5 offset-1">
+                                                <a id="enableGA_a_appStore" href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8" target="_blank" rel="noreferrer noopener" class="css-ovthrp">
+                                                    <img width="60" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTczNTQ2ODc2OTYxIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjEwNzkzIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PC9zdHlsZT48L2RlZnM+PHBhdGggZD0iTTc4Ny4yNDcyMDkgNTQ0LjQ5MjU2NmMxLjMxNjQzNiAxNTUuMDgzNDc3IDEzNS42NjYwNDYgMjA2LjMxNDc3OSAxMzcuMjM4NDU2IDIwNi44NjMyOTUtMC43MzEzNTMgMy42MjAxOTktMjEuMDI2NDA5IDczLjk3NjM5MS03MS4zNDM1MTkgMTQ1LjQyOTYxMi00Mi4wNTI4MTcgNjIuODk2Mzg4LTg2LjE4OTk5MiAxMjQuMzY2NjM3LTE1Ni4xNDM5NCAxMjUuNDYzNjY3LTY4LjAxNTg2MSAxLjU3MjQxLTkwLjg3MDY1My00MC4wMDUwMjgtMTY4Ljg2OTQ4OC00MC4wMDUwMjgtNzguNzMwMTg4IDAtMTAzLjEyMDgyMiAzOC45MDc5OTgtMTY4LjI4NDQwNSA0MS41Nzc0MzgtNjYuNjYyODU4IDIuNDg2NjAxLTExNy42MzgxODYtNjcuMTM4MjM3LTE2MS4yMjY4NDUtMTI5LjQ0OTU0My04Ny4wNjc2MTYtMTI3LjI1NTQ4Mi0xNTQuOTAwNjM5LTM1OC42NTU2ODEtNjMuOTkzNDE4LTUxNi4wNzk0ODkgNDQuMTAwNjA3LTc3LjIzMDkxMyAxMjQuNDc2MzQtMTI2LjkyNjM3MyAyMTAuMzM3MjIzLTEyOC4yNzkzNzYgNjYuNzM1OTkzLTEuMzUzMDA0IDEyOC42ODE2MjEgNDUuMDUxMzY2IDE2OS42NzM5NzYgNDUuMDUxMzY2IDQwLjIyNDQzNCAwIDExNi43OTcxMjktNTUuNTA5NzE5IDE5NS43NDY3MjMtNDcuMjQ1NDI3IDMzLjAyMDYwNCAwLjk1MDc1OSAxMjcuMDcyNjQ0IDEzLjAxODA5IDE4Ny42NjUyNjkgMTAxLjQ3NTI3Ny00LjkwMDA2NyAyLjkyNTQxMy0xMTEuOTcwMTk3IDY1Ljg5NDkzNy0xMTAuODAwMDMyIDE5NS4xOTgyMDh6TTY1OC43ODQ5OTQgMTY0LjE1MjI1OWMtMzYuNTY3NjY3IDQzLjE0OTg0Ny05NS4xNDkwNyA3Ni4xNzA0NTEtMTUyLjE5NDYzMiA3MS45Mjg2MDEtNy40NTk4MDQtNTguMjUyMjk0IDIxLjQyODY1My0xMjAuMjM0NDkgNTMuNzU0NDcxLTE1OC4wNDU0NThDNTk2Ljk0OTA2OCAzNS4xMDQ5NjEgNjYwLjQ2NzEwNiAyLjIzMDYyOCA3MTEuMjU5NTk2IDBjNi42MTg3NDggNjAuNTkyNjI1LTE3LjMzMzA3NCAxMjAuMjM0NDktNTIuNDM4MDM1IDE2NC4xNTIyNTl6IiBwLWlkPSIxMDc5NCI+PC9wYXRoPjwvc3ZnPg==" class="css-1sysnl8">
+                                                    <div class="css-gyds24">
+                                                        <div data-bn-type="text" class="css-1cjl26j">Download from</div>
+                                                        <div data-bn-type="text" class="css-yn7vn2">App Store</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-5">
+                                                <a id="enableGA_a_appStore" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank" rel="noreferrer noopener" class="css-ovthrp">
+                                                    <img width="60" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTczNTQ2NjAxMTg4IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjEwNjc5IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PC9zdHlsZT48L2RlZnM+PHBhdGggZD0iTTM4LjI1MzcxNCA5OTAuNDI3NDI5bDQ3OS4wODU3MTUtNDc3Ljk4ODU3MkwzOC4yNTM3MTQgMzMuNjA5MTQzQzI2LjQ0MTE0MyA1Mi41ODk3MTQgMTguMjg1NzE0IDgzLjQ1NiAxOC4yODU3MTQgMTI3Ljg5MDI4NnY3NjguMjE5NDI4YzAgNDQuNDM0Mjg2IDguMTU1NDI5IDc1LjI2NCAxOS45NjggOTQuMzU0Mjg2eiIgZmlsbD0iIzAwRDFGRiIgcC1pZD0iMTA2ODAiPjwvcGF0aD48cGF0aCBkPSJNNzE5LjcyNTcxNCA3MTQuNjc4ODU3bC0xNTcuMDAxMTQzLTE1Ny43NjkxNDNMOTYuMzI5MTQzIDEwMjRoNC41MzQ4NTdjMzkuODk5NDI5IDAgNzQuMzg2Mjg2LTE0LjUxODg1NyAxMjkuNzU1NDI5LTQ0LjQ3MDg1N2w0ODkuMDY5NzE0LTI2NC44NTAyODZ6IiBmaWxsPSIjRjczNjRBIiBwLWlkPSIxMDY4MSI+PC9wYXRoPjxwYXRoIGQ9Ik03NzguNjQyMjg2IDM0MS4wMjg1NzFsLTE3MC41NjkxNDMgMTcxLjQ0Njg1OCAxNzAuNTY5MTQzIDE3MC40OTYgMTAzLjQ2MDU3MS01Ni4yNDY4NThjMzguMTA3NDI5LTIwLjg0NTcxNCA5Ni4xODI4NTctNTguOTUzMTQzIDk2LjE4Mjg1Ny0xMTQuMjQ5MTQyIDAtNTYuMjQ2ODU3LTU4LjA3NTQyOS05NC4zNTQyODYtOTYuMTgyODU3LTExNS4yTDc3OC42MDU3MTQgMzQwLjk5MnoiIGZpbGw9IiNGRkNCMDIiIHAtaWQ9IjEwNjgyIj48L3BhdGg+PHBhdGggZD0iTTk2LjMyOTE0MyAwbDQ2Ni4zOTU0MjggNDY3LjA5MDI4NiAxNTYuOTY0NTcyLTE1Ny44MDU3MTVMMjMwLjYxOTQyOSA0NC40MzQyODZDMTc1LjI1MDI4NiAxNC41MTg4NTcgMTQwLjc2MzQyOSAwIDEwMC44NjQgMGgtNC41MzQ4NTd6IiBmaWxsPSIjMDBGMDc2IiBwLWlkPSIxMDY4MyI+PC9wYXRoPjwvc3ZnPg==" class="css-1sysnl8">
+                                                    <div class="css-gyds24">
+                                                        <div data-bn-type="text" class="css-1cjl26j">Download from</div>
+                                                        <div data-bn-type="text" class="css-yn7vn2">Google Play</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                                                                            
+                                        </div>
+                                        </div>
+                                        <style>
+                                            .css-ovthrp {
+                                                box-sizing: border-box;
+                                                margin: 0;
+                                                min-width: 0;
+                                                display: -webkit-box;
+                                                display: -webkit-flex;
+                                                display: -ms-flexbox;
+                                                display: flex;
+                                                border: 1px solid #eceaef;
+                                                border-radius: 4px;
+                                                margin-bottom: 20px;
+                                                margin-top: 20px;
+                                                padding: 20px;
+                                                -webkit-align-items: center;
+                                                -webkit-box-align: center;
+                                                -ms-flex-align: center;
+                                                align-items: center;
+                                                background: white;
+                                            }   
+                                            .css-gyds24 {
+                                                box-sizing: border-box;
+                                                margin: 0;
+                                                min-width: 0;
+                                                margin-left: 16px;
+                                                color: #1E2026;
+                                            }
+                                            .css-1cjl26j {
+                                                box-sizing: border-box;
+                                                margin: 0;
+                                                min-width: 0;
+                                                font-weight: 400;
+                                                font-size: 14px;
+                                                line-height: 20px;
+                                            }
+                                            .css-yn7vn2 {
+                                                box-sizing: border-box;
+                                                margin: 0;
+                                                min-width: 0;
+                                                font-weight: 500;
+                                                font-size: 20px;
+                                                line-height: 26px;
+                                                white-space: nowrap;
+                                            }
+                                        </style>
+									</div>
+									<!-- end col-8 -->
+								</div>
+								<!-- end row -->
+							</fieldset>
+							<!-- end fieldset -->
+						</div>
+						<!-- end step-1 -->
+						<!-- begin step-2 -->
+						<div id="step-2">
+							<!-- begin fieldset -->
+							<fieldset>
+								<!-- begin row -->
+								<div class="row">
+									<!-- begin col-8 -->
+									<div class="col-xl-8 offset-xl-2">
+                                        <h3 class="w-100 text-center">Scan QR Code By Google Authenticator App</h3>
+                                        <br>
+										<div class="col-8 offset-2">
+                                            <div class="d-flex p-10 bg-white-transparent-3">
+                                                <img width="200" src="https://lh3.googleusercontent.com/JhlUkFmf_qYUMEV_H-WPvG_TMB7oiSY8jqqRIkzJ_cZRe0eWYIx_x59NPMX-gMpUSRZN=s180-rw" class="p-10">
+                                                <div>
+                                                    <div class="text-white f-s-16 f-w-600 p-10">If you are unable to scan the QR code, please enter this code manually into the app.</div>
+                                                    <div class="text-white f-s-20 p-10 bg-gray text-center m-t-20">LMHKDHDHHDDDA</div>
+                                                </div>
+                                            </div>
+									    </div>
+									</div>
+									<!-- end col-8 -->
+								</div>
+								<!-- end row -->
+							</fieldset>
+							<!-- end fieldset -->
+						</div>
+						<!-- end step-2 -->
+						<!-- begin step-3 -->
+						<div id="step-3">
+							<!-- begin fieldset -->
+							<fieldset>
+								<!-- begin row -->
+								<div class="row">
+									<!-- begin col-8 -->
+									<div class="col-xl-8 offset-xl-2">
+                                        <h3 class="w-100 text-center">Save This Key To Recover Your Google Authenticator In Case Of Mobile Loss</h3>
+                                        <br>
+                                        <div class="col-8 offset-2">
+                                            <div class="d-flex p-10 bg-white-transparent-3">
+                                                <img width="200" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTOcNtTKyHrBdfsGVz06f8cwzLLWoon-PrBPiLWp8Pnu1_HpPyx&usqp=CAU   " class="p-10">
+                                                <div>
+                                                    <div class="text-white f-s-16 f-w-600 p-10">Resetting your Google Authenticator requires opening a support ticket and takes at least 7 days to process.</div>
+                                                    <div class="text-white f-s-20 p-10 bg-gray text-center m-t-20">LMHKDHDHHDDDA</div>
+                                                </div>
+                                            </div>
+									    </div>
+									</div>
+									<!-- end col-8 -->
+								</div>
+								<!-- end row -->
+							</fieldset>
+							<!-- end fieldset -->
+						</div>
+						<!-- end step-3 -->
+						<!-- begin step-4 -->
+						<div id="step-4">
+							<div class="jumbotron m-b-0 text-center">
+								<h3 class="w-100 text-center">Enable Google Authenticator</h3>
+                                <br>
+                                <!-- begin form-group row -->
+                                <div class="form-group row m-b-20">
+                                    <label class="col-lg-3 col-xl-5 text-lg-right col-form-label f-w-600 f-s-16 ">Password</label>
+                                    <div class="col-lg-9 col-xl-3">
+                                        <input type="text" placeholder="Enter Your password" class="form-control" />
+                                    </div>
+                                </div>
+                                <!-- end form-group row -->
+                                <!-- begin form-group row -->
+                                <div class="form-group row m-b-20">
+                                    <label class="col-lg-3 col-xl-5 text-lg-right col-form-label f-w-600 f-s-16 ">Google Authenticator Code</label>
+                                    <div class="col-lg-1 col-xl-3 row m-l-10">
+                                        <input type="text" pattern="[0-9]{1}" maxlength="1" class="iputs form-control" style="width: 40px; margin-right: 15px;" />
+                                        <input type="text" pattern="[0-9]{1}" maxlength="1" class="iputs form-control" style="width: 40px; margin-right: 15px;" />
+
+                                        <input type="text" pattern="[0-9]{1}" maxlength="1" class="iputs form-control" style="width: 40px; margin-right: 15px;" />
+                                        <input type="text" pattern="[0-9]{1}" maxlength="1" class="iputs form-control" style="width: 40px; margin-right: 15px;" />
+
+                                        <input type="text" pattern="[0-9]{1}" maxlength="1" class="iputs form-control" style="width: 40px; margin-right: 15px;" />
+                                        <input type="text" pattern="[0-9]{1}" maxlength="1" class="iputs form-control" style="width: 40px; margin-right: 15px;" />
+                                    </div>
+                                </div>
+                                <!-- end form-group row -->
+								<p><a href="javascript:;" class="btn btn-primary btn-lg">Submit</a></p>
+							</div>
+						</div>
+						<!-- end step-4 -->
+					</div>
+					<!-- end wizard-content -->
+				</div>
+				<!-- end wizard -->
+			</form>
+			<!-- end wizard-form -->
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="notiFalse" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="container-fluid text-center">
+						<h3 class="text-warning">False to upload KYC Image</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page container -->
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/smartwizard/dist/js/jquery.smartWizard.js"></script>
+	<script src="../assets/js/demo/form-wizards.demo.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/2fa.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

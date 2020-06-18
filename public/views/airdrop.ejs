@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed show gradient-enabled">
+		<%- include("../frame/header") -%>
+		<%- include("../frame/sidebar") -%>
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+				<li class="breadcrumb-item"><a href="javascript:;">Airdrops</a></li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header mb-3">Airdrops</h1>
+			<!-- end page-header -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-4 -->
+				<div class="col-xl-4 col-lg-4 offset-xl-4 offset-lg-4">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 ">
+						<div class="card-body">
+							<div class="mb-2 text-grey text-center">
+								<b>INFORMATION</b>
+							</div>
+							<div>
+								<div class="align-items-center text-white mb-2">
+									<div class="d-flex w-100 m-b-10">
+										<div class="m-r-20 f-s-16">Step 1: &nbsp;&nbsp;Create A Key</div>
+									</div>
+								</div>
+								<div class="align-items-center text-white mb-2">
+									<div class="d-flex w-100 m-b-10">
+										<div class="m-r-20 f-s-16">Step 2: &nbsp;&nbsp;Enter Your Key To Messenger Bot</div>
+									</div>
+								</div>
+								<div class="align-items-center text-white">
+									<div class="d-flex w-100 m-b-10">
+										<div class="m-r-20 f-s-16">Step 3: &nbsp;&nbsp;Like Fanpage</div>
+									</div>
+								</div>
+								<div class="align-items-center text-white">
+									<div class="d-flex w-100">
+										<div class="m-r-20 f-s-16">Step 4: &nbsp;&nbsp;Check Process</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-4 -->
+			</div>
+			<div class="row">
+				<!-- begin col-4 -->
+				<div class="col-xl-4 col-lg-4">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 ">
+						<div class="card-body">
+							<div class="mb-2 text-grey text-center">
+								<b>FACEBOOK CAMPAIGNS</b>
+								<span class="ml-2"><i class="fa fa-info-circle text-black" data-toggle="popover" data-trigger="hover" data-title="Total sales" data-placement="top" data-content="Net sales (gross sales minus discounts and returns) plus taxes and shipping. Includes orders from all sales channels."></i></span>
+							</div>
+							<div>
+								<div class="align-items-center text-white mb-2 text-center m-t-20 m-b-20">
+									<img src="../assets/img/fb.png" width="150" height="150" alt="">
+								</div>
+								<hr>
+								<div class="align-items-center text-white mb-2">
+									<div class="d-flex w-100 m-b-10">
+										<div class="m-r-20 f-s-16">Step 1: &nbsp;&nbsp;Create A Key</div>
+										<div class="ml-auto text-grey"><input type="button" class="btn btn-outline-grey" style="font-size: 14px; width:150px;" value="Create" /></div>
+										<div class="ml-auto text-green"><i class="fa fa-2x fa-check"></i></div>
+									</div>
+								</div>
+								<hr>
+								<div class="align-items-center text-white mb-2">
+									<div class="d-flex w-100 m-b-10">
+										<div class="m-r-20 f-s-16">Step 2: &nbsp;&nbsp;Enter Your Key To Messenger Bot</div>
+										<div class="ml-auto text-grey"><a href="" class="btn btn-outline-grey" style="font-size: 14px; width:150px;">Go to Bot</a></div>
+										<div class="ml-auto text-green"><i class="fa fa-2x fa-check"></i></div>
+									</div>
+								</div>
+								<hr>
+								<div class="align-items-center text-white">
+									<div class="d-flex w-100 m-b-10">
+										<div class="m-r-20 f-s-16">Step 3: &nbsp;&nbsp;Like Fanpage</div>
+										<div class="ml-auto text-grey"><a href="" class="btn btn-outline-grey" style="font-size: 14px; width:150px;">Go to Fanpage</a></div>
+										<div class="ml-auto text-green"><i class="fa fa-2x fa-check"></i></div>
+									</div>
+								</div>
+								<hr>
+								<div class="align-items-center text-white">
+									<div class="d-flex w-100">
+										<div class="m-r-20 f-s-16">Step 4: &nbsp;&nbsp;Check Process</div>
+										<div class="ml-auto text-grey"><input type="button" class="btn btn-outline-grey" style="font-size: 14px; width:150px;" value="Check" /></div>
+
+									</div>
+								</div>
+								<hr>
+							</div>
+						</div>
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-xl-4 col-lg-4">
+					<!-- begin card -->
+					<div class="card border-0 mb-3 ">
+						<div class="card-body">
+							<div class="mb-2 text-grey text-center">
+								<b>TELEGRAM CAMPAIGNS</b>
+								<span class="ml-2"><i class="fa fa-info-circle text-black" data-toggle="popover" data-trigger="hover" data-title="Total sales" data-placement="top" data-content="Net sales (gross sales minus discounts and returns) plus taxes and shipping. Includes orders from all sales channels."></i></span>
+							</div>
+							<div>
+								<div class="align-items-center text-white mb-2 text-center m-t-20 m-b-20">
+									<img src="../assets/img/tl.png" width="150" height="150" alt="">
+								</div>
+								<hr>
+								<div class="align-items-center text-white mb-2">
+									<div class="d-flex w-100 m-b-10">
+										<div class="m-r-20 f-s-16">Step 1: &nbsp;&nbsp;Create A Key</div>
+										<div class="ml-auto text-grey"><input type="button" class="btn btn-outline-grey" style="font-size: 14px; width:150px;" value="Create" /></div>
+										<div class="ml-auto text-green"><i class="fa fa-2x fa-check"></i></div>
+									</div>
+								</div>
+								<hr>
+								<div class="align-items-center text-white mb-2">
+									<div class="d-flex w-100 m-b-10">
+										<div class="m-r-20 f-s-16">Step 2: &nbsp;&nbsp;Enter Your Key To Telegram Bot</div>
+										<div class="ml-auto text-grey"><a href="https://facebook.com/bot" class="btn btn-outline-grey" style="font-size: 14px; width:150px;">Go To Bot</a></div>
+										<div class="ml-auto text-green"><i class="fa fa-2x fa-check"></i></div>
+									</div>
+									
+								</div>
+								<hr>
+								<div class="align-items-center text-white mb-2">
+									<div class="d-flex w-100 m-b-10">
+										<div class="m-r-20 f-s-16">Step 3: &nbsp;&nbsp;Join Telegram Group</div>
+										<div class="ml-auto text-grey"><a href="https://facebook.com/finfine" class="btn btn-outline-grey" style="font-size: 14px; width:150px;">Go To Group</a></div>
+										<div class="ml-auto text-green"><i class="fa fa-2x fa-check"></i></div>
+									</div>
+								</div>
+								<hr>
+								<div class="align-items-center text-white mb-2">
+									<div class="d-flex w-100">
+										<div class="m-r-20 f-s-16">Step 4: &nbsp;&nbsp;Check Process</div>
+										<div class="ml-auto text-grey"><input type="button" class="btn btn-outline-grey" style="font-size: 14px; width:150px;" value="Check" /></div>
+
+									</div>
+								</div>
+								<hr>
+							</div>
+						</div>
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-4 -->
+				<!-- begin col-4 -->
+				<div class="col-xl-4 col-lg-4">
+					<!-- begin card -->
+					<div class="card border-20 mb-3" style="min-height: 485px;">
+						<div class="card-body">
+							<div class="mb-2 text-grey text-center">
+								<b>YOUTUBE CAMPAIGNS</b>
+								<span class="ml-2"><i class="fa fa-info-circle text-black" data-toggle="popover" data-trigger="hover" data-title="Total sales" data-placement="top" data-content="Net sales (gross sales minus discounts and returns) plus taxes and shipping. Includes orders from all sales channels."></i></span>
+							</div>
+							<div>
+								<div class="align-items-center text-white mb-2 text-center m-t-20 m-b-20">
+									<img src="../assets/img/yt.png" width="150" height="150" alt="">
+								</div>
+								<hr>
+								<div class="align-items-center text-white mb-2">
+									<div class="d-flex w-100 m-b-10">
+										<div class="m-r-20 f-s-16">Step 1: &nbsp;&nbsp;Subcribe Our Youtube Channel</div>
+										<div class="ml-auto text-grey"><a href="https://facebook.com/bot" class="btn btn-outline-grey" style="font-size: 14px; width:150px;">Go To Channel</a></div>
+										<div class="ml-auto text-green"><i class="fa fa-2x fa-check"></i></div>								
+									</div>
+								</div>
+								<hr>
+								<div class="align-items-center text-white mb-2">
+									<div class="d-flex w-100">
+										<div class="m-r-20 f-s-16">Step 2: &nbsp;&nbsp;Check Process</div>
+										<div class="ml-auto text-grey"><input type="button" class="btn btn-outline-grey" style="font-size: 14px; width:150px;" value="Check" /></div>
+
+									</div>
+								</div>
+								<hr>
+							</div>
+						</div>
+					</div>
+					<!-- end card -->
+				</div>
+				<!-- end col-4 -->
+			</div>
+		</div>
+		<!-- end #content -->
+
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	<!-- ================== BEGIN PAGE CSS ================== -->
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<!-- ================== END PAGE CSS ================== -->
+</head>
+<body>
+	<%- include("../../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../../frame/header") -%>
+		<%- include("../../frame/sidebar") -%>
+		
+       <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Admin</a></li>
+				<li class="breadcrumb-item active">Event</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">
+				Upload Event
+            </h1>
+            <div class="row">
+                <!-- end page-header -->
+                <div class="col-xl-8 col-lg-8 col-md-8 col-xs-12 offset-xl-2 offset-lg-2 offset-md-2">
+                    <!-- begin row -->
+                    <div class="row">
+                        <!-- begin col-8 -->
+                        <div class="col-xl-12">
+                            <!-- begin form-group row -->
+                            <div class="form-group row m-b-20 text-center">
+                                <h3 class="w-100 text-center">SET EVENT</h3>
+							</div>
+							<hr>
+                            <div class="form-group row m-b-20">
+                                <h4 class="w-100 text-center">Investor Events</h4>
+                            </div>
+                            <div class="form-group row m-b-20">
+                                <label class="col-lg-3 text-lg-right col-form-label">Top Investor <span class="text-danger">*</span></label>
+                                <div class="col-lg-9 col-xl-6">
+                                    <input id="event_investor_top" type="text" placeholder="Enter Top Investor Event" class="form-control" required/>
+                                </div>
+                                <small class="notiSetEvent text-red d-none">This value is required</small>
+                            </div>
+                            <div class="form-group row m-b-20">
+                                <label class="col-lg-3 text-lg-right col-form-label">Unit <span class="text-danger">*</span></label>
+								<div class="col-lg-9 col-xl-6">
+									<div class="row row-space-6">
+										<div class="col-4">
+											<select id="event_investor_unit" class="form-control" name="gender">
+												<option>BTC</option>
+												<option>ETH</option>
+												<option>USDT</option>
+												<option>FFT</option>
+												<option>BNB</option>
+												<option>NNI</option>
+											</select>
+										</div>
+									</div>
+								</div>
+                                <small class="notiSetEvent text-red d-none">This value is required</small>
+                            </div>
+                            <div class="form-group row m-b-20">
+                                <label class="col-lg-3 text-lg-right col-form-label">Value <span class="text-danger">*</span></label>
+                                <div class="col-lg-9 col-xl-6">
+                                    <input id="event_investor_value" type="text" placeholder="Enter Investor Evnet Value" class="form-control" required/>
+                                </div>
+                                <small class="notiSetEvent text-red d-none">This value is required</small>
+							</div>
+
+							<hr>
+
+                            <div class="form-group row m-b-20">
+                                <h4 class="w-100 text-center">Saler Events</h4>
+                            </div>
+                            <div class="form-group row m-b-20">
+                                <label class="col-lg-3 text-lg-right col-form-label">Top Saler <span class="text-danger">*</span></label>
+                                <div class="col-lg-9 col-xl-6">
+                                    <input id="event_saler_unit" type="text" placeholder="Enter Top Saler Event" class="form-control" required/>
+                                </div>
+                                <small class="notiSetEvent text-red d-none">This value is required</small>
+                            </div>
+                            <div class="form-group row m-b-20">
+                                <label class="col-lg-3 text-lg-right col-form-label">Unit <span class="text-danger">*</span></label>
+								<div class="col-lg-9 col-xl-6">
+									<div class="row row-space-6">
+										<div class="col-4">
+											<select id="event_saler_unit" class="form-control" name="gender">
+												<option>BTC</option>
+												<option>ETH</option>
+												<option>USDT</option>
+												<option>FFT</option>
+												<option>BNB</option>
+												<option>NNI</option>
+											</select>
+										</div>
+									</div>
+								</div>
+                                <small class="notiSetEvent text-red d-none">This value is required</small>
+                            </div>
+                            <div class="form-group row m-b-20">
+                                <label class="col-lg-3 text-lg-right col-form-label">Value <span class="text-danger">*</span></label>
+                                <div class="col-lg-9 col-xl-6">
+                                    <input id="event_saler_value" type="text" placeholder="Enter Saler Event Value" class="form-control" required/>
+                                </div>
+                                <small class="notiSetEvent text-red d-none">This value is required</small>
+                            </div>
+							<hr>
+                            <div class="form-group row m-b-20">
+                                <h4 class="w-100 text-center">Group Events</h4>
+                            </div>
+                            <div class="form-group row m-b-20">
+                                <label class="col-lg-3 text-lg-right col-form-label">Top Group <span class="text-danger">*</span></label>
+                                <div class="col-lg-9 col-xl-6">
+                                    <input id="event_group_top" type="text" placeholder="Enter Top Group Event" class="form-control" required/>
+                                </div>
+                                <small class="notiSetEvent text-red d-none">This value is required</small>
+                            </div>
+							<div class="form-group row m-b-20">
+                                <label class="col-lg-3 text-lg-right col-form-label">Unit <span class="text-danger">*</span></label>
+								<div class="col-lg-9 col-xl-6">
+									<div class="row row-space-6">
+										<div class="col-4">
+											<select id="event_group_unit" class="form-control" name="gender">
+												<option>BTC</option>
+												<option>ETH</option>
+												<option>USDT</option>
+												<option>FFT</option>
+												<option>BNB</option>
+												<option>NNI</option>
+											</select>
+										</div>
+									</div>
+								</div>
+                                <small class="notiSetEvent text-red d-none">This value is required</small>
+                            </div>
+                            <div class="form-group row m-b-20">
+                                <label class="col-lg-3 text-lg-right col-form-label">Value <span class="text-danger">*</span></label>
+                                <div class="col-lg-9 col-xl-6">
+                                    <input id="event_group_value" type="text" placeholder="Enter Group Event Value" class="form-control" required/>
+                                </div>
+                                <small class="notiSetEvent text-red d-none">This value is required</small>
+                            </div>
+                            <div class="form-group row m-b-20">
+                                <label class="col-lg-3 text-lg-right col-form-label">Leader <span class="text-danger">*</span></label>
+                                <div class="col-lg-9 col-xl-6">
+                                    <input id="event_group_leader" type="text" placeholder="Enter Group Event Leader" class="form-control" required/>
+                                </div>
+                                <small class="notiSetEvent text-red d-none">This value is required</small>
+							</div>
+							<hr>
+                        </div>
+						<!-- end col-8 -->
+						
+                        <div class="col-12 text-center">
+                            <a href="javascript:void(0)" id="btn_submit_set_event" class="btn btn-primary" >SUBMIT</a>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </div>
+            </div>
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="../custom/notify.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/set-event.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+    <style>
+        #container_notlike, #container_like {
+            display:none
+            }
+    </style>
+</head>
+<body> 
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId            : '830973947369721',
+            autoLogAppEvents : true,
+            xfbml            : true,
+            status           : true,
+            cookie           : true, 
+            version          : 'v7.0'
+          })
+
+          FB.login( res => {
+                if (res.status == 'connected') {
+					console.log('Login')
+                    var user_id = res.authResponse.userID
+                    var page_id = "2343120125933986"
+                    
+                    FB.api('/me/likes/'+ page_id, {}, res => {
+                        if ( res.data[0] ){
+							console.log('Like')
+                        } else {
+                            console.log('noLike')
+                        }
+                    })
+
+                    FB.api('/me', {}, res => {
+                        console.log(res)
+					})
+				} else {
+					console.log('No Login')
+				}
+            });
+        }
+    </script>
+    <!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script> -->
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=830973947369721&autoLogAppEvents=1" nonce="0TX8KdP4"></script>
+	<script src="https://apis.google.com/js/platform.js"></script>
+	<%- include("../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../frame/header") -%>
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						<a href="javascript:;" data-toggle="nav-profile">
+							<div class="cover with-shadow"></div>
+							<div class="image">
+								<img id="logo_sidebar" src="<%= (userInfo.avatar)? `../assets/avatars/${userInfo.avatar}` : "../assets/default.png" %>" alt="" />
+							</div>
+							<div class="info">
+								<b class="caret pull-right"></b><%= userInfo.first_name%> <%= userInfo.last_name %>
+								<small>Super Investor</small>
+							</div>
+						</a>
+					</li>
+					<li>
+						<ul class="nav nav-profile">
+							<li><a href="/myprofile"><i class="fa fa-id-badge"></i> My Profile</a></li>
+							<li><a href="/kyc"><i class="fa fa-lock-open"></i> KYC</a></li>
+							<li><a href="/limitfees"><i class="fa fa-unlink"></i> Limit & Fees</a></li>
+							<li><a href="/delete"><i class="fa fa-trash"></i> Delete</a></li>
+						</ul>
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				<ul class="nav"><li class="nav-header">My Panel</li>
+					<li class="has-sub">
+						<a href="javascript:;">
+							<b class="caret"></b>
+							<i class="fa fa-th-large"></i>
+							<span>Dashboard</span>
+						</a>
+						<ul class="sub-menu">
+							<li><a href="/invest">Invest</a></li>
+							<li><a href="/trading">Trading</a></li>
+							<li><a href="/market">Market</a></li>
+						</ul>
+					</li>
+
+					<li class="has-sub">
+						<a href="javascript:;">
+							<b class="caret"></b>
+							<i class="fa fa-university"></i>
+							<span>Wallet</span> 
+						</a>
+						<ul class="sub-menu">
+							<li><a href="/balance">Balance <i class="fa fa-paper-plane text-theme"></i></a></li>
+							<li><a href="/deposit">Deposit</a></li>
+							<li><a href="/withdraw">Withdraw</a></li>
+							<li><a href="/swap">Swap</a></li>
+						</ul>
+					</li>
+
+					<li class="has-sub">
+						<a href="/airdrop">
+							<!-- <div class="icon-img">
+								<img src="../assets/img/logo/logo-bs4.png" alt="" />
+							</div> -->
+							<i class="fa fa-paper-plane"></i>
+							<span>Airdrop </span> 
+						</a>
+						<!-- <ul class="sub-menu">
+						</ul> -->
+					</li>
+
+					<li class="has-sub">
+						<a href="javascript:;">
+							<b class="caret"></b>
+							<i class="fa fa-pencil-alt"></i>
+							<span>Tools</span> 
+						</a>
+						<ul class="sub-menu">
+							<li><a href="/finance">Finance </a></li>
+							<li><a href="/alert">Alert </a></li>
+							<li><a href="/news">News </a></li>
+						</ul>
+					</li>
+
+					<li class="has-sub active">
+						<a href="javascript:;">
+							<b class="caret"></b>
+							<i class="fa fa-sitemap"></i>
+							<span>Network</span>
+						</a>
+						<ul class="sub-menu">
+							<li class="active"><a href="/tree">Tree</a></li>
+							<li><a href="/list">List</a></li>
+						</ul>
+					</li>
+
+					<li class="has-sub">
+						<a href="javascript:;">
+							<b class="caret"></b>
+							<i class="fa fa-users"></i>
+							<span>Community</span>
+						</a>
+						<ul class="sub-menu">
+							<li><a href="/map">Map</a></li>
+							<li><a href="/group">Group</a></li>
+							<li><a href="/events">Events</a></li>
+							<li><a href="/top">Top</a></li>
+						</ul>
+					</li>
+
+					<li class="has-sub">
+						<a href="/token">
+							<i class="fa fa-dot-circle"></i>
+							<span>Token</span>
+						</a>
+						<!-- <ul class="sub-menu">
+						</ul> -->
+					</li>
+
+					<li class="has-sub">
+						<a href="javascript:;">
+							<b class="caret"></b>
+							<i class="fa fa-tv"></i>
+							<span>Lab </span>
+						</a>
+						<ul class="sub-menu">
+							<li><a href="/follow">Follow </a></li>
+							<li><a href="/livestream">Livestream </a></li>
+						</ul>
+					</li>
+
+					<li class="has-sub">
+						<a href="javascript:;">
+							<b class="caret"></b>
+							<i class="fa fa-graduation-cap"></i>
+							<span>Document </span>
+						</a>
+						<ul class="sub-menu">
+							<li><a href="/generalinformation">General Information </a></li>
+							<li><a href="/financialreport">Financial Report </a></li>
+							<li><a href="/marketing">Marketing </a></li>
+						</ul>
+					</li>
+
+					<li class="has-sub">
+						<a href="/ai">
+							<i class="fa fa-space-shuttle"></i>
+							<span>AI </span>
+						</a>
+						<!-- <ul class="sub-menu">
+						</ul> -->
+					</li>
+
+					<li class="has-sub">
+						<a href="/helper">
+							<i class="fa fa-question"></i>
+							<span>Helper</span>
+						</a>
+						<!-- <ul class="sub-menu">
+						</ul> -->
+					</li>
+
+					<li class="has-sub">
+						<a href="javascript:;">
+							<b class="caret"></b>
+							<i class="fa fa-wrench"></i>
+							<span>Settings </span>
+						</a>
+						<ul class="sub-menu">
+							<li><a href="/securitynotice">Security & Notice</a></li>
+							<li><a href="/capitalallocation">Capital Allocation </a></li>
+							<li><a href="/walletsettings">Wallet Settings </a></li>
+						</ul>
+					</li>
+
+					<li class="has-sub">
+						<a href="/logout">
+							<i class="fa fa-stop"></i>
+							<span>Logout</span>
+						</a>
+					</li>
+
+					<!-- begin sidebar minify button -->
+					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+					<!-- end sidebar minify button -->
+				</ul>
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+        <!-- begin #content -->
+        <div id="content" class="content">
+			<div class="col">
+				<div class="row">
+					<div class="fb-like" data-href="https://www.facebook.com/lunadotjs/" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+				</div>
+				<div class="row"></div>
+				<div class="row">
+					<div class="g-ytsubscribe" data-channelid="UClMiivO_QmpNxt_eedUHgdw" data-layout="full" data-count="hidden"></div>
+				</div>
+			</div>
+        </div>
+		<!-- end #content -->
+		
+		<%- include("../frame/theme") -%>
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+    
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/d3/d3.min.js"></script>
+	<script src="../assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+	<!-- <script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script> -->
+	<script src="../assets/plugins/moment/min/moment.min.js"></script>
+	<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../assets/js/demo/dashboard-v3.js"></script>
+
+    <!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

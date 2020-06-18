@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="../assets/plugins/smartwizard/dist/css/smart_wizard.css" rel="stylesheet" />
+</head>
+<body>
+	<%- include("../../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../../frame/header") -%>
+		<%- include("../../frame/sidebar") -%>
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Management</a></li>
+				<li class="breadcrumb-item active">Wallet</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Wallet</h1>
+            <!-- end page-header -->
+            <!-- begin row -->
+            <div class="row row-space-6">
+                <!-- begin col-6 -->
+                <div class="col-xl-7 col-lg-7 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">T WALLET</b>
+                            </div>
+                        </div>
+                        <div class="row m-10">
+                            <input id="t_wallet_address" type="text" class="form-control form-control-lg col-lg-6 col-xl-6 col-xs-12 m-r-10" placeholder="Enter New Wallet Address"/>
+                            <input id="btn_t_wallet_md" type="button" class="btn btn-outline-success" value="SUBMIT"/>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-7 col-lg-7 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">M WALLET</b>
+                            </div>
+                        </div>
+                        <div class="row m-10">
+                            <input id="m_wallet_address" type="text" class="form-control form-control-lg col-lg-6 col-xl-6 col-xs-12 m-r-10" placeholder="Enter New Wallet Address"/>
+                            <input id="btn_m_wallet_md" type="button" class="btn btn-outline-success" value="SUBMIT"/>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-7 col-lg-7 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">L WALLET</b>
+                            </div>
+                        </div>
+                        <div class="row m-10">
+                            <input id="l_wallet_address" type="text" class="form-control form-control-lg col-lg-6 col-xl-6 col-xs-12 m-r-10" placeholder="Enter New Wallet Address"/>
+                            <input id="btn_l_wallet_md" type="button" class="btn btn-outline-success" value="SUBMIT"/>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <!-- end row -->
+		</div>
+		<!-- end #content -->
+        
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+    <!-- Modal T wallet -->
+    <div class="modal fade" id="t_wallet_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center" id="append_t_wallet">
+                    <h5>Do You Submit To Change T Wallet Address</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_t_wallet_submit_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal M wallet -->
+    <div class="modal fade" id="m_wallet_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center" id="append_m_wallet">
+                    <h5>Do You Submit To Change M Wallet Address</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_m_wallet_submit_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal L wallet -->
+    <div class="modal fade" id="l_wallet_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center" id="append_l_wallet">
+                    <h5>Do You Submit To change L Wallet Address</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_l_wallet_submit_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/smartwizard/dist/js/jquery.smartWizard.js"></script>
+	<script src="../assets/js/demo/form-wizards.demo.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/notify.min.js"></script>
+	<script src="../custom/setwallet.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

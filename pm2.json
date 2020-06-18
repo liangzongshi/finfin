@@ -1,0 +1,10 @@
+ 
+{
+    "apps": [
+        {
+            "name": "digigo",
+            "script": "npm",
+            "args" : "start"
+        }
+    ]
+}

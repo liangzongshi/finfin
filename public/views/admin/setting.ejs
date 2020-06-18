@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | Dashboard V3</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="../assets/plugins/smartwizard/dist/css/smart_wizard.css" rel="stylesheet" />
+</head>
+<body>
+	<%- include("../../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<%- include("../../frame/header") -%>
+		<%- include("../../frame/sidebar") -%>
+		
+        <!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Management</a></li>
+				<li class="breadcrumb-item active">Settings</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Settings</h1>
+            <!-- end page-header -->
+            <!-- begin row -->
+            <div class="row row-space-6">
+                <div class="col-12 m-b-5 p-b-1">
+                    <div class="p-10">
+                        <h4>Deposit Gate</h4>
+                    </div>
+                </div>
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">BTC</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.deposit.btc == true){ %>
+                                    <div id="status_deposit_btc_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="deposit_btc_setting" value="on" checked>
+                                            <label class="custom-control-label" for="deposit_btc_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_deposit_btc_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="deposit_btc_setting" value="off">
+                                            <label class="custom-control-label" for="deposit_btc_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled deposit BTC futures</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">ETH</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.deposit.eth == true){ %>
+                                    <div id="status_deposit_eth_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="deposit_eth_setting" value="on" checked>
+                                            <label class="custom-control-label" for="deposit_eth_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_deposit_eth_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="deposit_eth_setting" value="off">
+                                            <label class="custom-control-label" for="deposit_eth_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled deposit ETH futures</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">BNB</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.deposit.bnb == true){ %>
+                                    <div id="status_deposit_bnb_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="deposit_bnb_setting" value="on" checked>
+                                            <label class="custom-control-label" for="deposit_bnb_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_deposit_bnb_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="deposit_bnb_setting" value="off">
+                                            <label class="custom-control-label" for="deposit_bnb_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled deposit BNB futures</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">USDT</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.deposit.usdt == true){ %>
+                                    <div id="status_deposit_usdt_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="deposit_usdt_setting" value="on" checked>
+                                            <label class="custom-control-label" for="deposit_usdt_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_deposit_usdt_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="deposit_usdt_setting" value="off">
+                                            <label class="custom-control-label" for="deposit_usdt_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled deposit USDT futures</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">FFT</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.deposit.fft == true){ %>
+                                    <div id="status_deposit_fft_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="deposit_fft_setting" value="on" checked>
+                                            <label class="custom-control-label" for="deposit_fft_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_deposit_fft_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="deposit_fft_setting" value="off">
+                                            <label class="custom-control-label" for="deposit_fft_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled deposit FFT futures</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <hr>
+            <div class="row row-space-6">
+                <div class="col-12 m-b-5 p-b-1">
+                    <div class="p-10">
+                        <h4>Withdraw Gate</h4>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">BTC</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.withdraw.btc == true){ %>
+                                    <div id="status_withdraw_btc_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="withdraw_btc_setting" value="on" checked>
+                                            <label class="custom-control-label" for="withdraw_btc_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_withdraw_btc_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="withdraw_btc_setting" value="off">
+                                            <label class="custom-control-label" for="withdraw_btc_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled withdraw BTC futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">ETH</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.withdraw.eth == true){ %>
+                                    <div id="status_withdraw_eth_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="withdraw_eth_setting" value="on" checked>
+                                            <label class="custom-control-label" for="withdraw_eth_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_withdraw_eth_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="withdraw_eth_setting" value="off">
+                                            <label class="custom-control-label" for="withdraw_eth_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled withdraw ETH futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">BNB</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.withdraw.bnb == true){ %>
+                                    <div id="status_withdraw_bnb_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="withdraw_bnb_setting" value="on" checked>
+                                            <label class="custom-control-label" for="withdraw_bnb_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_withdraw_bnb_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="withdraw_bnb_setting" value="off">
+                                            <label class="custom-control-label" for="withdraw_bnb_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled withdraw BNB futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">USDT</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.withdraw.usdt == true){ %>
+                                    <div id="status_withdraw_usdt_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="withdraw_usdt_setting" value="on" checked>
+                                            <label class="custom-control-label" for="withdraw_usdt_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_withdraw_usdt_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="withdraw_usdt_setting" value="off">
+                                            <label class="custom-control-label" for="withdraw_usdt_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled withdraw USDT futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">FFT</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.withdraw.fft == true){ %>
+                                    <div id="status_withdraw_fft_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="withdraw_fft_setting" value="on" checked>
+                                            <label class="custom-control-label" for="withdraw_fft_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_withdraw_fft_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="withdraw_fft_setting" value="off">
+                                            <label class="custom-control-label" for="withdraw_fft_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled withdraw FFT futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <hr>
+            <div class="row row-space-6">
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">DASHBOARD</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.dashboard == true){ %>
+                                    <div id="status_dashboard_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="dashboard_setting" value="on" checked="">
+                                            <label class="custom-control-label" for="dashboard_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                    <div id="status_dashboard_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                    <div class="col-6 d-flex">
+                                        <div class="custom-control custom-switch ml-auto">
+                                            <input type="checkbox" class="custom-control-input" name="header-fixed" id="dashboard_setting" value="off">
+                                            <label class="custom-control-label" for="dashboard_setting">&nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled access dashboard futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">LOGIN</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.login == true){ %>
+                                        <div id="status_login_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="login_setting" value="on" checked="">
+                                                <label class="custom-control-label" for="login_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% }else{ %>
+                                        <div id="status_login_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="login_setting" value="off">
+                                                <label class="custom-control-label" for="login_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled Login account futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">REGISTER</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.register == true){ %>
+                                        <div id="status_register_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="register_setting" value="on" checked="">
+                                                <label class="custom-control-label" for="register_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% }else{ %>
+                                        <div id="status_register_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="register_setting" value="off">
+                                                <label class="custom-control-label" for="register_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled register account futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">SWAP TOKEN</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.swap == true){ %>
+                                        <div id="status_swap_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="swap_setting" value="on" checked="">
+                                                <label class="custom-control-label" for="swap_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% }else{ %>
+                                        <div id="status_swap_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="swap_setting" value="off">
+                                                <label class="custom-control-label" for="swap_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled Swap token futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">HFT</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.hft == true){ %>
+                                        <div id="status_hft_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="hft_setting" value="on" checked="">
+                                                <label class="custom-control-label" for="hft_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% }else{ %>
+                                        <div id="status_hft_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="hft_setting" value="off">
+                                                <label class="custom-control-label" for="hft_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled HFT Trading futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">AIRDROP</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.airdrop == true){ %>
+                                        <div id="status_airdrop_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="airdrop_setting" value="on" checked="">
+                                                <label class="custom-control-label" for="airdrop_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% }else{ %>
+                                        <div id="status_airdrop_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="airdrop_setting" value="off">
+                                                <label class="custom-control-label" for="airdrop_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled airdrop futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">MAINTAIN WEBSITE</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.web == true){ %>
+                                        <div id="status_web_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="web_setting" value="on" checked="">
+                                                <label class="custom-control-label" for="web_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% }else{ %>
+                                        <div id="status_web_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="web_setting" value="off">
+                                                <label class="custom-control-label" for="web_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled maintain website futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="col-xl-6 col-lg-6 m-b-5 p-b-1">
+                    <div class="p-10 bg-black-transparent-5 rounded">
+                        <div class="media media-xs overflow-visible align-items-center">
+                            <a class="media-left" href="javascript:;">
+                                <i class="fa fa-tools"></i>
+                            </a>
+                            <div class="media-body valign-middle">
+                                <b class="text-white">DELETE ACCOUNT</b>
+                            </div>
+                            <div class="media-body valign-middle text-right overflow-visible">
+                                <div class="row m-t-10">
+                                    <% if(settings.delete == true){ %>
+                                        <div id="status_delete_setting" class="col-6 control-label  f-w-600 text-green">Enabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="delete_setting" value="on" checked="">
+                                                <label class="custom-control-label" for="delete_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% }else{ %>
+                                        <div id="status_delete_setting" class="col-6 control-label  f-w-600 text-danger">Disabled</div>
+                                        <div class="col-6 d-flex">
+                                            <div class="custom-control custom-switch ml-auto">
+                                                <input type="checkbox" class="custom-control-input" name="header-fixed" id="delete_setting" value="off">
+                                                <label class="custom-control-label" for="delete_setting">&nbsp;</label>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="p-20 bg-amber-transparent-3">Enabled Or Disabled delete account futures</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col-6 -->
+            </div>
+            <!-- end row -->
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+    <!-- Modal deposit -->
+    <div class="modal fade" id="deposit_btc_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Deposit BTC Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_deposit_btc_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deposit_eth_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Deposit ETH Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_deposit_eth_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deposit_bnb_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Deposit BNB Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_deposit_bnb_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deposit_usdt_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Deposit USDT Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_deposit_usdt_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deposit_fft_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Deposit FFT Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_deposit_fft_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal withdraw -->
+    <div class="modal fade" id="withdraw_btc_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Withdraw BTC Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_withdraw_btc_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="withdraw_eth_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Withdraw ETH Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_withdraw_eth_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="withdraw_bnb_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Withdraw BNB Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_withdraw_bnb_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="withdraw_usdt_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Withdraw USDT Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_withdraw_usdt_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="withdraw_fft_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Withdraw FFT Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_withdraw_fft_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal login -->
+    <div class="modal fade" id="login_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Login Account Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_login_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal register -->
+    <div class="modal fade" id="register_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Register Account Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_register_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal swap -->
+    <div class="modal fade" id="swap_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Swap Token Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_swap_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal hft -->
+    <div class="modal fade" id="hft_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled HFT Trading Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_hft_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal airdrop -->
+    <div class="modal fade" id="airdrop_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Airdrop Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_airdrop_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal web -->
+    <div class="modal fade" id="web_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Maintain Website Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_web_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal dashboard -->
+    <div class="modal fade" id="dashboard_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Access Dashboard Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_dashboard_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal delete -->
+    <div class="modal fade" id="delete_setting_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h5>Do You Submit To Enabled Or Disabled Delete Account Futures</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn_delete_setting_md" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/smartwizard/dist/js/jquery.smartWizard.js"></script>
+	<script src="../assets/js/demo/form-wizards.demo.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/settingA.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>
