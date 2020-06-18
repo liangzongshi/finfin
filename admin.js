@@ -10,6 +10,10 @@ const {create_fund, add_scale, add_no_scale} = require('./finance')
 const fsExtra = require('fs-extra')
 const path = require('path')
 const { createNoti, countNoti } = require('./notification')
+const price = require('./token')
+const airdrop = require('./airdrop')
+const group = require('./group')
+const massage = require('./push')
 
 function random(min, max) {
     return (Math.random() * (max - min) + min).toFixed(0)

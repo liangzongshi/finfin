@@ -11,6 +11,10 @@ const fsExtra = require('fs-extra')
 const path = require('path')
 const { createNoti, countNoti } = require('./notification')
 const {random} = require('./util')
+const price = require('./token')
+const airdrop = require('./airdrop')
+const group = require('./group')
+const massage = require('./push')
 
 function xoa_dau(str){
     str = str.replace(/\s+/g, ' ');
@@ -58,15 +62,13 @@ module.exports = (app) => {
             if (referral !== process.env.root_Id){
                 await db.user({id: id, 'currency.symbol': 'FFT'}, {
                     $inc: {
-                        'currency.$.balance': + 25, 
-                        'currency.$.avai': + 25
+                        'currency.$.balance': + 25
                     }
                 })
 
                 await db.user({id: referral, 'currency.symbol': 'FFT'}, {
                     $inc: {
-                        'currency.$.balance': + 25, 
-                        'currency.$.avai': + 25
+                        'currency.$.balance': + 25
                     }
                 })
             }

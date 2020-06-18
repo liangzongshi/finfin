@@ -33,7 +33,6 @@ const createAcc = async (info, data, typeChat, chatId) => {
     var id = nowId + seed
     await db.admin({role: 'admin'}, {$inc: {nowId: seed}})
     await add_wallet(id)
-    await create_fund(id)
 
     var referral = String(sign.referral)
     const dad = await db.user({id: referral}, 'id')
@@ -46,15 +45,13 @@ const createAcc = async (info, data, typeChat, chatId) => {
     if (referral !== process.env.root_Id){
         await db.user({id: id, 'currency.symbol': 'FFT'}, {
             $inc: {
-                'currency.$.balance': + 25, 
-                'currency.$.avai': + 25
+                'currency.$.balance': + 25
             }
         })
 
         await db.user({id: referral, 'currency.symbol': 'FFT'}, {
             $inc: {
-                'currency.$.balance': + 25, 
-                'currency.$.avai': + 25
+                'currency.$.balance': + 25
             }
         })
     }

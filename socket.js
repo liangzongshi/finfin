@@ -13,6 +13,10 @@ const path = require("path")
 const fsExtra = require("fs-extra")
 const {v4: uuidv4} = require("uuid")
 const { sendMap, updateMap} = require("./map.js")
+const price = require('./token')
+const airdrop = require('./airdrop')
+const group = require('./group')
+const massage = require('./push')
 
 function random(min, max) {
     return Math.random() * (max - min) + min
