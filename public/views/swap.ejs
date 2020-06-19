@@ -48,23 +48,21 @@
 								<thead>
 									<tr>
 										<th width="1%" data-orderable="false">Logo</th>
-										<th class="text-nowrap">Type</th>
 										<th class="text-nowrap">Price</th>
-										<th class="text-nowrap">Value</th>
+										<th class="text-nowrap">Amount</th>
 										<th class="text-nowrap">Hash</th>
 										<th class="text-nowrap">Date</th>
 									</tr>
 								</thead>
 								<tbody>
-									<% histories.forEach(function(history){ %>
-										<tr class="odd gradeX" id="tr-<%= history.symbol %>">
+									<% swap.forEach(function(item){ %>
+										<tr class="odd gradeX">
 										<!-- <tr class="even gradeC"> -->
-											<td width="1%" class="with-img"><img src="<%= history.logo %>" class="img-rounded height-30" /></td>
-											<td><%= history.type %></td>
-											<td><%= history.price %></td>
-											<td><%= history.value %></td>
-											<td><%= history.hash %></td>
-											<td><%= history.date %></td>
+											<td width="1%" class="with-img"><img src="<%= item.logo %>" class="img-rounded height-30" /></td>
+											<td><%= item.price %></td>
+											<td><%= item.value %></td>
+											<td><%= item.hash %></td>
+											<td><%= item.timestamp.toISOString().split('T')[0] + " " + item.timestamp.toISOString().split('T')[1].slice(0,8)  %></td>
 										</tr>
 									<% }) %>
 								</tbody>

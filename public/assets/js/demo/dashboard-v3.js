@@ -546,6 +546,7 @@ var DashboardV3 = function () {
 			handleConversionRateSparkline('#invest-sparkline-3');
 			handleConversionRateSparkline('#invest-sparkline-5');
 			handleConversionRateSparkline('#invest-sparkline-7');
+			handleConversionRateSparkline('#invest-sparkline-9');
 			handleStoreSessionSparkline('#invest-sparkline-2');
 			handleStoreSessionSparkline('#invest-sparkline-4');
 			handleStoreSessionSparkline('#invest-sparkline-6');
@@ -560,6 +561,7 @@ var DashboardV3 = function () {
 			handleConversionRateSparkline('#trading-sparkline-3');
 			handleConversionRateSparkline('#trading-sparkline-5');
 			handleConversionRateSparkline('#trading-sparkline-7');
+			handleConversionRateSparkline('#trading-sparkline-9');
 			handleStoreSessionSparkline('#trading-sparkline-2');
 			handleStoreSessionSparkline('#trading-sparkline-4');
 			handleStoreSessionSparkline('#trading-sparkline-6');

@@ -471,19 +471,19 @@ class Price {
     }
 
     trading = async (timeskip = 0) => {
-        const fund = await db.system({}, 'totalFund totalToken tokenBlock totalOrder totalProfit profitDaily pay')
-        var totalDay = fund.profitDaily[fund.profitDaily.length -1]
+        const fund = (await db.system({}, 'totalFund totalToken tokenBlock totalOrder totalProfit profitDaily pay'))[0]
+        var totalDay = (fund.profitDaily[fund.profitDaily.length -1]).value
         var totalMonth = 0
         fund.profitDaily.forEach((daily) => {
             if (sMonth(daily.timestamp, timeskip)){
                 totalMonth += daily.value
             }
         })
-        var totalPayDay = fund.pay[fund.pay.length -1]
+        var totalPayDay = (fund.pay[fund.pay.length -1]).value
         var totalPayMonth = 0
         fund.pay.forEach(async (paid, st) =>{
             if (sMonth(paid.timestamp, timeskip)){
-                totalPayMonth += pay.value
+                totalPayMonth += paid.value
             }
         })
         return {

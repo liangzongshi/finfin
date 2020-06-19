@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Color Admin | Dashboard V3</title>
+	<title><%= title %></title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -11,11 +11,9 @@
 	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
 	<!-- ================== END BASE CSS STYLE ================== -->
 	
-	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
-	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
-	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
-	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
-	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+	<!-- ================== BEGIN PAGE CSS STYLE ================== -->
+	<link href="../assets/plugins/countdown/jquery.countdown.css" rel="stylesheet" />
+	<!-- ================== END PAGE CSS STYLE ================== -->
 </head>
 <body>
 	<%- include("../frame/loader") -%>
@@ -26,11 +24,44 @@
 		<%- include("../frame/sidebar") -%>
 		
         <!-- begin #content -->
-        
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Lab</a></li>
+				<li class="breadcrumb-item active">Follow</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Follow</small></h1>
+			<!-- end page-header -->
+			<div class="coming-soon">
+				<!-- begin coming-soon-header -->
+				<div class="coming-soon-header" style="background: none">
+					<div class="brand w-100">
+						<span class="w-100"><img class="img-responsive m-auto" src="assets-home/home/logo.png" width="200" alt="logo"></span>
+					</div>
+					<div class="desc">
+						Our website is almost there and it’s rebuilt from scratch! A lot of great new features <br />and improvements are coming.
+					</div>
+					<div class="timer">
+						<div id="timer_livestream_page"></div>
+					</div>
+				</div>
+				<!-- end coming-soon-header -->
+				<!-- begin coming-soon-content -->
+				<div class="coming-soon-content">
+					<p>
+						<a href="javascript:;" class="text-info" style="font-size: 20px;"><i class="fab fa-twitter fa-lg fa-fw text-info"></i></a>
+						<a href="javascript:;" class="text-blue" style="font-size: 20px;"><i class="fab fa-facebook-square fa-lg fa-fw text-blue"></i></a>
+						<a href="javascript:;" class="text-red" style="font-size: 20px;"><i class="fab fa-youtube-square fa-lg fa-fw text-red"></i></a>
+						<a href="javascript:;" class="text-info" style="font-size: 20px;"><i class="fab fa-telegram fa-lg fa-fw text-blue-lighter"></i></a>
+					</p>
+				</div>
+				<!-- end coming-soon-content -->
+			</div>
+			
+		</div>
 		<!-- end #content -->
-		
-		<%- include("../frame/theme") -%>
-		
 		<!-- begin scroll to top btn -->
 		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 		<!-- end scroll to top btn -->
@@ -43,15 +74,10 @@
 	<!-- ================== END BASE JS ================== -->
 	
 	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-	<script src="../assets/plugins/d3/d3.min.js"></script>
-	<script src="../assets/plugins/nvd3/build/nv.d3.min.js"></script>
-	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
-	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
-	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
-	<script src="../assets/plugins/moment/min/moment.min.js"></script>
-	<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<script src="../assets/js/demo/dashboard-v3.js"></script>
-	<script src="../sidebar.js"></script>
+	<script src="../assets/plugins/countdown/jquery.plugin.min.js"></script>
+	<script src="../assets/plugins/countdown/jquery.countdown.min.js"></script>
+	<script src="../assets/js/demo/coming-soon.demo.js"></script>
+	<script src="../custom/sidebar.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
 </body>
 </html>

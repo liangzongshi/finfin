@@ -4,8 +4,6 @@
     "https": true,
     "storage": true,
     ".gitignore": true,
-    "app.js": true,
-    "auth.js": true,
     "bottender.config.js": true,
     "fft.json": true,
     "usdt.json": true,
@@ -22,7 +20,6 @@
     "finance.js": true,
     "public/assets": true,
     "public/assets-home": true,
-    "public/frame": true,
     "node_modules": true
   },
   "git.ignoreLimitWarning": true

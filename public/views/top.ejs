@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Color Admin | Dashboard V3</title>
+	<title><%= title %></title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -52,11 +52,13 @@
 									</tr>
 								</thead>
 								<tbody>
+									<% (topInvester != undefined) ? topInvester.forEach(function(item){ %>
 									<tr class="odd gradeX">
 										<td width="1%" class="f-s-600 text-inverse">1</td>
-										<td class="text-center"> item.info.email </td>
-										<td class="text-center"> item.info.first_name   item.info.last_name </td>
+										<td class="text-center"> <%= item.id %> </td>
+										<td class="text-center"> <%= item.invest %> </td>
 									</tr>
+									<% }): "" %>
 								</tbody>
 							</table>
 						</div>
@@ -79,11 +81,13 @@
 									</tr>
 								</thead>
 								<tbody>
+									<% (topSaler != undefined) ? topSaler.forEach(function(item){ %>
 									<tr class="odd gradeX">
 										<td width="1%" class="f-s-600 text-inverse">1</td>
-										<td class="text-center"> item.info.email </td>
-										<td class="text-center"> item.info.first_name   item.info.last_name </td>
+										<td class="text-center"> <%= item.id %> </td>
+										<td class="text-center"> <%= item.total %> </td>
 									</tr>
+									<% }): "" %>
 								</tbody>
 							</table>
 						</div>
@@ -110,15 +114,17 @@
 									</tr>
 								</thead>
 								<tbody>
+									<% (topGroup!= undefined) ? topGroup.forEach(function(item){ %>
 									<tr class="odd gradeX">
 										<td width="1%" class="f-s-600 text-inverse">1</td>
-										<td width="1%" class="with-img"><img src="../../assets/avatars/" class="img-rounded height-30 width-30" /></td>
-										<td class="text-center"> item.info.email </td>
-										<td class="text-center"> item.info.first_name</td>
-										<td class="text-center"> item.info.first_name</td>
-										<td class="text-center"> item.info.first_name</td>
-										<td class="text-center"> item.info.first_name</td>
+										<td width="1%" class="with-img"><img src="../../assets/avatars/<%= item.avt %>" class="img-rounded height-30 width-30" /></td>
+										<td class="text-center"> <%= item.code %> </td>
+										<td class="text-center"> <%= item.name %></td>
+										<td class="text-center"> <%= item.local %></td>
+										<td class="text-center"> <%= item.sales %></td>
+										<td class="text-center"> <%= item.number %></td>
 									</tr>
+									<% }): "" %>
 								</tbody>
 							</table>
 						</div>

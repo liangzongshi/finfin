@@ -46,8 +46,7 @@
 								<th class="text-nowrap">Name</th>
 								<th class="text-nowrap">Role</th>
 								<th class="text-nowrap">Finance Total</th>
-								<th class="text-nowrap">Platform(s)</th>
-								<th class="text-nowrap">Engine version</th>
+								<th class="text-nowrap">Kyc Image</th>
 								<th class="text-nowrap">Action</th>
 							</tr>
 						</thead>
@@ -60,11 +59,21 @@
 								<td><%= item.info.first_name %> <%= item.info.last_name %></td>
 								<td><%= item.role %></td>
 								<td><%= item.info.finance_total %></td>
-								<td>X</td>
-								<td>X</td>
+								<td>
+									<img src="../../assets/avatars/<%= item.info.kyc_img[0] %>" class="img-rounded height-60 width-60" />
+									<img src="../../assets/avatars/<%= item.info.kyc_img[1] %>" class="img-rounded height-60 width-60" />
+									<img src="../../assets/avatars/<%= item.info.kyc_img[2] %>" class="img-rounded height-60 width-60" />
+								</td>
 								<td>
                                     <a href="" class="btn btn-xs btn-success"><i class="fa fa-tools"></i></a>
-                                    <a href="" class="btn btn-xs btn-danger"><i class="fa fa-remove-format"></i></a>
+									<a href="" class="btn btn-xs btn-danger m-r-10"><i class="fa fa-remove-format"></i></a>
+									<% if(item.info.kyc == false && item.info.kyc_img.length == 3 ){ %>
+									<a class="submit_kyc btn btn-xs btn-warning " data-uid="<%= item._id %>">KYC</a>
+									<% }else if(item.info.kyc == true){ %>
+										<a class="btn btn-xs btn-success disabled "><i class="fa fa-check"></i> KYC</a>
+									<% }else{ %>
+										<a class="btn btn-xs btn-danger disabled "><i class="fa fa-window-close"></i> KYC</a>
+									<% } %>
                                 </td>
                             </tr>
                             <% }) %>
@@ -142,6 +151,8 @@
 	<script src="../../../assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 	<script src="../../../assets/js/demo/table-manage-default.demo.js"></script>
 	<script src="../../../custom/sidebar.js"></script>
+	<<script src="/socket.io/socket.io.js"></script>
+	<script src="../../../custom/a-info.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
 </body>
 </html>

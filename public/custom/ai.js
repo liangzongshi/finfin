@@ -4,12 +4,7 @@ google.charts.setOnLoadCallback(drawChart1);
 function drawChart1() {
    var initdata = [
       ['Age', 'Weight'],
-      [ 8,      12],
-      [ 4,      5.5],
-      [ 11,     14],
-      [ 4,      5],
-      [ 3,      3.5],
-      [ 6.5,    7]
+      [ 50,      50] 
    ]
    var data = google.visualization.arrayToDataTable(initdata)
 
@@ -20,14 +15,14 @@ function drawChart1() {
       hAxis: {
       title: 'Age',
       minValue: 0, 
-      maxValue: 15,
+      maxValue: 100,
       titleTextStyle: {color: 'white'},
       textStyle: { color: 'white', fontName: 'Roboto', fontSize: '12', bold: true}
    },
       vAxis: {
          title: 'Weight', 
          minValue: 0, 
-         maxValue: 15,
+         maxValue: 100,
          titleTextStyle: {color: 'white'},
             textStyle: { color: 'white', fontName: 'Roboto', fontSize: '12', bold: true}
       },
@@ -42,8 +37,8 @@ function drawChart1() {
       return (Math.random() * (max - min) + min).toFixed(1); //The maximum is inclusive and the minimum is inclusive 
    }
    function update(){
-      var x = getRandomIntInclusive(3.5, 10)
-      var y = getRandomIntInclusive(2.5, 10.4)
+      var x = getRandomIntInclusive(0, 100)
+      var y = getRandomIntInclusive(0, 100)
       return initdata.push([x,y])
    }
    setInterval(function(){

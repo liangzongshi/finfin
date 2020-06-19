@@ -159,10 +159,6 @@ module.exports = (io,siofu) => {
                 socket.emit("edit_docs_file_success", fileName)
             }
         });
-        socket.on("kyc_complete", async data=>{
-            const id = decId(getId(socket, 'socket'))
-            await db.user({id:id}, {"info.kyc": data})
-        })
         socket.on("send_ip_location", async data=>{
             const id = decId(getId(socket, 'socket'))
             await updateMap(data)
@@ -996,6 +992,11 @@ module.exports = (io,siofu) => {
         socket.on("change_l_wallet", async (data)=>{
             await db.admin({role: "admin"}, {"wallet.l": data})
             socket.emit("change_l_wallet_success", true)
+        })
+        //admin submit kyc
+        socket.on("a_submit_kyc", async (data)=>{
+            await db.user({_id: data}, {"info.kyc": true})
+            socket.emit("a_submit_kyc_success", data)
         })
     })
 }

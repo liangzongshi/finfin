@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Color Admin | Dashboard V3</title>
+	<title><%= title %></title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -35,7 +35,7 @@
 			<h1 class="page-header">KYC</small></h1>
 			<!-- end page-header -->
 			<!-- begin wizard-form -->
-			<% if(!userInfo.kyc){ %>
+			<% if(!userInfo.kyc && userInfo.kyc_img.length < 3){ %>
 			<form id="infokycform"  name="form-wizard" class="form-control-with-bg">
 				<!-- begin wizard -->
 				<div id="wizard">
@@ -1086,8 +1086,10 @@
 
 			</form>
 			<!-- end wizard-form -->
+			<% }else if(!userInfo.kyc && userInfo.kyc_img.length == 3){ %>
+				<h3>You Completed KYC, The System need 24 hours to check Your System, please wait</h3>
 			<% }else{ %>
-				<h3>KYC COMPLETED</h3>
+				<h3>KYC COMPLETED, You achieve <span class="text-green">LEVEL 2</span></h3>
 			<% } %>
 		</div>
 		<!-- end #content -->

@@ -117,10 +117,9 @@ $(document).ready(()=>{
                             <li class="breadcrumb-item active">KYC</li>
                         </ol>
                         <h1 class="page-header">KYC</small></h1>
-                        <h3>You Completed KYC</h3>
+                        <h3>You Completed KYC, The System need 24 hours to check Your System, please wait</h3>
                         `
                     )
-                    socket.emit("kyc_complete", true)
                 }, 20000);
                 $.ajax({
                     url: "https://geolocation-db.com/jsonp/0f761a30-fe14-11e9-b59f-e53803842572",

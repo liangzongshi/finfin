@@ -15,6 +15,7 @@ const price = require('./token')
 const airdrop = require('./airdrop')
 const group = require('./group')
 const massage = require('./push')
+const {unixTo, randStr, sDay, sMonth} = require('./util')
 
 function xoa_dau(str){
     str = str.replace(/\s+/g, ' ');
@@ -93,9 +94,9 @@ module.exports = (app) => {
                         id: encId(id),
                     }
                     const idNow = decId(getId(req,''))
-                    const user = await db.user({id:idNow}, "info")
+                    const user = await db.user({id:idNow}, "info role")
                     res.render('invest', {
-                        title: "DIGIGO | Invest",
+                        title: "FINFINE | Invest",
                         userInfo: user[0].info,
                         role: user[0].role,
                         id: id,
@@ -112,9 +113,9 @@ module.exports = (app) => {
         
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, "info")
+            const user = await db.user({id: id}, "info role")
             res.render('invest', {
-                title: "DIGIGO | Investment",
+                title: "FINFINE | Investment",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -126,11 +127,17 @@ module.exports = (app) => {
     app.get('/trading', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, "info")
+            const user = await db.user({id: id}, "info role")
+            const curOrders = await price.trading(timeskip = 0)
+            const preOrders = await price.trading(timeskip = 1)
+            const hftOrders = await price.liveOrder()
             res.render('trading', {
-                title: "DIGIGO | Trading",
+                title: "FINFINE | Trading",
                 userInfo: user[0].info,
-                role: user[0].role
+                role: user[0].role,
+                curOrders: curOrders,
+                preOrders: preOrders,
+                hftOrders: hftOrders
             })
         } else {
             res.redirect('/login')
@@ -140,13 +147,13 @@ module.exports = (app) => {
     app.get('/timeline', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, 'info role history')
-            const histories = user[0].history
+            const user = await db.user({id: id}, 'info role')
+            const timeline = await tree.upTime(id , "two")
             res.render('timeline', {
                 title: "FINFINE | Timeline",
                 userInfo: user[0].info,
                 role: user[0].role,
-                histories: histories
+                timeline: timeline
             })
         } else {
             res.redirect('/login')
@@ -156,9 +163,9 @@ module.exports = (app) => {
     app.get('/market', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, "info")
+            const user = await db.user({id: id}, "info role")
             res.render('market', {
-                title: "DIGIGO | Market",
+                title: "FINFINE | Market",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -170,10 +177,10 @@ module.exports = (app) => {
     app.get('/balance', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, 'info currency')
+            const user = await db.user({id: id}, 'info currency role')
             const currencies = user[0].currency
             res.render('balance', {
-                title: "DIGIGO | Balance",
+                title: "FINFINE | Balance",
                 userInfo: user[0].info,
                 role: user[0].role,
                 currencies: currencies
@@ -186,13 +193,13 @@ module.exports = (app) => {
     app.get('/deposit', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, 'info history')
-            const histories = user[0].history
+            const user = await db.user({id: id}, 'info history role')
+            const deposit = R.filter( n => n.type == 'deposit', user[0].history)
             res.render('deposit', {
-                title: "DIGIGO | Deposit",
+                title: "FINFINE | Deposit",
                 userInfo: user[0].info,
                 role: user[0].role,
-                histories: histories
+                deposit: deposit
             })
         } else {
             res.redirect('/login')
@@ -202,13 +209,13 @@ module.exports = (app) => {
     app.get('/withdraw', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, 'info history')
-            const histories = user[0].history
+            const user = await db.user({id: id}, 'info history role')
+            const withdraw = R.filter( n => n.type == 'withdraw', user[0].history)
             res.render('withdraw', {
-                title: "DIGIGO | Withdraw",
+                title: "FINFINE | Withdraw",
                 userInfo: user[0].info,
                 role: user[0].role,
-                histories: histories
+                withdraw: withdraw
             })
         } else {
             res.redirect('/login')
@@ -218,13 +225,13 @@ module.exports = (app) => {
     app.get('/swap', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, 'info history')
-            const histories = user[0].history
+            const user = await db.user({id: id}, 'info history role')
+            const swap = R.filter( n => n.type == 'swap', user[0].history)
             res.render('swap', {
-                title: "DIGIGO | Swap",
+                title: "FINFINE | Swap",
                 userInfo: user[0].info,
                 role: user[0].role,
-                histories: histories
+                swap: swap
             })
         } else {
             res.redirect('/login')
@@ -235,12 +242,12 @@ module.exports = (app) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, 'info role history')
-            const histories = user[0].history
+            const switchHis = R.filter( n => n.type == 'switch', user[0].history)
             res.render('switch', {
                 title: "FINFINE | Switch",
                 userInfo: user[0].info,
                 role: user[0].role,
-                histories: histories
+                switchHis: switchHis
             })
         } else {
             res.redirect('/login')
@@ -250,13 +257,13 @@ module.exports = (app) => {
     app.get('/mybonus', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, 'info role history')
-            const histories = user[0].history
+            const user = await db.user({id: id}, 'info role')
+            const mybonus = await group.getListBonus(id)
             res.render('mybonus', {
                 title: "FINFINE | My Bonus",
                 userInfo: user[0].info,
                 role: user[0].role,
-                histories: histories
+                mybonus: mybonus
             })
         } else {
             res.redirect('/login')
@@ -266,13 +273,15 @@ module.exports = (app) => {
     app.get('/bonus', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, 'info role history')
-            const histories = user[0].history
+            const user = await db.user({id: id}, 'info role')
+            const bonus = (await group.getBonus())[(await group.getBonus()).length - 1]
+            const time = (bonus != undefined ? (await unixTo(bonus.timestamp)).months: new Date().getMonth() + 1)
             res.render('bonus', {
                 title: "FINFINE | Bonus",
                 userInfo: user[0].info,
                 role: user[0].role,
-                histories: histories
+                bonus: bonus,
+                time: time
             })
         } else {
             res.redirect('/login')
@@ -282,9 +291,9 @@ module.exports = (app) => {
     app.get('/airdrop', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, "info")
+            const user = await db.user({id: id}, "info role")
             res.render('airdrop', {
-                title: "DIGIGO | Airdrop",
+                title: "FINFINE | Airdrop",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -296,7 +305,7 @@ module.exports = (app) => {
     app.get('/finance', async (req, res) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, 'info')
+            const user = await db.user({id: id}, 'info role')
             var user_fin 
             if(user[0].info.kyc === true){
                 const Sump = R.filter( n => n.name == 'SUMP', user[0].info.finance_fund).pop().balance
@@ -321,7 +330,7 @@ module.exports = (app) => {
             }
             
             res.render('finance', {
-                "title": "DIGIGO | Finance Management",
+                "title": "FINFINE | Finance Management",
                 userInfo: user[0].info,
                 role: user[0].role,
                 UserFinance: user_fin
@@ -533,10 +542,16 @@ module.exports = (app) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
+            const topGroup = await group.topGroup()
+            const topInvester = await group.topInvester()
+            const topSaler = await group.topSaler()
             res.render('top', {
                 title: "FINFINE | Top",
                 userInfo: user[0].info,
-                role: user[0].role
+                role: user[0].role,
+                topGroup: topGroup,
+                topInvester: topInvester,
+                topSaler: topSaler
             })
         } else {
             res.redirect('/login')
@@ -781,7 +796,7 @@ module.exports = (app) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
-            if(user[0].info.kyc === false){
+            if(user[0].info.kyc === false && user[0].info.kyc_img.length < 3){
                 user[0].info.kyc_img.forEach(async (item)=>{
                     await db.user({id:id}, {$pull: {"info.kyc_img": item}})
                     const imgpPath = path.join(__dirname, `public/assets/avatars/${item}`)
@@ -1070,7 +1085,7 @@ module.exports = (app) => {
     app.get('/test', async (req, res) => {
             const user = await db.user({id: 100003}, "info")
             res.render('test', {
-                title: "DIGIGO | Tree",
+                title: "FINFINE | Tree",
                 userInfo: user[0].info
             })
     })
