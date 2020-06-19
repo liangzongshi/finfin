@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title><%= title %></title>
+	<title>Color Admin | Dashboard V3</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -18,6 +18,40 @@
 	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 </head>
 <body>
+	<% var days_direct_commission = totalByTime.days.profits.direct_commission %>
+	<% var days_static_interest = totalByTime.days.profits.static_interest %>
+	<% var days_dynamic_interest = totalByTime.days.profits.dynamic_interest %>
+	<% var days_indirect_commission = totalByTime.days.profits.indirect_commission %>
+
+	<% var days_profits = days_direct_commission + days_static_interest + days_dynamic_interest + days_indirect_commission %>
+
+	<% var months_direct_commission = totalByTime.months.profits.direct_commission %>
+	<% var months_static_interest = totalByTime.months.profits.static_interest %>
+	<% var months_dynamic_interest = totalByTime.months.profits.dynamic_interest %>
+	<% var months_indirect_commission = totalByTime.months.profits.indirect_commission %>
+
+	<% var months_profits = months_direct_commission + months_static_interest + months_dynamic_interest + months_indirect_commission %>
+
+	<% var days_direct_commission_past = totalByTimePast.days.profits.direct_commission %>
+	<% var days_static_interest_past = totalByTimePast.days.profits.static_interest %>
+	<% var days_dynamic_interest_past = totalByTimePast.days.profits.dynamic_interest %>
+	<% var days_indirect_commission_past = totalByTimePast.days.profits.indirect_commission %>
+	
+	<% var days_profits_past = days_direct_commission_past + days_static_interest_past + days_dynamic_interest_past + days_indirect_commission_past %>
+
+	<% var months_direct_commission_past = totalByTimePast.months.profits.direct_commission %>
+	<% var months_static_interest_past = totalByTimePast.months.profits.static_interest %>
+	<% var months_dynamic_interest_past = totalByTimePast.months.profits.dynamic_interest %>
+	<% var months_indirect_commission_past = totalByTimePast.months.profits.indirect_commission %>
+
+	<% var months_profits_past = months_direct_commission_past + months_static_interest_past + months_dynamic_interest_past + months_indirect_commission_past %>
+
+	<% var sale_Ref_Days = totalByTime.days.ref %>
+	<% var sale_Ref_Months = totalByTime.months.ref %>
+
+	<% var sale_Ref_Days_Past = totalByTimePast.days.ref %>
+	<% var sale_Ref_Months_Past = totalByTimePast.months.ref %>
+
 	<%- include("../frame/loader") -%>
 
 	<!-- begin #page-container -->
@@ -50,7 +84,7 @@
 								<div class="col-xl-7 col-lg-8">
 									<!-- begin title -->
 									<div class="mb-3 text-grey">
-										<b>TOTAL SALES</b>
+										<b>TOTAL CAPITALS</b>
 										<span class="ml-2">
 											<i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Total sales" data-placement="top" data-content="Net sales (gross sales minus discounts and returns) plus taxes and shipping. Includes orders from all sales channels."></i>
 										</span>
@@ -58,13 +92,15 @@
 									<!-- end title -->
 									<!-- begin total-sales -->
 									<div class="d-flex mb-1">
-										<h2 class="mb-0">$<span data-animation="number" data-value="64559.25">0.00</span></h2>
+										<h2 class="mb-0">$ <span data-animation="number" data-value="<%= Number(capitalTotal.USD) %>"><%= Number(capitalTotal.USD) %></span></h2>
 										<div class="ml-auto mt-n1 mb-n1"><div id="total-sales-sparkline"></div></div>
 									</div>
 									<!-- end total-sales -->
 									<!-- begin percentage -->
 									<div class="mb-3 text-grey">
-										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="33.21">0.00</span>% compare to last week
+										<!-- <i class="fa fa-caret-up"></i>  -->
+										FFT <span data-animation="number" data-value="<%= Number(capitalTotal.FFT) %>"><%= Number(capitalTotal.FFT) %></span>
+										<!-- % compare to last week -->
 									</div>
 									<!-- end percentage -->
 									<hr class="bg-white-transparent-2" />
@@ -72,19 +108,21 @@
 									<div class="row text-truncate">
 										<!-- begin col-6 -->
 										<div class="col-6">
-											<div class="f-s-12 text-grey">Total sales order</div>
-											<div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="1568">0</div>
+											<div class="f-s-12 text-grey">Investment Regime</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="<%= Number( check_package.brand.slice(0,1) ) %>"><%= Number( check_package.brand.slice(0,1) ) %></div>
 											<div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
-												<div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="55%" style="width: 0%"></div>
+												<div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="<%= (Number(capitalTotal.USD) * 100 / 100000).toFixed(0) %>%" style="width: 0%"></div>
 											</div>
 										</div>
 										<!-- end col-6 -->
 										<!-- begin col-6 -->
 										<div class="col-6">
-											<div class="f-s-12 text-grey">Avg. sales per order</div>
-											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">0.00</span></div>
+											<div class="f-s-12 text-grey">Dividend Rate</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">
+												<!-- $ -->
+												<span data-animation="number" data-value="<%= check_package.dynamic_interest * 100 %>"><%= check_package.dynamic_interest * 100 %></span></div>
 											<div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
-												<div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
+												<div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="<%= (Number(check_package.dynamic_interest * 100 * 100 / 60)).toFixed(0) %>%" style="width: 0%"></div>
 											</div>
 										</div>
 										<!-- end col-6 -->
@@ -162,7 +200,7 @@
 								<div class="col-xl-12 col-lg-12">
 									<!-- begin title -->
 									<div class="mb-3 text-grey">
-										<b>INFORMATION</b>
+										<b>TOTAL SALES</b>
 										<span class="ml-2">
 											<i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Total sales" data-placement="top" data-content="Net sales (gross sales minus discounts and returns) plus taxes and shipping. Includes orders from all sales channels."></i>
 										</span>
@@ -170,13 +208,15 @@
 									<!-- end title -->
 									<!-- begin total-sales -->
 									<div class="d-flex mb-1">
-										<h2 class="mb-0">$<span data-animation="number" data-value="64559.25">0.00</span></h2>
+										<h2 class="mb-0">$ <span data-animation="number" data-value="<%= Number(salesTotal.USD) %>"><%= Number(salesTotal.USD) %></span></h2>
 										<div class="ml-auto mt-n1 mb-n1"><div id="total-sales-sparkline"></div></div>
 									</div>
 									<!-- end total-sales -->
 									<!-- begin percentage -->
 									<div class="mb-3 text-grey">
-										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="33.21">0.00</span>% compare to last week
+										<!-- <i class="fa fa-caret-up"></i>  -->
+										FFT <span data-animation="number" data-value="<%= Number(salesTotal.FFT) %>"><%= Number(salesTotal.FFT) %></span>
+										<!-- % compare to last week -->
 									</div>
 									<!-- end percentage -->
 									<hr class="bg-white-transparent-2" />
@@ -184,19 +224,19 @@
 									<div class="row text-truncate">
 										<!-- begin col-6 -->
 										<div class="col-6">
-											<div class="f-s-12 text-grey">Total sales order</div>
-											<div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="1568">0</div>
+											<div class="f-s-12 text-grey">Sales by Day</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value=" <%= Number(totalByTime.days.sales * priceFFT) %> "> <%= Number(totalByTime.days.sales * priceFFT) %> </span> </div>
 											<div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
-												<div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="55%" style="width: 0%"></div>
+												<div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value=" <%= (Number(totalByTime.days.sales) * 100 / (Number(totalByTime.days.sales) + Number(totalByTimePast.days.sales))).toFixed(0) %> %" style="width: 0%"></div>
 											</div>
 										</div>
 										<!-- end col-6 -->
 										<!-- begin col-6 -->
 										<div class="col-6">
-											<div class="f-s-12 text-grey">Avg. sales per order</div>
-											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">0.00</span></div>
+											<div class="f-s-12 text-grey">Sales by Month</div>
+											<div class="f-s-18 m-b-5 f-w-600 p-b-1">$ <span data-animation="number" data-value="<%= Number(totalByTime.months.sales * priceFFT) %>"><%= Number(totalByTime.months.sales * priceFFT) %></span></div>
 											<div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
-												<div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
+												<div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="(Number(totalByTime.months.sales) * 100 / (Number(totalByTime.months.sales) + Number(totalByTimePast.months.sales))).toFixed(0) %" style="width: 0%"></div>
 											</div>
 										</div>
 										<!-- end col-6 -->
@@ -228,13 +268,15 @@
 								<div class="card-body">
 									<!-- begin title -->
 									<div class="mb-3 text-grey">
-										<b class="mb-3">CAPITAL TOTALS</b> 
+										<b class="mb-3">TOTAL ASSETS</b> 
 										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
 									</div>
 									<!-- end title -->
 									<!-- begin conversion-rate -->
 									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="2.19">0.00</span>%</h2>
+										<h2 class="text-white mb-0"><span data-animation="number" data-value=" <%= Number(assetsTotal.USD) %>"><%= Number(assetsTotal.USD) %></span>
+											<!-- % -->
+										</h2>
 										<div class="ml-auto">
 											<div id="invest-sparkline-1"></div>
 										</div>
@@ -242,18 +284,20 @@
 									<!-- end conversion-rate -->
 									<!-- begin percentage -->
 									<div class="mb-4 text-grey">
-										<i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
+										<!-- <i class="fa fa-caret-down"></i>  -->
+										FFT <span data-animation="number" data-value="<%= Number(assetsTotal.FFT) %>"><%= Number(assetsTotal.FFT) %></span>
+										<!-- % compare to last week -->
 									</div>
 									<!-- end percentage -->
 									<!-- begin info-row -->
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
 											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
-											Added to cart
+											Day
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="262">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.79">0.00</span>%</div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= (assetsTotal.totalDays * 100 / assetsTotalPast.totalDays) - 100 %>"><%= (assetsTotal.totalDays * 100 / assetsTotalPast.totalDays) - 100 %></span> %</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= assetsTotal.totalDays %>"><%= assetsTotal.totalDays %></span> $</div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -261,23 +305,11 @@
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
 											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
-											Reached checkout
+											Month
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="11">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.85">0.00</span>%</div>
-										</div>
-									</div>
-									<!-- end info-row -->
-									<!-- begin info-row -->
-									<div class="d-flex">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
-											Sessions converted
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="57">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="2.19">0.00</span>%</div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= (assetsTotal.totalDays * 100 / assetsTotalPast.totalDays) - 100 %>"><%= (assetsTotal.totalDays * 100 / assetsTotalPast.totalDays) - 100 %></span> %</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= assetsTotal.totalMonths %>"><%= assetsTotal.totalMonths %></span> $</div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -295,13 +327,13 @@
 								<div class="card-body">
 									<!-- begin title -->
 									<div class="mb-3 text-grey">
-										<b class="mb-3">PROFIT TOTALS</b> 
+										<b class="mb-3">TOTAL PROFITS</b> 
 										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
 									</div>
 									<!-- end title -->
 									<!-- begin store-session -->
 									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="70719">0</span></h2>
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(profitTotal.USD)  %>"><%= Number(profitTotal.USD) %></span></h2>
 										<div class="ml-auto">
 											<div id="invest-sparkline-2"></div>
 										</div>
@@ -309,18 +341,20 @@
 									<!-- end store-session -->
 									<!-- begin percentage -->
 									<div class="mb-4 text-grey">
-										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
+										<!-- <i class="fa fa-caret-up"></i>  -->
+										FFT <span data-animation="number" data-value="<%= Number(profitTotal.FFT)  %>"><%= Number(profitTotal.FFT) %></span>
+										<!-- % compare to last week -->
 									</div>
 									<!-- end percentage -->
 									<!-- begin info-row -->
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
 											<i class="fa fa-circle text-teal f-s-8 mr-2"></i>
-											Mobile
+											Day
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.7">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="53210">0</span></div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number((days_profits * 100 / days_profits_past - 100)) %>"><%= Number((days_profits * 100 / days_profits_past - 100)) %></span> %</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(days_profits * priceFFT) %>"><%= Number(days_profits * priceFFT) %></span></div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -328,23 +362,11 @@
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
 											<i class="fa fa-circle text-blue f-s-8 mr-2"></i>
-											Desktop
+											Month
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="16.0">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="11959">0</span></div>
-										</div>
-									</div>
-									<!-- end info-row -->
-									<!-- begin info-row -->
-									<div class="d-flex">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-aqua f-s-8 mr-2"></i>
-											Tablet
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="7.9">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="5545">0</span></div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number((months_profits * 100 / months_profits_past - 100)) %>"><%= Number((months_profits * 100 / months_profits_past - 100)) %></span> %</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(months_profits * priceFFT) %>"><%= Number(months_profits * priceFFT) %></span></div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -370,13 +392,15 @@
 								<div class="card-body">
 									<!-- begin title -->
 									<div class="mb-3 text-grey">
-										<b class="mb-3">PROFIT PER ORDER</b> 
+										<b class="mb-3">DIRECT SALES</b> 
 										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
 									</div>
 									<!-- end title -->
 									<!-- begin conversion-rate -->
 									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="2.19">0.00</span>%</h2>
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(salesRefTotal.USD) %>"><%= Number(salesRefTotal.USD) %></span>
+											<!-- % -->
+										</h2>
 										<div class="ml-auto">
 											<div id="invest-sparkline-3"></div>
 										</div>
@@ -384,18 +408,22 @@
 									<!-- end conversion-rate -->
 									<!-- begin percentage -->
 									<div class="mb-4 text-grey">
-										<i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
+										<!-- <i class="fa fa-caret-down"></i>  -->
+										FFT <span data-animation="number" data-value="<%= Number(salesRefTotal.FFT) %>"><%= Number(salesRefTotal.FFT) %></span>
+										<!-- % compare to last week -->
 									</div>
 									<!-- end percentage -->
 									<!-- begin info-row -->
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
 											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
-											Added to cart
+											Day
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="262">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.79">0.00</span>%</div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number(sale_Ref_Days * 100 / sale_Ref_Days_Past - 100) %>"><%= Number(sale_Ref_Days * 100 / sale_Ref_Days_Past - 100) %></span> %</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(sale_Ref_Days * priceFFT) %>"><%= Number(sale_Ref_Days * priceFFT) %></span>
+												<!-- % -->
+											</div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -403,23 +431,13 @@
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
 											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
-											Reached checkout
+											Month
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="11">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.85">0.00</span>%</div>
-										</div>
-									</div>
-									<!-- end info-row -->
-									<!-- begin info-row -->
-									<div class="d-flex">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
-											Sessions converted
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="57">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="2.19">0.00</span>%</div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number(sale_Ref_Months * 100 / sale_Ref_Months_Past - 100) %>"><%= Number(sale_Ref_Months * 100 / sale_Ref_Months_Past - 100) %></span> %</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(sale_Ref_Months * priceFFT) %>"><%= Number(sale_Ref_Days * priceFFT) %></span>
+												<!-- % -->
+											</div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -437,13 +455,13 @@
 								<div class="card-body">
 									<!-- begin title -->
 									<div class="mb-3 text-grey">
-										<b class="mb-3">COMMISSION</b> 
+										<b class="mb-3">INTEREST RATE</b> 
 										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
 									</div>
 									<!-- end title -->
 									<!-- begin store-session -->
 									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="70719">0</span></h2>
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(profitTotal.USD * 100 / capitalTotal.USD ).toFixed(0) %>"><%= Number(profitTotal.USD * 100 / capitalTotal.USD ).toFixed(0) %></span></h2>
 										<div class="ml-auto">
 											<div id="invest-sparkline-4"></div>
 										</div>
@@ -451,18 +469,18 @@
 									<!-- end store-session -->
 									<!-- begin percentage -->
 									<div class="mb-4 text-grey">
-										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
+										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="100">100</span> % compare to last week
 									</div>
 									<!-- end percentage -->
 									<!-- begin info-row -->
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
 											<i class="fa fa-circle text-teal f-s-8 mr-2"></i>
-											Mobile
+											Day
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.7">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="53210">0</span></div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="100">100</span>%</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(days_profits * priceFFT * 100 / capitalTotal.USD ).toFixed(0) %>"><%= Number(days_profits * priceFFT * 100 / capitalTotal.USD ).toFixed(0) %></span></div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -470,23 +488,11 @@
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
 											<i class="fa fa-circle text-blue f-s-8 mr-2"></i>
-											Desktop
+											Month
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="16.0">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="11959">0</span></div>
-										</div>
-									</div>
-									<!-- end info-row -->
-									<!-- begin info-row -->
-									<div class="d-flex">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-aqua f-s-8 mr-2"></i>
-											Tablet
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="7.9">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="5545">0</span></div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="100">100</span>%</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(months_profits * priceFFT * 100 / capitalTotal.USD ).toFixed(0) %>"><%= Number(months_profits * priceFFT * 100 / capitalTotal.USD ).toFixed(0) %></span></div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -516,13 +522,15 @@
 								<div class="card-body">
 									<!-- begin title -->
 									<div class="mb-3 text-grey">
-										<b class="mb-3">ASSETS TOTALS</b> 
+										<b class="mb-3">STATIC INTEREST</b> 
 										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
 									</div>
 									<!-- end title -->
 									<!-- begin conversion-rate -->
 									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="2.19">0.00</span>%</h2>
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(profitTotal.static_interest * priceFFT).toFixed(0) %>"><%= Number(profitTotal.static_interest * priceFFT).toFixed(0) %></span>
+											<!-- % -->
+										</h2>
 										<div class="ml-auto">
 											<div id="invest-sparkline-5"></div>
 										</div>
@@ -530,18 +538,22 @@
 									<!-- end conversion-rate -->
 									<!-- begin percentage -->
 									<div class="mb-4 text-grey">
-										<i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
+										<!-- <i class="fa fa-caret-down"></i> -->
+										FFT <span data-animation="number" data-value="<%= Number(profitTotal.static_interest) %>"><%= Number(profitTotal.static_interest) %></span>
+										<!-- % compare to last week -->
 									</div>
 									<!-- end percentage -->
 									<!-- begin info-row -->
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
 											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
-											Added to cart
+											Day
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="262">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.79">0.00</span>%</div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number(days_static_interest * 100 / days_static_interest_past - 100) %>"><%= Number(days_static_interest * 100 / days_static_interest_past - 100) %></span> %</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(days_static_interest * priceFFT) %>"><%= Number(days_static_interest * priceFFT) %></span>
+												<!-- % -->
+											</div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -549,23 +561,13 @@
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
 											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
-											Reached checkout
+											Month
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="11">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.85">0.00</span>%</div>
-										</div>
-									</div>
-									<!-- end info-row -->
-									<!-- begin info-row -->
-									<div class="d-flex">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
-											Sessions converted
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="57">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="2.19">0.00</span>%</div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number(months_static_interest * 100 / months_static_interest_past - 100) %>"><%= Number(months_static_interest * 100 / months_static_interest_past - 100) %></span> %</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(months_static_interest * priceFFT) %>"><%= Number(months_static_interest * priceFFT) %></span>
+												<!-- % -->
+											</div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -583,56 +585,52 @@
 								<div class="card-body">
 									<!-- begin title -->
 									<div class="mb-3 text-grey">
-										<b class="mb-3">SALES TOTALS</b> 
-										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
+										<b class="mb-3">DYNAMIC INTEREST</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
 									</div>
 									<!-- end title -->
-									<!-- begin store-session -->
+									<!-- begin conversion-rate -->
 									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="70719">0</span></h2>
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(profitTotal.dynamic_interest * priceFFT).toFixed(0) %>"><%= Number(profitTotal.dynamic_interest * priceFFT).toFixed(0) %></span>
+											<!-- % -->
+										</h2>
 										<div class="ml-auto">
-											<div id="invest-sparkline-6"></div>
+											<div id="invest-sparkline-5"></div>
 										</div>
 									</div>
-									<!-- end store-session -->
+									<!-- end conversion-rate -->
 									<!-- begin percentage -->
 									<div class="mb-4 text-grey">
-										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
+										<!-- <i class="fa fa-caret-down"></i> -->
+										FFT <span data-animation="number" data-value="<%= Number(profitTotal.dynamic_interest) %>"><%= Number(profitTotal.dynamic_interest) %></span>
+										<!-- % compare to last week -->
 									</div>
 									<!-- end percentage -->
 									<!-- begin info-row -->
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-teal f-s-8 mr-2"></i>
-											Mobile
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.7">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="53210">0</span></div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number(days_dynamic_interest * 100 / days_dynamic_interest_past - 100) %>"><%= Number(days_dynamic_interest * 100 / days_dynamic_interest_past - 100) %></span> %</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(days_dynamic_interest * priceFFT) %>"><%= Number(days_dynamic_interest * priceFFT) %></span>
+												<!-- % -->
+											</div>
 										</div>
 									</div>
 									<!-- end info-row -->
 									<!-- begin info-row -->
 									<div class="d-flex mb-2">
 										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-blue f-s-8 mr-2"></i>
-											Desktop
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
 										</div>
 										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="16.0">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="11959">0</span></div>
-										</div>
-									</div>
-									<!-- end info-row -->
-									<!-- begin info-row -->
-									<div class="d-flex">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-aqua f-s-8 mr-2"></i>
-											Tablet
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="7.9">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="5545">0</span></div>
+											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number(months_dynamic_interest * 100 / months_dynamic_interest_past - 100) %>"><%= Number(months_dynamic_interest * 100 / months_dynamic_interest_past - 100) %></span> %</div>
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(months_dynamic_interest * priceFFT) %>"><%= Number(months_dynamic_interest * priceFFT) %></span>
+												<!-- % -->
+											</div>
 										</div>
 									</div>
 									<!-- end info-row -->
@@ -650,140 +648,133 @@
 				<div class="col-xl-6">
 					<!-- begin row -->
 					<div class="row">
-						<!-- begin col-6 -->
-						<div class="col-sm-6">
-							<!-- begin card -->
-							<div class="card border-0 text-truncate mb-3 ">
-								<!-- begin card-body -->
-								<div class="card-body">
-									<!-- begin title -->
-									<div class="mb-3 text-grey">
-										<b class="mb-3">INTERRACTIVE COMMISSIONS</b> 
-										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
-									</div>
-									<!-- end title -->
-									<!-- begin conversion-rate -->
-									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="2.19">0.00</span>%</h2>
-										<div class="ml-auto">
-											<div id="invest-sparkline-7"></div>
-										</div>
-									</div>
-									<!-- end conversion-rate -->
-									<!-- begin percentage -->
-									<div class="mb-4 text-grey">
-										<i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
-									</div>
-									<!-- end percentage -->
-									<!-- begin info-row -->
-									<div class="d-flex mb-2">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
-											Added to cart
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="262">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.79">0.00</span>%</div>
-										</div>
-									</div>
-									<!-- end info-row -->
-									<!-- begin info-row -->
-									<div class="d-flex mb-2">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
-											Reached checkout
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="11">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.85">0.00</span>%</div>
-										</div>
-									</div>
-									<!-- end info-row -->
-									<!-- begin info-row -->
-									<div class="d-flex">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-lime f-s-8 mr-2"></i>
-											Sessions converted
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="57">0</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="2.19">0.00</span>%</div>
-										</div>
-									</div>
-									<!-- end info-row -->
+					<!-- begin col-6 -->
+					<div class="col-sm-6">
+						<!-- begin card -->
+						<div class="card border-0 text-truncate mb-3 ">
+							<!-- begin card-body -->
+							<div class="card-body">
+								<!-- begin title -->
+								<div class="mb-3 text-grey">
+									<b class="mb-3">DIRECT COMMISSION</b> 
+									<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
 								</div>
-								<!-- end card-body -->
-							</div>
-							<!-- end card -->
-						</div>
-						<!-- end col-6 -->
-						<!-- begin col-6 -->
-						<div class="col-sm-6">
-							<!-- begin card -->
-							<div class="card border-0 text-truncate mb-3 ">
-								<!-- begin card-body -->
-								<div class="card-body">
-									<!-- begin title -->
-									<div class="mb-3 text-grey">
-										<b class="mb-3">INVESTERS</b> 
-										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
+								<!-- end title -->
+								<!-- begin conversion-rate -->
+								<div class="d-flex align-items-center mb-1">
+									<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(profitTotal.direct_commission * priceFFT).toFixed(0) %>"><%= Number(profitTotal.direct_commission * priceFFT).toFixed(0) %></span>
+										<!-- % -->
+									</h2>
+									<div class="ml-auto">
+										<div id="invest-sparkline-5"></div>
 									</div>
-									<!-- end title -->
-									<!-- begin store-session -->
-									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="70719">0</span></h2>
-										<div class="ml-auto">
-											<div id="invest-sparkline-8"></div>
-										</div>
-									</div>
-									<!-- end store-session -->
-									<!-- begin percentage -->
-									<div class="mb-4 text-grey">
-										<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
-									</div>
-									<!-- end percentage -->
-									<!-- begin info-row -->
-									<div class="d-flex mb-2">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-teal f-s-8 mr-2"></i>
-											Mobile
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.7">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="53210">0</span></div>
-										</div>
-									</div>
-									<!-- end info-row -->
-									<!-- begin info-row -->
-									<div class="d-flex mb-2">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-blue f-s-8 mr-2"></i>
-											Desktop
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="16.0">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="11959">0</span></div>
-										</div>
-									</div>
-									<!-- end info-row -->
-									<!-- begin info-row -->
-									<div class="d-flex">
-										<div class="d-flex align-items-center">
-											<i class="fa fa-circle text-aqua f-s-8 mr-2"></i>
-											Tablet
-										</div>
-										<div class="d-flex align-items-center ml-auto">
-											<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="7.9">0.00</span>%</div>
-											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="5545">0</span></div>
-										</div>
-									</div>
-									<!-- end info-row -->
 								</div>
-								<!-- end card-body -->
+								<!-- end conversion-rate -->
+								<!-- begin percentage -->
+								<div class="mb-4 text-grey">
+									<!-- <i class="fa fa-caret-down"></i> -->
+									FFT <span data-animation="number" data-value="<%= Number(profitTotal.direct_commission) %>"><%= Number(profitTotal.direct_commission) %></span>
+									<!-- % compare to last week -->
+								</div>
+								<!-- end percentage -->
+								<!-- begin info-row -->
+								<div class="d-flex mb-2">
+									<div class="d-flex align-items-center">
+										<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+										Day
+									</div>
+									<div class="d-flex align-items-center ml-auto">
+										<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number(days_direct_commission * 100 / days_direct_commission_past - 100) %>"><%= Number(days_direct_commission * 100 / days_direct_commission_past - 100) %></span> %</div>
+										<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(days_direct_commission * priceFFT) %>"><%= Number(days_direct_commission * priceFFT) %></span>
+											<!-- % -->
+										</div>
+									</div>
+								</div>
+								<!-- end info-row -->
+								<!-- begin info-row -->
+								<div class="d-flex mb-2">
+									<div class="d-flex align-items-center">
+										<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+										Month
+									</div>
+									<div class="d-flex align-items-center ml-auto">
+										<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number(months_direct_commission * 100 / months_direct_commission_past - 100) %>"><%= Number(months_direct_commission * 100 / months_direct_commission_past - 100) %></span> %</div>
+										<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(months_direct_commission * priceFFT) %>"><%= Number(months_direct_commission * priceFFT) %></span>
+											<!-- % -->
+										</div>
+									</div>
+								</div>
+								<!-- end info-row -->
 							</div>
-							<!-- end card -->
+							<!-- end card-body -->
 						</div>
-						<!-- end col-6 -->
+						<!-- end card -->
+					</div>
+					<!-- end col-6 -->
+
+					<!-- begin col-6 -->
+					<div class="col-sm-6">
+						<!-- begin card -->
+						<div class="card border-0 text-truncate mb-3 ">
+							<!-- begin card-body -->
+							<div class="card-body">
+								<!-- begin title -->
+								<div class="mb-3 text-grey">
+									<b class="mb-3">INDIRECT COMMISSION</b> 
+									<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+								</div>
+								<!-- end title -->
+								<!-- begin conversion-rate -->
+								<div class="d-flex align-items-center mb-1">
+									<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(profitTotal.indirect_commission * priceFFT).toFixed(0) %>"><%= Number(profitTotal.indirect_commission * priceFFT).toFixed(0) %></span>
+										<!-- % -->
+									</h2>
+									<div class="ml-auto">
+										<div id="invest-sparkline-5"></div>
+									</div>
+								</div>
+								<!-- end conversion-rate -->
+								<!-- begin percentage -->
+								<div class="mb-4 text-grey">
+									<!-- <i class="fa fa-caret-down"></i> -->
+									FFT <span data-animation="number" data-value="<%= Number(profitTotal.indirect_commission) %>"><%= Number(profitTotal.indirect_commission) %></span>
+									<!-- % compare to last week -->
+								</div>
+								<!-- end percentage -->
+								<!-- begin info-row -->
+								<div class="d-flex mb-2">
+									<div class="d-flex align-items-center">
+										<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+										Day
+									</div>
+									<div class="d-flex align-items-center ml-auto">
+										<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number(days_indirect_commission * 100 / days_indirect_commission_past - 100) %>"><%= Number(days_indirect_commission * 100 / days_indirect_commission_past - 100) %></span> %</div>
+										<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(days_dynamic_interest * priceFFT) %>"><%= Number(days_dynamic_interest * priceFFT) %></span>
+											<!-- % -->
+										</div>
+									</div>
+								</div>
+								<!-- end info-row -->
+								<!-- begin info-row -->
+								<div class="d-flex mb-2">
+									<div class="d-flex align-items-center">
+										<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+										Month
+									</div>
+									<div class="d-flex align-items-center ml-auto">
+										<div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="<%= Number(months_indirect_commission * 100 / months_indirect_commission_past - 100) %>"><%= Number(months_indirect_commission * 100 / months_indirect_commission_past - 100) %></span> %</div>
+										<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(months_indirect_commission * priceFFT) %>"><%= Number(months_indirect_commission * priceFFT) %></span>
+											<!-- % -->
+										</div>
+									</div>
+								</div>
+								<!-- end info-row -->
+							</div>
+							<!-- end card-body -->
+						</div>
+						<!-- end card -->
+					</div>
+					<!-- end col-6 -->
 					</div>
 					<!-- end row -->
 				</div>

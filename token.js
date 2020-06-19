@@ -199,20 +199,43 @@ class Price {
         }
     }
 
-    assetsTotal = async (id, cb) => {
+    assetsTotal = async (id, timeskip =0) => {
         const currencies = (await db.user({id: id}, 'currency'))[0].currency
         var total = 0
-        currencies.forEach(async (currency, st) => {
-            const price = await this.get(currency.symbol)
-            total += currency.balance * price
-            if (st == currencies.length -1){
-                const priceFFT = await this.get('FFT')
-                cb({
-                    USD: total.toFixed(4),
-                    FFT: ( total / priceFFT ).toFixed(4)
-                })
+        for (var i = 0; i < currencies.length; i++){
+            const price = await this.get(currencies[i].symbol)
+            total += currencies[i].balance * price
+        }
+
+        const priceFFT = await this.get('FFT')
+
+        const history = (await db.user({id: id}, 'history'))[0].history
+        var totalDays = 0, totalMonths = 0
+
+        for ( var i = 0; i < history.length; i++){
+            if (sDay(history[i].timestamp, timeskip) && (history[i].type == 'withdraw' || (history[i].type == 'switch' && history[0].memo == id))){
+                totalDays -= history[i].value * (await this.get(history[i].symbol))
             }
-        })
+            
+            if (sDay(history[i].timestamp, timeskip) &&(history[i].type == 'deposit' || (history[i].type == 'switch' && history[0].memo !== id))){
+                totalDays += history[i].value * (await this.get(history[i].symbol))
+            }
+
+            if (sMonth(history[i].timestamp, timeskip) && (history[i].type == 'withdraw' || (history[i].type == 'switch' && history[0].memo == id))){
+                totalMonths -= history[i].value * (await this.get(history[i].symbol))
+            }
+            
+            if (sMonth(history[i].timestamp, timeskip) &&(history[i].type == 'deposit' || (history[i].type == 'switch' && history[0].memo !== id))){
+                totalMonths += history[i].value * (await this.get(history[i].symbol))
+            }
+        }
+
+        return {
+            USD: total.toFixed(4),
+            FFT: ( total / priceFFT ).toFixed(4),
+            totalDays: totalDays,
+            totalMonths: totalMonths
+        }
     }
 
     capitalTotal = async (id) => {
@@ -227,6 +250,7 @@ class Price {
 
     profitTotal = async (id) => {
         const profits = (await db.user({id: id}, 'received'))[0].received
+        const details = (await db.user({id: id}, 'direct_commission static_interest dynamic_interest indirect_commission'))[0]
         const price = await this.get('FFT')
         var total = 0
         profits.forEach((profit) => {
@@ -235,7 +259,11 @@ class Price {
 
         return {
             USD: (total * price).toFixed(4),
-            FFT: total.toFixed(4)
+            FFT: total.toFixed(4),
+            direct_commission: details.direct_commission,
+            static_interest: details.static_interest,
+            dynamic_interest: details.dynamic_interest,
+            indirect_commission: details.indirect_commission
         }
     }
 
@@ -472,14 +500,14 @@ class Price {
 
     trading = async (timeskip = 0) => {
         const fund = (await db.system({}, 'totalFund totalToken tokenBlock totalOrder totalProfit profitDaily pay'))[0]
-        var totalDay = (fund.profitDaily[fund.profitDaily.length -1]).value
+        var totalDay = fund.profitDaily[fund.profitDaily.length -1].value
         var totalMonth = 0
         fund.profitDaily.forEach((daily) => {
             if (sMonth(daily.timestamp, timeskip)){
                 totalMonth += daily.value
             }
         })
-        var totalPayDay = (fund.pay[fund.pay.length -1]).value
+        var totalPayDay = fund.pay[fund.pay.length -1]
         var totalPayMonth = 0
         fund.pay.forEach(async (paid, st) =>{
             if (sMonth(paid.timestamp, timeskip)){
@@ -715,3 +743,7 @@ class Price {
 const price = new Price()
 
 module.exports = price
+
+!(async () => {
+    // console.log((await price.profitTotal(100002)).static_interest)
+})()

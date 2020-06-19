@@ -77,9 +77,38 @@ module.exports = (app) => {
             req.session.user = {
                 id: encId(id),
             }
+
+            const user = await db.user({id: id}, "info")
+
+            const capitalTotal = await price.capitalTotal(id)
+            const salesTotal = await price.salesTotal(id)
+            const check_package = (await tree.check_package(id)).package
+            const assetsTotal = await price.assetsTotal(id)
+            const assetsTotalPast = await price.assetsTotal(id, 1)
+            const profitTotal = await price.profitTotal(id)
+            const salesRefTotal = await price.salesRefTotal(id)
+            const totalByTime = await price.totalByTime(id)
+            const totalByTimePast = await price.totalByTime(id, 1)
+            const priceFFT = await price.get('FFT')
+
             res.render('invest', {
-                id: id
+                title: "DIGIGO | Investment",
+                userInfo: user[0].info,
+                role: user[0].role,
+                id: id,
+
+                capitalTotal: capitalTotal,
+                check_package: check_package,
+                salesTotal: salesTotal,
+                assetsTotal: assetsTotal,
+                profitTotal: profitTotal,
+                salesRefTotal: salesRefTotal,
+                totalByTime: totalByTime,
+                totalByTimePast: totalByTimePast,
+                priceFFT: priceFFT,
+                assetsTotalPast: assetsTotalPast
             })
+            
         } else {
             const email = sign.login_email
             const hash_md5 = sign.cef
@@ -94,13 +123,34 @@ module.exports = (app) => {
                         id: encId(id),
                     }
                     const idNow = decId(getId(req,''))
-                    const user = await db.user({id:idNow}, "info role")
+                    const user = await db.user({id: idNow}, "info")
+
+                    const capitalTotal = await price.capitalTotal(idNow)
+                    const salesTotal = await price.salesTotal(idNow)
+                    const check_package = (await tree.check_package(idNow)).package
+                    const assetsTotal = await price.assetsTotal(idNow)
+                    const assetsTotalPast = await price.assetsTotal(id, 1)
+                    const profitTotal = await price.profitTotal(idNow)
+                    const salesRefTotal = await price.salesRefTotal(idNow)
+                    const totalByTime = await price.totalByTime(idNow)
+                    const totalByTimePast = await price.totalByTime(idNow, 1)
+                    const priceFFT = await price.get('FFT')
                     res.render('invest', {
-                        title: "FINFINE | Invest",
+                        title: "DIGIGO | Invest",
                         userInfo: user[0].info,
                         role: user[0].role,
-                        id: id,
+                        id: idNow,
 
+                        capitalTotal: capitalTotal,
+                        check_package: check_package,
+                        salesTotal: salesTotal,
+                        assetsTotal: assetsTotal,
+                        profitTotal: profitTotal,
+                        salesRefTotal: salesRefTotal,
+                        totalByTime: totalByTime,
+                        totalByTimePast: totalByTimePast,
+                        priceFFT: priceFFT,
+                        assetsTotalPast: assetsTotalPast
                     })
                 } else {
                     res.redirect('/login')
@@ -113,11 +163,35 @@ module.exports = (app) => {
         
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, "info role")
+            const user = await db.user({id: id}, "info")
+
+            const capitalTotal = await price.capitalTotal(id)
+            const salesTotal = await price.salesTotal(id)
+            const check_package = (await tree.check_package(id)).package
+            const assetsTotal = await price.assetsTotal(id)
+            const assetsTotalPast = await price.assetsTotal(id, 1)
+            const profitTotal = await price.profitTotal(id)
+            const salesRefTotal = await price.salesRefTotal(id)
+            const totalByTime = await price.totalByTime(id)
+            const totalByTimePast = await price.totalByTime(id, 1)
+            const priceFFT = await price.get('FFT')
+
             res.render('invest', {
-                title: "FINFINE | Investment",
+                title: "DIGIGO | Investment",
                 userInfo: user[0].info,
-                role: user[0].role
+                role: user[0].role,
+                id: id,
+
+                capitalTotal: capitalTotal,
+                check_package: check_package,
+                salesTotal: salesTotal,
+                assetsTotal: assetsTotal,
+                profitTotal: profitTotal,
+                salesRefTotal: salesRefTotal,
+                totalByTime: totalByTime,
+                totalByTimePast: totalByTimePast,
+                priceFFT: priceFFT,
+                assetsTotalPast: assetsTotalPast
             })
         } else {
             res.redirect('/login')

@@ -57,7 +57,7 @@ class Tree {
 
     check_package = async (id) => {
         var doc = await db.user({id: id }, 'currency.balance currency.symbol')
-        var balance = R.filter( n => n.symbol == 'DGG', doc[0].currency).pop().balance
+        var balance = R.filter( n => n.symbol == 'FFT', doc[0].currency).pop().balance
         var system = (await db.system({}, 'totalFund totalToken'))[0]
         var price = system.totalFund / system.totalToken
         var us_balance = balance * price
@@ -87,7 +87,7 @@ class Tree {
         }
         var doc = await db.user({'list_dad': id},'id list_dad currency.balance currency.symbol')
         var child = R.map(user => {
-            var balance = R.filter( n => n.symbol == 'DGG', user.currency).pop().balance 
+            var balance = R.filter( n => n.symbol == 'FFT', user.currency).pop().balance 
 
             detail[0].balance += balance
             detail[0].total += 1
@@ -116,9 +116,9 @@ class Tree {
         var user
         if (idOraddr.length > 6){
             //Cai nay la deposit DGG
-            user = await db.user({'currency.address': idOraddr, 'currency.symbol': 'DGG'}, 'list_dad')
+            user = await db.user({'currency.address': idOraddr, 'currency.symbol': 'FFT'}, 'list_dad')
         } else {
-            user = await db.user({id: id, 'currency.symbol': 'DGG'}, 'list_dad')
+            user = await db.user({id: id, 'currency.symbol': 'FFT'}, 'list_dad')
         }
         const list_dad = user[0].list_dad
         const interest = this.level_list[0].static_receive
@@ -126,7 +126,7 @@ class Tree {
         list_dad.forEach( async (id, st) => {
             if (id !== null){
                 var swap_dep_profit = interest[st] * value / 100
-                await db.user({id: id, 'currency.symbol': 'DGG'}, {
+                await db.user({id: id, 'currency.symbol': 'FFT'}, {
                     $inc: {
                         'currency.$.balance': + swap_dep_profit, 
                         'currency.$.avai': + swap_dep_profit, 
@@ -142,12 +142,12 @@ class Tree {
 
     pay_daily = async (block, pe, tmp) => {
         var rest = tmp
-        var users = await db.user({'currency.symbol': 'DGG'}, 'id currency airdrop.static')
+        var users = await db.user({'currency.symbol': 'FFT'}, 'id currency airdrop.static')
         var total = 0
         users.forEach( async (user, st) => {
-            var balance = R.filter( n => n.symbol == 'DGG', user.currency).pop().balance
+            var balance = R.filter( n => n.symbol == 'FFT', user.currency).pop().balance
             var statics = (balance * user.airdrop.static / (30 * 100)).toFixed(0)
-            await db.user({id: user.id, 'currency.symbol': 'DGG'}, {
+            await db.user({id: user.id, 'currency.symbol': 'FFT'}, {
                 $inc: {
                     'currency.$.balance': + statics, 
                     'currency.$.avai': + statics, 
@@ -206,7 +206,7 @@ class Tree {
         var block = doc.tokenBlock
         var price = fund / token
         var rateProfit = pe / token
-        var users = await db.user({'currency.symbol': 'DGG'}, 'id list_dad')
+        var users = await db.user({'currency.symbol': 'FFT'}, 'id list_dad')
 
         const interest = this.level_list[0].dynamic_receive
 
@@ -221,7 +221,7 @@ class Tree {
 
             rest = rest - dollarReceive
 
-            await db.user({id: user.id, 'currency.symbol': 'DGG'}, {
+            await db.user({id: user.id, 'currency.symbol': 'FFT'}, {
                 $inc: {
                     'currency.$.balance': + receivedProfit, 
                     'currency.$.avai': + receivedProfit, 
@@ -237,7 +237,7 @@ class Tree {
                     var treeOrder = interest[ts] * treeProfit / 100
 
                     rest = rest - (treeOrder * price)
-                    await db.user({id: dad, 'currency.symbol': 'DGG'}, {
+                    await db.user({id: dad, 'currency.symbol': 'FFT'}, {
                         $inc: {
                             'currency.$.balance': + treeOrder, 
                             'currency.$.avai': + treeOrder, 

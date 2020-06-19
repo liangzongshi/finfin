@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "git": "git add . && git commit -m \"v1.0.1\" && git push",
+    "git": "git add . && git commit -m \"v1.0.3\" && git push",
     "del": "echo \"db.dropDatabase()\" | mongo digigo && redis-cli FLUSHALL",
     "win": "mongo digigo --eval \"db.dropDatabase()\" && redis-cli FLUSHALL",
     "db_prod": "MODE=prod node migrate.js",
