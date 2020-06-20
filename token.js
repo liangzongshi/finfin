@@ -552,6 +552,10 @@ class Price {
         }
     }
 
+    getToken = async () => {
+        const s = await db.system({}, '')
+    }
+
     basicAdmin = async (timeskip =0) => {
         const flows = (await db.admin({}, 'totalFlow'))[0].totalFlow
         var btcDepMonth = 0, btcDepDay = 0, btcWitMonth = 0, btcWitDay = 0, btcDep = 0, btcWit = 0

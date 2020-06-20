@@ -82,7 +82,7 @@ botkit.prepare().then(() => {
 const tunnel = async () => {
   const ng = await ngrok.connect({
     addr: 443,
-    subdomain: 'tulpo',
+    subdomain: 'finfine',
     authtoken: process.env.ngrok,
     region: 'jp',
     onStatusChange: status => {},

@@ -16,6 +16,124 @@
 	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
 	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
 	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+	<script type="text/javascript" src="../../codebase/diagram.js?v=3.0.1"></script>
+	<link rel="stylesheet" href="../../codebase/diagram.css?v=3.0.1">
+	<link rel="stylesheet" href="../common/index.css?v=3.0.1">
+	<link rel="stylesheet" href="../common/diagram.css?v=3.0.1">
+	<script type="text/javascript" src="../common/searchsampledata.js?v=3.0.1"></script>
+	<!-- custom sample head -->
+	<script type="text/javascript" src="../common/slider/slider.min.js?v=3.0.1"></script>
+	<link rel="stylesheet" href="../common/slider/slider.min.css?v=3.0.1">
+	<style>
+		.main__container {
+			height: calc(100% - 121px);
+			display: flex;
+		}
+		.sample__container {
+			height: 100%;
+			width: calc(100% - 248px);
+			overflow: auto;
+		}
+		.dhx_sample-controls {
+			background: #fff;
+		}
+		.dhx_sample-slider__container {
+			width: 350px;
+		}
+		.template {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: white;
+			color: rgba(0, 0, 0, 0.7);
+			border: 1px solid #DFDFDF;
+			padding: 10px 12px;
+			cursor: pointer;
+		}
+		.template span {
+			display: flex;
+		}
+		.template h3, .template p {
+			text-align: left;
+			font-size: 14px;
+			line-height: 20px;
+			height: 20px;
+			margin: 0 0 4px 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.template .template_container {
+			height: 100%;
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+		}
+		.template .template_img-container {
+			min-width: 93px;
+			width: 93px;
+			margin-right: 12px;
+		}
+		.template .template_img-container-medium {
+			min-width: 44px;
+			width: 44px;
+			margin-right: 12px;
+		}
+		.template .template_img-container img, .template_img-container-medium img {
+			width: inherit;
+			height: auto;
+		}
+		.template .template_icon {
+			height: 20px;
+			width: 20px;
+			margin-right: 4px;
+		}
+		.dhx_selected .template {
+			outline: 2px solid #8c8c8c;
+		}
+		.sidebar__container {
+			min-width: 248px;
+			width: 248px;
+			height: 100%;
+			background: #fff;
+			border-left: 1px solid #DFDFDF;
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+		}
+		.sidebar__container a {
+			display: block;
+			text-align: center;
+			width: 100%;
+			height: 28px;
+			line-height: 28px;
+			color: #fff;
+			background: #0288D1;
+			border-radius: 14px;
+			margin-top: 28px;
+		}
+		.sidebar__container span {
+			font-size: 14px;
+			line-height: 20px;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: normal;
+			color: rgba(0, 0, 0, 0.7);
+			padding: 4px 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.sidebar__container img {
+			height: 208px;
+			width: auto;
+			background: #8c8c8c;
+			margin-bottom: 28px;
+		}
+	</style>
+
 </head>
 <body>
 	<%- include("../frame/loader") -%>
@@ -25,8 +143,236 @@
 		<%- include("../frame/header") -%>
 		<%- include("../frame/sidebar") -%>
 		
-        <!-- begin #content -->
-        
+		<!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Network</a></li>
+				<li class="breadcrumb-item active">Tree</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Tree</h1>
+            <!-- end page-header -->
+			<!-- begin panel -->
+				<!-- end panel-body -->
+			<!-- begin col-4 -->
+			<div class="col-xl-12 col-lg-12">
+				<!-- begin card -->
+				<!-- <div class="card border-0 mb-3 ">
+					<div class="card-body"> -->
+						
+						<section class="dhx_sample-controls">
+							<div class="dhx_sample-slider__container" id="slider"></div>
+						</section>
+						
+						<section class="main__container">
+							<div class="sample__container" id="diagram"></div>
+							<div class="sidebar__container">
+								<img id="image" src="" alt="">
+								<span id="name" style="font-weight:500">Name</span>
+								<span id="post">Post</span>
+								<span id="phone">Phone</span>
+								<span id="mail" style="color:#0288D1">Mail</span>
+								<span id="birthday">Birthday</span>
+								<span id="start">Start work</span>
+								<a id="send" href=""  target="_blank">Send email</a>
+							</div>
+						</section>
+						<script>
+							function tickTemplate(v) {
+								return v;
+							}
+				
+							var slider = new dhx.Slider("slider", {
+								min: 0.4,
+								max: 1,
+								tooltip: false,
+								step: 0.05,
+								tick: 1,
+								majorTick: 2,
+								value: 0.7,
+								tickTemplate: tickTemplate
+							});
+				
+							var diagram;
+				
+							function largeTemplate(config) {
+								var template = '<section class="template">';
+									template += '<div class="template_container template_img-container">';
+									template += '<img src="'+ config.photo +'" alt="'+ config.name + "-" + config.post +'"></img>';
+									template += '</div>';
+									template += '<div class="template_container">';
+									template += '<h3>'+ config.name +'</h3>';
+									template += '<p>'+ config.post +'</p>';
+									template += '<span>';
+									template += '<img class="template_icon" src="../common/img/icons/cellphone-android.svg" alt="phone number"></img>';
+									template += '<p>'+ config.phone +'</p>';
+									template += '</span>';
+									template += '<span>';
+									template += '<img class="template_icon" src="../common/img/icons/email-outline.svg" alt="email"></img>';
+									template += '<a style="color:#0288D1" href="mailto:'+ config.mail +'" target="_blank">'+ config.mail +'</a> ';
+									template += '</span></div>';
+									template += '</section>';
+								return template;
+							}
+				
+							function mediumTemplate(config) {
+								var template = '<section class="template">';
+									template += '<div class="template_container template_img-container-medium">';
+									template += '<img src="'+ config.photo +'" alt="'+ config.name + "-" + config.post +'"></img>';
+									template += '</div>';
+									template += '<div class="template_container">';
+									template += '<h3>'+ config.name +'</h3>';
+									template += '<p>'+ config.post +'</p>';
+									template += '</div>';
+									template += '</section>';
+								return template;
+							}
+				
+							function smallTemplate(config) {
+								var template = '<section class="template">';
+									template += '<div class="template_container">';
+									template += '<h3>'+ config.name +'</h3>';
+									template += '</div>';
+									template += '</section>';
+								return template;
+							}
+				
+							var largeDefaults = {
+								width: 330,
+								height: 115
+							};
+				
+							var mediumDefaults = {
+								width: 200,
+								height: 68
+							};
+				
+							var smallDefaults = {
+								width: 200,
+								height: 44
+							};
+				
+							var person;
+				
+							function getInfo(person) {
+								var image = document.querySelector("#image");
+								var name = document.querySelector("#name");
+								var post = document.querySelector("#post");
+								var phone = document.querySelector("#phone");
+								var mail = document.querySelector("#mail");
+								var birthday = document.querySelector("#birthday");
+								var start = document.querySelector("#start");
+								var send = document.querySelector("#send");
+				
+								name.innerHTML = person.name + "";
+								post.innerHTML = person.post + "";
+								phone.innerHTML = person.phone + "";
+								mail.innerHTML = person.mail + "";
+								birthday.innerHTML = "Birthday: " + person.birthday;
+								start.innerHTML = "Start work: " + person.start + "";
+								send.href = "mailto:" + person.mail + "";
+								image.src = person.img + "";
+								image.alt = person.name + "-" + person.post + "";
+							}
+				
+							function createDiagram(config) {
+								diagram = new dhx.Diagram("diagram", {
+									type: "org",
+									defaultShapeType: "template",
+									scale: config.scale
+								});
+				
+								diagram.addShape("template", {
+									template: config.template,
+									defaults: config.defaults
+								});
+				
+								medCardShape.forEach(function(item) {
+									item.width = config.defaults.width;
+									item.height = config.defaults.height;
+								});
+				
+								diagram.data.parse(medCardShape);
+				
+								diagram.events.on("ShapeClick", function(id) {
+									diagram.selection.add(id);
+									person = diagram.data.getItem(id);
+									getInfo({
+										name: person.name,
+										post: person.post,
+										phone: person.phone,
+										mail: person.mail,
+										img: person.photo,
+										birthday: person.birthday,
+										start: person.start
+									});
+								});
+							}
+				
+							function changeTemplate(scale) {
+								var selectionItem = diagram.selection.getItem();
+								if (diagram) {
+									diagram.destructor();
+								}
+								switch (true) {
+									case scale >= 0.8:
+										createDiagram({
+											defaults: largeDefaults,
+											template: largeTemplate,
+											scale: scale
+										});
+										break;
+									case scale <= 0.8 && scale >= 0.6:
+										createDiagram({
+											defaults: mediumDefaults,
+											template: mediumTemplate,
+											scale: scale
+										});
+										break;
+									case scale <= 0.6:
+										createDiagram({
+											defaults: smallDefaults,
+											template: smallTemplate,
+											scale: scale
+										});
+										break;
+								}
+								diagram.selection.add(selectionItem.id);
+							}
+				
+							slider.events.on("Change", function(value) {
+								changeTemplate(value);
+							});
+				
+							createDiagram({
+								defaults: mediumDefaults,
+								template: mediumTemplate,
+								scale: 0.7
+							});
+				
+							diagram.selection.add("main");
+				
+							person = diagram.data.getItem("main");
+				
+							getInfo({
+								name: person.name,
+								post: person.post,
+								phone: person.phone,
+								mail: person.mail,
+								img: person.photo,
+								birthday: person.birthday,
+								start: person.start
+							});
+						</script>
+
+					<!-- </div>
+				</div> -->
+				<!-- end card -->
+			</div>
+			<!-- end col-4 -->
+		</div>
 		<!-- end #content -->
 		
 		<%- include("../frame/theme") -%>

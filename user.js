@@ -514,10 +514,16 @@ module.exports = (app) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
+
+            const view_child = await tree.view_child(id)
             res.render('list', {
                 title: "FINFINE | Lists",
                 userInfo: user[0].info,
-                role: user[0].role
+                role: user[0].role,
+
+                diagram: view_child.diagram,
+                detail: view_child.detail,
+                org: view_child.org
             })
         } else {
             res.redirect('/login')

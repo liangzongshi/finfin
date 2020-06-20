@@ -85,7 +85,7 @@ class Tree {
                 member: []
             }) 
         }
-        var doc = await db.user({'list_dad': id},'id list_dad currency.balance currency.symbol')
+        var doc = await db.user({'list_dad': id},'id info list_dad currency.balance currency.symbol')
         var child = R.map(user => {
             var balance = R.filter( n => n.symbol == 'FFT', user.currency).pop().balance 
 
@@ -106,9 +106,35 @@ class Tree {
                 dad: user.list_dad[0],
                 info: user.info
             }}, doc)
+            
+            var main = (await db.user({id: id}, 'info'))[0].info
+            var org = [{
+                id: "main",
+                name: main.first_name + ' ' + main.last_name,
+                post: (await this.check_package(id)).balance,
+                phone: main.mobile,
+                mail: main.email,
+                photo: main.avatar,
+                birthday: main.birthday,
+                start: main.city
+            }]
+
+            child.forEach((us) => {
+                org.push({
+                    id: us.id,
+                    name: us.info.first_name + ' ' + us.info.last_name,
+                    post: us.balance,
+                    phone: us.info.mobile,
+                    mail: us.info.email,
+                    photo: us.info.avatar,
+                    birthday: us.info.birthday,
+                    start: us.info.city
+                })
+            })
         return {
             detail: detail,
-            diagram: child
+            diagram: child,
+            org: org
         }
     }
 

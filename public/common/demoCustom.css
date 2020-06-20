@@ -1,0 +1,180 @@
+.dhx_tabbar-header__wrapper {
+	background: #F7F7F7;
+	border-right: #e4e4e4 solid 1px;
+	border-left: #e4e4e4 solid 1px;
+	padding: 0 100px;
+}
+.dhx_demo_diagram-conectors .dhx_diagram {
+	width: 1200px;
+	background: #fff;   
+}
+.dhx_demo_diagram-conectors .dhx_diagram_line {
+	stroke: #87A4BC;
+}
+.dhx_demo_diagram-conectors .dhx_diagram_arrow {
+	stroke: #87A4BC;
+	fill: #87A4BC;
+}
+.dhx_tabbar--top .dhx_layout-cell {
+	height: 700px;
+}
+.dhx_demo-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin: 20px auto;
+}
+.dhx_demo__footer-container {
+	padding: 16px;
+}
+.dhx_demo__footer-controls {
+	background: #fff;
+	height: 80px;
+	width: 1168px;
+	display: flex;
+	justify-content: space-between;
+}
+.dhx_demo__footer-controls--left, .dhx_demo__footer-controls--right {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.dhx_tabbar-container, .dhx_demo__tabbar-container {
+	width: 1200px;
+}
+.dhx_tabbar-container .dhx_diagram, .dhx_tabbar-container .dhx_wrapper {
+	background: #F7F7F7;
+}
+.dhx_diagram .dhx_free_diagram {
+	background: #F7F7F7;
+}
+.dhx_tabbar-container .dhx_diagram {
+	border-right: 1px solid #e4e4e4;
+	border-left: 1px solid #e4e4e4;
+}
+.dhx_tabbar-container .dhx_button--view_link {
+	border: 1px solid #0288d1;
+	margin-left: 24px;
+}
+.dhx_tabbar-container .dhx_button--view_flat {
+	margin-right: 24px;
+}
+.dhx_demo__editor_scale-container {
+	display: flex;
+	background: #F7F7F7;
+	height: 32px;
+	border-radius: 32px;
+	margin-left: 24px;
+	border: 1px solid #DFDFDF;
+}
+.dhx_demo__editor_scale-container, .dxi {
+	color: #5F5F5F;
+}
+.dhx_demo__editor_scale-container .dhx_button {
+	background: #F7F7F7;
+	width: 32px;
+	border-radius: 32px;
+}
+.dhx_demo__editor_scale-value {
+	width: 40px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+}
+.dhx_demo_modal .dhx_window-content-without-header {
+	padding: 0;
+}
+.dhx_window-content {
+	padding: 0;
+}
+.dhx_window-header {
+	display: none;
+}
+.network_template {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background: #F7F7F7;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #DFDFDF;
+	overflow: hidden;
+}
+.network_template span {
+	font-weight: 300;
+	line-height: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	text-align: center;
+}
+.network_template span:not(:last-child) {
+	font-weight: 500;
+	margin-top: 16px;
+}
+.network_template img {
+	width: 64px;
+	height: 64px;
+	pointer-events: none;
+	border-radius: 50%;
+}
+
+.med-card_template {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	color: rgba(0, 0, 0, 0.7);
+	border: 1px solid #DFDFDF;
+	padding: 10px 12px;
+}
+.med-card_template span {
+	display: flex;
+}
+.med-card_template h3, .med-card_template p {
+	text-align: left;
+	font-size: 14px;
+	line-height: 20px;
+	height: 20px;
+	margin: 0 0 4px 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;	
+}
+.template_container {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.template_img-container {
+	min-width: 93px;
+	width: 93px;
+	margin-right: 12px;
+}
+.template_img-container img {
+	width: inherit;
+	height: auto;
+}
+.template_icon {
+	height: 20px;
+	width: 20px;
+	margin-right: 4px;
+}
+.toggle_container {
+	position: absolute;
+	right: 2px;
+	top: 10px;
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+}
+.toggle_container .template_icon {
+	height: 14px;
+	width: 4px;
+	margin: 0;
+}
