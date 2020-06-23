@@ -6,7 +6,7 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-	
+	<link rel="icon" href="../assets-home/home/finfine.png" type="image/gif">
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
 	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
 	<!-- ================== END BASE CSS STYLE ================== -->
@@ -44,7 +44,7 @@
 					<div class="card-group">
 						<!-- begin card -->
 						<div class="card">
-							<img class="card-img-top" src="../assets/avatars/<%= item.img %>" alt="Card image cap">
+							<img class="card-img-top" src="../assets/avatars/<%= item.img %>" height="250" alt="Card image cap">
 							<div class="card-body">
 								<h4 class="card-title"><%= item.title %></h4>
 								<p class="card-text"><%= (item.description.length < 87 ) ? item.description : item.description.slice(0,84) + "..." %></p>

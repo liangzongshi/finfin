@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title><%= title %></title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<link rel="icon" href="../assets-home/home/finfine.png" type="image/gif">
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+
+	<%- include("../../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed show gradient-enabled">
+		<%- include("../../frame/header") -%>
+		<%- include("../../frame/sidebar") -%>
+		
+		<!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
+				<li class="breadcrumb-item"><a href="javascript:;">Token</a></li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header mb-3">Token</h1>
+			<!-- end page-header -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">CURCULATING TOKEN </b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value=" <%= token.activeToken %>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-1"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">BLOCKED TOKEN</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin store-session -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= token.blockedToken %>">0</span></h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-2"></div>
+										</div>
+									</div>
+									<!-- end store-session -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">AIRDROP TOKEN</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= airdropToken %>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-3"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">FINAL TOKEN</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin store-session -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= token.activeToken - airdropToken %>">0</span></h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-4"></div>
+										</div>
+									</div>
+									<!-- end store-session -->
+
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+            
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/d3/d3.min.js"></script>
+	<script src="../assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/plugins/moment/min/moment.min.js"></script>
+	<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="../assets/js/demo/dashboard-v3.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

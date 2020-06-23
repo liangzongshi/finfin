@@ -507,7 +507,7 @@ class Price {
                 totalMonth += daily.value
             }
         })
-        var totalPayDay = fund.pay[fund.pay.length -1]
+        var totalPayDay = fund.pay[fund.pay.length -1].value
         var totalPayMonth = 0
         fund.pay.forEach(async (paid, st) =>{
             if (sMonth(paid.timestamp, timeskip)){

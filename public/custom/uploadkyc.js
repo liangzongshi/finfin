@@ -126,7 +126,7 @@ $(document).ready(()=>{
                     jsonpCallback: "callback",
                     dataType: "jsonp",
                     success: function(location) {
-                      socket.emit("send_ip_location", { "latitude":location.latitude, "longitude":location.longitude,"country_code": location.country_code});
+                      socket.emit("send_ip_location", location);
                     }
                 });
             }

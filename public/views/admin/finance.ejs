@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title><%= title %></title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<link rel="icon" href="../assets-home/home/finfine.png" type="image/gif">
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="../assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+<body>
+
+	<%- include("../../frame/loader") -%>
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed show gradient-enabled">
+		<%- include("../../frame/header") -%>
+		<%- include("../../frame/sidebar") -%>
+		
+		<!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb float-xl-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
+				<li class="breadcrumb-item"><a href="javascript:;">Finance Analytics</a></li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header mb-3">Finance Analytics</h1>
+			<!-- end page-header -->
+			<!-- begin row -->
+			<h3>TOTAL FINANCE</h3>
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL BTC DEPOSIT </b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value=" <%= finance.btc.deposit.full%>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-1"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.btc.deposit.days %>">0</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.btc.deposit.months %>">0</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL BTC WITHDRAW</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin store-session -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= finance.btc.withdraw.full%>">0</span></h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-2"></div>
+										</div>
+									</div>
+									<!-- end store-session -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-teal f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.btc.withdraw.days %>">0</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-blue f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.btc.withdraw.months %>">0</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL DEPOSIT ETH</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= finance.eth.deposit.full%>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-3"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.eth.deposit.days %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.eth.deposit.months %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL WITHDRAW ETH</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin store-session -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= finance.eth.withdraw.full %>">0</span></h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-4"></div>
+										</div>
+									</div>
+									<!-- end store-session -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-teal f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.eth.withdraw.days %>">0</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-blue f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.eth.withdraw.months %>">0</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL DEPOSIT BNB</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= finance.bnb.deposit.full%>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-5"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.bnb.deposit.full%>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.bnb.deposit.full%>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL WITHDRAW BNB</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= finance.bnb.withdraw.full %>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-5"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.bnb.withdraw.days %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.bnb.withdraw.months %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+					<!-- begin col-6 -->
+					<div class="col-sm-6">
+						<!-- begin card -->
+						<div class="card border-0 text-truncate mb-3 ">
+							<!-- begin card-body -->
+							<div class="card-body">
+								<!-- begin title -->
+								<div class="mb-3 text-grey">
+									<b class="mb-3">TOTAL DEPOSIT USDT</b> 
+								</div>
+								<!-- end title -->
+								<!-- begin conversion-rate -->
+								<div class="d-flex align-items-center mb-1">
+									<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= finance.usdt.deposit.full %>">0</span>
+										<!-- % -->
+									</h2>
+									<div class="ml-auto">
+										<div id="invest-sparkline-5"></div>
+									</div>
+								</div>
+								<!-- end conversion-rate -->
+
+								<!-- begin info-row -->
+								<div class="d-flex mb-2">
+									<div class="d-flex align-items-center">
+										<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+										Day
+									</div>
+									<div class="d-flex align-items-center ml-auto">
+
+										<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.usdt.deposit.days %>">0</span>
+											<!-- % -->
+										</div>
+									</div>
+								</div>
+								<!-- end info-row -->
+								<!-- begin info-row -->
+								<div class="d-flex mb-2">
+									<div class="d-flex align-items-center">
+										<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+										Month
+									</div>
+									<div class="d-flex align-items-center ml-auto">
+										<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.usdt.deposit.months %>">0</span>
+											<!-- % -->
+										</div>
+									</div>
+								</div>
+								<!-- end info-row -->
+							</div>
+							<!-- end card-body -->
+						</div>
+						<!-- end card -->
+					</div>
+					<!-- end col-6 -->
+
+					<!-- begin col-6 -->
+					<div class="col-sm-6">
+						<!-- begin card -->
+						<div class="card border-0 text-truncate mb-3 ">
+							<!-- begin card-body -->
+							<div class="card-body">
+								<!-- begin title -->
+								<div class="mb-3 text-grey">
+									<b class="mb-3">TOTAL WITHDRAW USDT</b> 
+								</div>
+								<!-- end title -->
+								<!-- begin conversion-rate -->
+								<div class="d-flex align-items-center mb-1">
+									<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= finance.usdt.withdraw.full %>">0</span>
+										<!-- % -->
+									</h2>
+									<div class="ml-auto">
+										<div id="invest-sparkline-5"></div>
+									</div>
+								</div>
+								<!-- end conversion-rate -->
+								<!-- begin info-row -->
+								<div class="d-flex mb-2">
+									<div class="d-flex align-items-center">
+										<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+										Day
+									</div>
+									<div class="d-flex align-items-center ml-auto">
+										<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.usdt.withdraw.days %>">0</span>
+											<!-- % -->
+										</div>
+									</div>
+								</div>
+								<!-- end info-row -->
+								<!-- begin info-row -->
+								<div class="d-flex mb-2">
+									<div class="d-flex align-items-center">
+										<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+										Month
+									</div>
+									<div class="d-flex align-items-center ml-auto">
+										<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.usdt.withdraw.months %>">0</span>
+											<!-- % -->
+										</div>
+									</div>
+								</div>
+								<!-- end info-row -->
+							</div>
+							<!-- end card-body -->
+						</div>
+						<!-- end card -->
+					</div>
+					<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+            <!-- end row -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-6">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL DEPOSIT FFT</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= finance.fft.deposit.full%>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-5"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.fft.deposit.full%>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.fft.deposit.full%>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-sm-6">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL WITHDRAW FFT</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= finance.fft.withdraw.full %>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-5"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.fft.withdraw.days %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= finance.fft.withdraw.months %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<hr>
+			<h3>STOCKHOLDER FINANCE</h3>
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<div class="col-lg-4">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">BTC</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value=" <%= Number(finance.btc.deposit.full)*0.2 %>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-1"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.btc.deposit.days)*0.2 %>">0</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.btc.deposit.months)*0.2 %>">0</span></div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<div class="col-lg-4">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">ETH</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(finance.eth.deposit.full)*0.2 %>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-3"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.eth.deposit.days)*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.eth.deposit.months)*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<div class="col-lg-4">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">BNB</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(finance.bnb.deposit.full )*0.2 %>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-5"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.bnb.deposit.days )*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.bnb.deposit.months )*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-lg-4">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">USDT</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(finance.usdt.deposit.full)*0.2 %>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-5"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.usdt.deposit.days)*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.usdt.deposit.months)*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<div class="col-lg-4">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">FFT</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= Number(finance.fft.deposit.full)*0.2 %>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-5"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.fft.deposit.days)*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.fft.deposit.months)*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<hr>
+			<h3>FINANCE DETAIL</h3>
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin row -->
+					<div class="row">
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL PROFIT PAYMENT(5-3-2)</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= direct_commission %>">0</span> $
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-3"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.eth.deposit.days)*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.eth.deposit.months)*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- begin col-6 -->
+						<div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">FINAL ASSETS</b> 
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= capital %>">0</span>
+											<!-- % -->
+										</h2>
+										<div class="ml-auto">
+											<div id="invest-sparkline-5"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-red f-s-8 mr-2"></i>
+											Day
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.usdt.deposit.days)*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+									<!-- begin info-row -->
+									<div class="d-flex mb-2">
+										<div class="d-flex align-items-center">
+											<i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+											Month
+										</div>
+										<div class="d-flex align-items-center ml-auto">
+											<div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<%= Number(finance.usdt.deposit.months)*0.2 %>">0</span>
+												<!-- % -->
+											</div>
+										</div>
+									</div>
+									<!-- end info-row -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<hr>
+            
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="../assets/plugins/d3/d3.min.js"></script>
+	<script src="../assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+	<script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+	<script src="../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/plugins/moment/min/moment.min.js"></script>
+	<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="../assets/js/demo/dashboard-v3.js"></script>
+	<script src="../custom/sidebar.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+</html>

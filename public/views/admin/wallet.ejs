@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Color Admin | Dashboard V3</title>
+	<title><%= title %></title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-	
+	<link rel="icon" href="../assets-home/home/finfine.png" type="image/gif">
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
 	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
 	<!-- ================== END BASE CSS STYLE ================== -->
@@ -36,7 +36,7 @@
             <!-- begin row -->
             <div class="row row-space-6">
                 <!-- begin col-6 -->
-                <div class="col-xl-7 col-lg-7 m-b-5 p-b-1">
+                <div class="col-xl-4 col-lg-4 m-b-5 p-b-1">
                     <div class="p-10 bg-black-transparent-5 rounded">
                         <div class="media media-xs overflow-visible align-items-center">
                             <a class="media-left" href="javascript:;">
@@ -47,7 +47,15 @@
                             </div>
                         </div>
                         <div class="row m-10">
-                            <input id="t_wallet_address" type="text" class="form-control form-control-lg col-lg-6 col-xl-6 col-xs-12 m-r-10" placeholder="Enter New Wallet Address"/>
+                            <select id="t_wallet_type" type="text" class="form-control form-control-lg col-6 m-r-10">
+                                <option value="btc">BTC</option>
+                                <option value="eth">ETH</option>
+                                <option value="bnb">BNB</option>
+                                <option value="usdt">USDT</option>
+                            </select>
+                        </div>
+                        <div class="row m-10">
+                            <input id="t_wallet_address" type="text" class="form-control form-control-lg col-9 m-r-10" placeholder="Enter New Wallet Address"/>
                             <input id="btn_t_wallet_md" type="button" class="btn btn-outline-success" value="SUBMIT"/>
                         </div>
                     </div>
@@ -55,7 +63,7 @@
                 </div>
                 <!-- end col-6 -->
                 <!-- begin col-6 -->
-                <div class="col-xl-7 col-lg-7 m-b-5 p-b-1">
+                <div class="col-xl-4 col-lg-4 m-b-5 p-b-1">
                     <div class="p-10 bg-black-transparent-5 rounded">
                         <div class="media media-xs overflow-visible align-items-center">
                             <a class="media-left" href="javascript:;">
@@ -66,7 +74,15 @@
                             </div>
                         </div>
                         <div class="row m-10">
-                            <input id="m_wallet_address" type="text" class="form-control form-control-lg col-lg-6 col-xl-6 col-xs-12 m-r-10" placeholder="Enter New Wallet Address"/>
+                            <select id="m_wallet_type" type="text" class="form-control form-control-lg col-6 m-r-10">
+                                <option value="btc">BTC</option>
+                                <option value="eth">ETH</option>
+                                <option value="bnb">BNB</option>
+                                <option value="usdt">USDT</option>
+                            </select>
+                        </div>
+                        <div class="row m-10">
+                            <input id="m_wallet_address" type="text" class="form-control form-control-lg col-9 m-r-10" placeholder="Enter New Wallet Address"/>
                             <input id="btn_m_wallet_md" type="button" class="btn btn-outline-success" value="SUBMIT"/>
                         </div>
                     </div>
@@ -74,7 +90,7 @@
                 </div>
                 <!-- end col-6 -->
                 <!-- begin col-6 -->
-                <div class="col-xl-7 col-lg-7 m-b-5 p-b-1">
+                <div class="col-xl-4 col-lg-4 m-b-5 p-b-1">
                     <div class="p-10 bg-black-transparent-5 rounded">
                         <div class="media media-xs overflow-visible align-items-center">
                             <a class="media-left" href="javascript:;">
@@ -85,13 +101,25 @@
                             </div>
                         </div>
                         <div class="row m-10">
-                            <input id="l_wallet_address" type="text" class="form-control form-control-lg col-lg-6 col-xl-6 col-xs-12 m-r-10" placeholder="Enter New Wallet Address"/>
+                            <select id="l_wallet_type" type="text" class="form-control form-control-lg col-6 m-r-10">
+                                <option value="btc">BTC</option>
+                                <option value="eth">ETH</option>
+                                <option value="bnb">BNB</option>
+                                <option value="usdt">USDT</option>
+                            </select>
+                        </div>
+                        <div class="row m-10">
+                            <input id="l_wallet_address" type="text" class="form-control form-control-lg col-9 m-r-10" placeholder="Enter New Wallet Address"/>
                             <input id="btn_l_wallet_md" type="button" class="btn btn-outline-success" value="SUBMIT"/>
                         </div>
                     </div>
                     
                 </div>
                 <!-- end col-6 -->
+            </div>
+            <!-- end row -->
+            <!-- begin row -->
+            <div class="row row-space-6">
             </div>
             <!-- end row -->
 		</div>

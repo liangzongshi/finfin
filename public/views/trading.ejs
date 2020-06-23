@@ -6,7 +6,7 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-	
+	<link rel="icon" href="../assets-home/home/finfine.png" type="image/gif">
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
 	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
 	<!-- ================== END BASE CSS STYLE ================== -->
@@ -50,13 +50,13 @@
 								<div class="card-body">
 									<!-- begin title -->
 									<div class="mb-3 text-grey">
-										<b class="mb-3">TOTAL SUPPLY</b> 
+										<b class="mb-3">TOTAL CAPITAL</b> 
 										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
 									</div>
 									<!-- end title -->
 									<!-- begin conversion-rate -->
 									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= curOrders.capital %>">0.00</span> FFT</h2>
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= curOrders.capital %>">0.00</span> $</h2>
 										<div class="ml-auto">
 											<div id="trading-sparkline-1"></div>
 										</div>
@@ -164,37 +164,7 @@
 							<!-- end card -->
 						</div>
 						<!-- end col-6 -->
-						<!-- begin col-6 -->
-						<div class="col-xl-4 col-lg-4 col-md-4 col-xs-12">
-							<!-- begin card -->
-							<div class="card border-0 text-truncate mb-3 ">
-								<!-- begin card-body -->
-								<div class="card-body">
-									<!-- begin title -->
-									<div class="mb-3 text-grey">
-										<b class="mb-3">TOTAL PROFIT</b> 
-										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
-									</div>
-									<!-- end title -->
-									<!-- begin conversion-rate -->
-									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= curOrders.profit %>">0.00</span> $</h2>
-										<div class="ml-auto">
-											<div id="trading-sparkline-5"></div>
-										</div>
-									</div>
-									<!-- end conversion-rate -->
-									<!-- begin percentage -->
-									<div class="mb-4 text-grey">
-										<br>
-									</div>
-									<!-- end percentage -->
-								</div>
-								<!-- end card-body -->
-							</div>
-							<!-- end card -->
-						</div>
-						<!-- end col-6 -->
+
 						<!-- begin col-6 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-xs-12">
 							<!-- begin card -->
@@ -223,53 +193,6 @@
 											<i class="fa fa-caret-down text-red"></i> <span class="text-red"><%= ((preOrders.days/curOrders.days - 1)*100).toFixed(2) %> %</span>
 										<% } %>
 										 compare to last day
-									</div>
-									<!-- end percentage -->
-								</div>
-								<!-- end card-body -->
-							</div>
-							<!-- end card -->
-						</div>
-						<!-- end col-6 -->
-					</div>
-					<!-- end row -->
-				</div>
-				<!-- end col-6 -->
-			</div>
-			<!-- end row -->
-			<!-- begin row -->
-			<div class="row">
-				<!-- begin col-6 -->
-				<div class="col-xl-12">
-					<!-- begin row -->
-					<div class="row">
-						<!-- begin col-6 -->
-						<div class="col-xl-4 col-lg-4 col-md-4 col-xs-12">
-							<!-- begin card -->
-							<div class="card border-0 text-truncate mb-3 ">
-								<!-- begin card-body -->
-								<div class="card-body">
-									<!-- begin title -->
-									<div class="mb-3 text-grey">
-										<b class="mb-3">TOTAL MONTHS</b> 
-										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
-									</div>
-									<!-- end title -->
-									<!-- begin conversion-rate -->
-									<div class="d-flex align-items-center mb-1">
-										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= curOrders.months %>">0.00</span> $</h2>
-										<div class="ml-auto">
-											<div id="trading-sparkline-8"></div>
-										</div>
-									</div>
-									<!-- end conversion-rate -->
-									<!-- begin percentage -->
-									<div class="mb-4 text-grey">
-										<% if(curOrders.months >= preOrders.months){ %>
-											<i class="fa fa-caret-up text-green"></i> <span class="text-green"><%= ((curOrders.months/preOrders.months - 1)*100).toFixed(2) %> %</span>
-										<% }else{ %>
-											<i class="fa fa-caret-down text-red"></i> <span class="text-red"><%= ((preOrders.months/curOrders.months - 1)*100).toFixed(2) %> %</span>
-										<% } %> compare to last month
 									</div>
 									<!-- end percentage -->
 								</div>
@@ -313,6 +236,85 @@
 							<!-- end card -->
 						</div>
 						<!-- end col-6 -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end col-6 -->
+			</div>
+			<!-- end row -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-6 -->
+				<div class="col-xl-12">
+					<!-- begin row -->
+					<div class="row">
+						<!-- begin col-6 -->
+						<!-- begin col-6 -->
+						<div class="col-xl-4 col-lg-4 col-md-4 col-xs-12">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL PROFIT</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= curOrders.profit %>">0.00</span> $</h2>
+										<div class="ml-auto">
+											<div id="trading-sparkline-5"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<br>
+									</div>
+									<!-- end percentage -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+						<div class="col-xl-4 col-lg-4 col-md-4 col-xs-12">
+							<!-- begin card -->
+							<div class="card border-0 text-truncate mb-3 ">
+								<!-- begin card-body -->
+								<div class="card-body">
+									<!-- begin title -->
+									<div class="mb-3 text-grey">
+										<b class="mb-3">TOTAL MONTHS</b> 
+										<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+									</div>
+									<!-- end title -->
+									<!-- begin conversion-rate -->
+									<div class="d-flex align-items-center mb-1">
+										<h2 class="text-white mb-0"><span data-animation="number" data-value="<%= curOrders.months %>">0.00</span> $</h2>
+										<div class="ml-auto">
+											<div id="trading-sparkline-8"></div>
+										</div>
+									</div>
+									<!-- end conversion-rate -->
+									<!-- begin percentage -->
+									<div class="mb-4 text-grey">
+										<% if(curOrders.months >= preOrders.months){ %>
+											<i class="fa fa-caret-up text-green"></i> <span class="text-green"><%= ((curOrders.months/preOrders.months - 1)*100).toFixed(2) %> %</span>
+										<% }else{ %>
+											<i class="fa fa-caret-down text-red"></i> <span class="text-red"><%= ((preOrders.months/curOrders.months - 1)*100).toFixed(2) %> %</span>
+										<% } %> compare to last month
+									</div>
+									<!-- end percentage -->
+								</div>
+								<!-- end card-body -->
+							</div>
+							<!-- end card -->
+						</div>
+						<!-- end col-6 -->
+
 						<!-- begin col-6 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-xs-12">
 							<!-- begin card -->

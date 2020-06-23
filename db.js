@@ -26,6 +26,7 @@ const schemaUser = new Schema({
         about: {type: String, default: null},
         country: {type: String, default: null},
         country_code: {type: String, default: null},
+        token_recover: {type: String, default: null},
         city: {type: String, default: null},
         gender: {type: String, default: "male"},
         birthday: {type: Date, default: Date.now},
@@ -222,9 +223,24 @@ const schemaAdmin = new Schema({
         delete: {type: Boolean, default: true}
     },
     wallet: {
-        t: {type: String, default: null},
-        m: {type: String, default: null},
-        l: {type: String, default: null}
+        t: {
+            btc: {type: String, default: null},
+            eth: {type: String, default: null},
+            bnb: {type: String, default: null},
+            usdt: {type: String, default: null},
+        },
+        m: {
+            btc: {type: String, default: null},
+            eth: {type: String, default: null},
+            bnb: {type: String, default: null},
+            usdt: {type: String, default: null},
+        },
+        l: {
+            btc: {type: String, default: null},
+            eth: {type: String, default: null},
+            bnb: {type: String, default: null},
+            usdt: {type: String, default: null},
+        }
     }
 },{
     versionKey: false

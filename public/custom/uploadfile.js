@@ -2,12 +2,19 @@ $(document).ready(()=>{
     const socket = io()
     socket.on('connect', () => {})
     var siofu = new SocketIOFileUpload(socket);
-    console.log(siofu);
+    siofu.maxFileSize = 5*1024*1024
     siofu.listenOnSubmit(document.getElementById("upload_avatar_btn"), document.getElementById("upload_avatar_input")); 
     // Do something on upload progress:
     siofu.addEventListener("start", function(event){
-        console.log(event)
-        socket.emit("uploading_avatar", "avatar")
+        var fileData  = document.getElementById("upload_avatar_input").files[0];
+        var math = ["image/png", "image/jpg", "image/jpeg"];
+        if($.inArray(fileData.type, math) === -1) {
+            $.notify("File not valid, require PNG/JPG/JPEG", "error", 5);
+            $("#upload_avatar_input").val(null)
+        }else{
+            socket.emit("uploading_avatar", "avatar")
+        }
+        
     });
     socket.on("upload_avatar_success", data=>{
         $("#upload_file_md").modal("hide")
@@ -17,8 +24,6 @@ $(document).ready(()=>{
     })
     $("#upload_avatar_input").change(function () {
         var fileData  = document.getElementById("upload_avatar_input").files[0];
-        var math = ["image/png", "image/jpg", "image/jpeg"];
-        var limit = 1048576; // 1MB
         if(typeof(FileReader) != "undefined"){
             var imagePreview2 = document.getElementById("previewAvatarBounce");
             while(imagePreview2.firstChild){

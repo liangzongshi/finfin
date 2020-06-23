@@ -6,7 +6,7 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-	
+	<link rel="icon" href="../assets-home/home/finfine.png" type="image/gif">
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
 	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
 	<!-- ================== END BASE CSS STYLE ================== -->
@@ -35,9 +35,9 @@
 			<h1 class="page-header">Group</small></h1>
 			<!-- end page-header -->
 
-
+			<% if( listGroup != null){ %>
 			<!-- didn't join a group ,yet -->
-			<div class="row">
+			<div class="row" id="join_group">
 				<!-- begin col-10 -->
 				<div class="col-xl-12">
 					<div class="panel panel-inverse">
@@ -57,15 +57,17 @@
 									</tr>
 								</thead>
 								<tbody>
+									<% listGroup.forEach(function(item){ %>
 										<tr class="odd gradeX" id="tr-currency.symbol">
 											<td width="1%" class="f-s-600 text-inverse">1</td>
-											<td>currency.symbol</td>
-											<td>currency.coin</td>
-											<td>currency.balance</td>
-											<td>currency.locked</td>
-											<td>name - hotline</td>
-											<td><input type="button" class="btn btn-success" value="Join" data-group=""></td><!-- add id group here-->
+											<td><%= item.code %></td>
+											<td><%= item.name %></td>
+											<td><%= item.members %></td>
+											<td><%= item.offline %></td>
+											<td><%= item.leader %></td>
+											<td><input type="button" class="btn_join_group btn btn-success" value="Join" data-group="<%= item.code %>"></td><!-- add id group here-->
 										</tr>
+									<% }) %>
 								</tbody>
 							</table>
 							
@@ -75,9 +77,9 @@
 				</div>
 				<!-- end col-10 -->
 			</div>
-
+			<% }else{ %>
 			<!-- joined a group -->
-			<div class="row">
+			<div class="row" id="info_group">
 				<!-- begin col-6 -->
 				<div class="col-xl-9 col-lg-9">
 					<!-- begin card -->
@@ -93,32 +95,32 @@
 								
 								<div class="col-xl-4 col-lg-4">
 									<div class="d-flex">
-										<h5 class="f-s-14 text-gray">Group Id: &nbsp;&nbsp;&nbsp;<span class="text-grey">143456</span></h5>
+										<h5 class="f-s-14 text-gray">Group Id: &nbsp;&nbsp;&nbsp;<span class="text-grey"><%= listMem.team.code %></span></h5>
 									</div>
 									<div class="d-flex">
 										<h5 class="f-s-14 text-gray">Name: &nbsp;&nbsp;&nbsp;<span class="text-grey">Tulpo</span> &nbsp;&nbsp;&nbsp;<input id="edit_name_group" type="button" class="btn btn-xs btn-outline-grey d-none"value="Edit Name" data-toggle="modal" data-target="#edit_name_group_md"></h5>
 									</div>
 									<div class="d-flex">
-										<h5 class="f-s-14 text-gray">Members: &nbsp;&nbsp;&nbsp;<span class="text-grey">100</span></h5>
+										<h5 class="f-s-14 text-gray">Members: &nbsp;&nbsp;&nbsp;<span class="text-grey"><%= listMem.team.members %></span></h5>
 									</div>
 								</div>
 								<div class="col-xl-4 col-lg-4">
 									<div class="d-flex">
-										<h5 class="f-s-14 text-gray">Group Link: &nbsp;&nbsp;&nbsp;<span class="text-grey">https:/tulpo.dev</span></h5>
+										<h5 class="f-s-14 text-gray">Group Link: &nbsp;&nbsp;&nbsp;<span class="text-grey"><%= listMem.team.chat %></span></h5>
 									</div>
 									<div class="d-flex">
-										<h5 class="f-s-14 text-gray">Zoom Room: &nbsp;&nbsp;&nbsp;<span class="text-grey">https://tulpo.dev</span></h5>
+										<h5 class="f-s-14 text-gray">Zoom Room: &nbsp;&nbsp;&nbsp;<span class="text-grey"><%= listMem.team.meeting %></span></h5>
 									</div>
 								</div>
 								<div class="col-xl-4 col-lg-4">
 									<div class="d-flex">
-										<h5 class="f-s-14 text-gray">Area: &nbsp;&nbsp;&nbsp;<span class="text-grey">Hanoi, Vietnam</span></h5>
+										<h5 class="f-s-14 text-gray">Area: &nbsp;&nbsp;&nbsp;<span class="text-grey"><%= listMem.team.local %></span></h5>
 									</div>
 									<div class="d-flex">
-										<h5 class="f-s-14 text-gray">Offline Location: &nbsp;&nbsp;&nbsp;<span class="text-grey">Hanoi, VietNam</span> &nbsp;&nbsp;&nbsp;<input id="edit_location_group" type="button" class="btn btn-xs btn-outline-grey d-none"value="Edit Offline Location" data-toggle="modal" data-target="#edit_location_group_md"></h5>
+										<h5 class="f-s-14 text-gray">Offline Location: &nbsp;&nbsp;&nbsp;<span class="text-grey"><%= listMem.team.offline %></span> &nbsp;&nbsp;&nbsp;<input id="edit_location_group" type="button" class="btn btn-xs btn-outline-grey d-none"value="Edit Offline Location" data-toggle="modal" data-target="#edit_location_group_md"></h5>
 									</div>
 									<div class="d-flex">
-										<h5 class="f-s-14 text-gray">Offline Time: &nbsp;&nbsp;&nbsp;<span class="text-grey">19h 20/9/2020</span> &nbsp;&nbsp;&nbsp;<input id="edit_time_group" type="button" class="btn btn-xs btn-outline-grey d-none"value="Edit Offline Times" data-toggle="modal" data-target="#edit_time_group_md"></h5>
+									<h5 class="f-s-14 text-gray">Offline Time: &nbsp;&nbsp;&nbsp;<span class="text-grey"><%= listMem.team.time.toISOString().split("T")[0] + " " + listMem.team.time.toISOString().split("T")[1].slice(0,8) %></span> &nbsp;&nbsp;&nbsp;<input id="edit_time_group" type="button" class="btn btn-xs btn-outline-grey d-none"value="Edit Offline Times" data-toggle="modal" data-target="#edit_time_group_md"></h5>
 									</div>
 
 								</div>
@@ -148,8 +150,7 @@
 									<!-- end title -->
 									<!-- begin title -->
 									<div class="mb-3 text-grey text-center">
-										<h2><span>60000</span> FFT</h2>
-										<p class="text-grey">= <span>60000</span> $</p>
+										<h2><span><%= listMem.salesGroup %></span> $</h2>
 									</div>
 									<!-- end title -->
 								</div>
@@ -163,7 +164,7 @@
 				</div>
 				<!-- end col-6 -->
 			</div>
-			<div class="row">
+			<div class="row" id="mem_list" data-gid="<%= listMem.team.code %>">
 				<!-- begin col-10 -->
 				<div class="col-xl-12">
 					<div class="panel panel-inverse">
@@ -185,17 +186,19 @@
 									</tr>
 								</thead>
 								<tbody>
-										<tr class="odd gradeX" id="tr-currency.symbol">
+									<% listMem.mem.forEach(function(item){ %>
+										<tr class="odd gradeX" id="r_<%= item.id %>">
 											<td width="1%" class="f-s-600 text-inverse">1</td>
-											<td>Id</td>
-											<td>Name</td>
-											<td>Email</td>
-											<td>Phone</td>
-											<td>Job</td>
+											<td><%= item.id %></td>
+											<td><%= item.info.first_name %> <%= item.info.last_name %></td>
+											<td><%= item.info.email %></td>
+											<td><%= item.info.phone %></td>
+											<td><%= item.info.job %></td>
 											<!-- if(role == "leader"){ -->
-											<td><input type="button" class="btn btn-danger" value="Delete" data-id=""></td><!-- add id member here-->
+											<td><input type="button" class="btn_remove_mem btn btn-danger" value="Delete" data-id="<%= item.id %>"></td><!-- add id member here-->
 											<!-- } -->
 										</tr>
+									<% }) %>
 								</tbody>
 							</table>
 							
@@ -205,13 +208,14 @@
 				</div>
 				<!-- end col-10 -->
 			</div>
-
-			<!-- if(role=="leader"){ -->
+			
+			<% if(role=="leader" || role=="admin"){ %>
 			<input id="edit_group" type="button" class="btn btn-outline-success" value="Edit Group">
 			<input id="cancel_edit_group" type="button" class="btn btn-outline-danger d-none" value="Cancel">
+			<% }} %>
 		</div>
 		<!-- end #content -->
-		
+		<% if(role=="leader" || role=="admin"){ %>
 		<!-- Modal name-->
 		<div class="modal fade" id="edit_name_group_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 			<div class="modal-dialog" role="document">
@@ -234,7 +238,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button id="btn_submit_name_group" type="button" class="btn btn-primary">Submit</button>
+						<button id="btn_submit_name_group" data-group="<%= listMem.team.code %>" type="button" class="btn btn-primary">Submit</button>
 					</div>
 				</div>
 			</div>
@@ -261,7 +265,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button id="btn_submit_location_group" type="button" class="btn btn-primary">Submit</button>
+						<button id="btn_submit_location_group" data-group="<%= listMem.team.code %>" type="button" class="btn btn-primary">Submit</button>
 					</div>
 				</div>
 			</div>
@@ -288,11 +292,12 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button id="btn_submit_time_group" type="button" class="btn btn-primary">Submit</button>
+						<button id="btn_submit_time_group" data-group="<%= listMem.team.code %>" type="button" class="btn btn-primary">Submit</button>
 					</div>
 				</div>
 			</div>
 		</div>
+		<% } %>
 		<!-- begin scroll to top btn -->
 		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 		<!-- end scroll to top btn -->
@@ -309,6 +314,8 @@
 	<script src="../assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 	<script src="../assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/notify.min.js"></script>
 	<script src="../custom/group.js"></script>
 	<script src="../custom/sidebar.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->

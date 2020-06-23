@@ -6,7 +6,7 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-	
+	<link rel="icon" href="../assets-home/home/finfine.png" type="image/gif">
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
 	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
 	<link href="../assets/css/transparent/response.css" rel="stylesheet" />
@@ -1087,9 +1087,22 @@
 			</form>
 			<!-- end wizard-form -->
 			<% }else if(!userInfo.kyc && userInfo.kyc_img.length == 3){ %>
-				<h3>You Completed KYC, The System need 24 hours to check Your System, please wait</h3>
+				<div class="card border-white text-white m-b-10">
+					<div class="card-body text-center">
+						<blockquote class="blockquote mb-0">
+							<h3>Please Wait About 24 Hours, The System Need To Check Your Information</h3>
+						</blockquote>
+					</div>
+				</div>
 			<% }else{ %>
-				<h3>KYC COMPLETED, You achieve <span class="text-green">LEVEL 2</span></h3>
+				<div class="card border-white text-white m-b-10">
+					<div class="card-body text-center">
+						<blockquote class="blockquote mb-0">
+							<h3>Your KYC is complete, let's upgrade your level higher to get more spoil</h3>
+							<p>Please Check <a href="/limitfees">Information</a> To Get More Detail</p>
+						</blockquote>
+					</div>
+				</div>
 			<% } %>
 		</div>
 		<!-- end #content -->

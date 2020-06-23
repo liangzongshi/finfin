@@ -6,7 +6,7 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-	
+	<link rel="icon" href="../assets-home/home/finfine.png" type="image/gif">
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
 	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
 	<!-- ================== END BASE CSS STYLE ================== -->
@@ -625,7 +625,7 @@
 										<p class="widget-todolist-desc">Status: <span class="text-success">verified</span></p>
 										<% }else{ %>
 										<p class="widget-todolist-desc">Status: <span class="text-red">Unverified</span></p>
-										<a href="">verify Now</a>
+										<a href="/kyc">verify Now</a>
 										<% } %>
 									</div>
 								</div>
@@ -644,8 +644,7 @@
 									<div class="widget-todolist-content">
 										<h4 class="widget-todolist-title">Change Password</h4>
 										<hr>
-										<p class="widget-todolist-desc">Status: <span class="text-success">Checked</span></p>
-										<a href="">Setting</a>
+										<a href="javascript:;" class="btn btn-primary" data-toggle="modal" data-target="#change_pass_md">Change</a>
 									</div>
 								</div>
 								<!-- end widget-todolist-item -->
@@ -1202,6 +1201,62 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal change password -->
+	<div class="modal fade" id="change_pass_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true"-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Change Password</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<form class="margin-bottom-0">
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">Current Password :</label>
+								<div class="col-md-8 col-sm-8">
+									<span>
+										<input class="form-control parsley-validated" type="password" id="old_pass_val" placeholder="Enter Your Current Password" data-required="true" />
+									</span>
+								</div>
+							</div>
+							<div class="form-group m-b-15">
+								<input type="text" class="form-control form-control-lg d-none" id="cef_old"/>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">New Password :</label>
+								<div class="col-md-8 col-sm-8">
+									<span>
+										<input class="form-control parsley-validated" type="password" id="new_pass_val" placeholder="Enter Your New Password" data-required="true" />
+									</span>
+								</div>
+							</div>
+							<div class="form-group m-b-15">
+								<input type="text" class="form-control form-control-lg d-none" id="cef_new"/>
+							</div>
+							<div class="form-group row m-b-15">
+								<label class="col-md-4 col-sm-4 col-form-label">Re-New Password :</label>
+								<div class="col-md-8 col-sm-8">
+									<span>
+										<input class="form-control parsley-validated" type="password" id="re_new_pass_val" placeholder="Submit Your New Password" data-required="true" />
+									</span>
+								</div>
+							</div>
+							<div class="form-group m-b-15">
+								<input type="text" class="form-control form-control-lg d-none" id="cef_re_new"/>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button id="submit_change_pass" type="submit" class="btn btn-danger" >Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Modal update village -->
 	<div class="modal fade" id="update_village_md" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -1583,6 +1638,8 @@
 	<!-- ================== END BASE JS ================== -->
 	
 	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
 	<script src="../assets/plugins/superbox/jquery.superbox.min.js"></script>
 	<script src="../assets/plugins/lity/dist/lity.min.js"></script>
 	<script src="../assets/js/demo/widget.demo.js"></script>
@@ -1590,6 +1647,7 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/siofu/client.js"></script>
 	<script src="../custom/profile.js"></script>
+	<script src="../custom/notify.min.js"></script>
 	<script src="../custom/uploadfile.js"></script>
 	<script src="../custom/sidebar.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Finfine | Recover Password</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<link rel="icon" href="../assets-home/home/finfine.png" type="image/gif">
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="../assets/css/transparent/app.min.css" rel="stylesheet" />
+	<link href="../custom/gt.css" rel="stylesheet" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+</head>
+<body class="pace-top">
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade show">
+		<span class="spinner"></span>
+	</div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade">
+		<!-- begin login -->
+		<div class="login login-with-news-feed">
+			<!-- begin news-feed -->
+			<div class="news-feed">
+				<div class="news-image" style="background-image: url(../assets/img/login-bg/login-bg-11.jpg)"></div>
+				<div class="news-caption">
+					<h4 class="caption-title"><b>FINFINE</b> hedger Capitals</h4>
+				</div>
+			</div>
+			<!-- end news-feed -->
+			<!-- begin right-content -->
+			<div class="right-content">
+				<!-- begin login-header -->
+				<div class="login-header">
+					<div class="brand">
+						<span class="logo"></span> <b style="color:hsl(52, 100%, 87%)">Recover password</b>
+                    </div>
+                    <p>Please Enter Your Email To Recover Your Password</p>
+				</div>
+				<!-- end login-header -->
+				<!-- begin login-content -->
+				<div class="login-content" id="all_recover">
+					<form class="margin-bottom-0" id="form_recover">
+						<div class="form-group m-b-15">
+							<label class="control-label"><span id="check_login" style="color: hsl(51, 100%, 75%);"></span></label>
+							<input type="email" class="form-control form-control-lg" id="email_recover" placeholder="Email Address" required />
+						</div>
+						<div class="login-buttons">
+							<button type="submit" class="btn btn-primary btn-lg col-6" id="recover">Recover Password</button>
+							<a href="/" class="btn btn-default btn-lg col-5">Back Home</a>
+						</div>
+						<hr />
+						
+                    </form>
+                    <div class="form-group m-b-15 d-none" id="text_recover">
+                        <h5>We sent the link to your Email, please check Email to recover password</h5>
+                    </div>
+                    <p class="text-center text-white-transparent-5 mb-0">
+                        &copy; Finfine All Right Reserved 2020
+                    </p>
+				</div>
+				<!-- end login-content -->
+			</div>
+			<!-- end right-container -->
+		</div>
+		<!-- end login -->
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/theme/transparent.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../custom/notify.min.js"></script>
+	<script src="../custom/recover.js"></script>
+	
+	<!-- ================== END BASE JS ================== -->
+</body>
+</html>

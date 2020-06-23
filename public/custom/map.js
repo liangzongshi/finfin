@@ -82,5 +82,4 @@ $(document).ready(function() {
 		})
 		$("#map_info").html(htmlNew)
     })
-
 });

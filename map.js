@@ -15,39 +15,31 @@ sendMap = async (socket)=>{
     })
     await socket.emit("create_map", {dataMap: dataMap, dataInfo:dataInfo})
 }
-function randomInt(min, max) { // min and max included 
-    return (Math.random() * (max - min + 1) + min);
-  }
+
 updateMap = async (data)=>{
-    rp({
-        uri: `https://api.ipgeolocationapi.com/countries/${data.country_code}`,
-        headers: {
-            'User-Agent': 'Request-Promise'
-        },
-        json: true 
-    }, async (err, res, body)=>{
-        const country = await db.map({alpha2: body.alpha2}, "total")
-        if(country.length == 0){
-            const new_local = {
-                "country": body.name,
-                "alpha2": body.alpha2,
-                "location":[{
-                    "latitude": data.latitude,
-                    "longitude": data.longitude,
-                }],
-                "total": 1,
-            }
-            await db.map(new_local)
-        }else{
-            await db.map({"alpha2": body.alpha2},{$push: {location: {
+    
+    console.log(data);
+    const country = (await db.map({"alpha2": data.country_code}, "country location total")).length
+    if(country == 0){
+        const new_local = {
+            "country": data.country_name,
+            "alpha2": data.country_code,
+            "location":[{
                 "latitude": data.latitude,
                 "longitude": data.longitude,
-            }}})
-            await db.map({"alpha2": body.alpha2},{$inc: {total: 1}})
+            }],
+            "total": 1
         }
-    })
-    return;
+        await db.map(new_local)
+    }else{
+        await db.map({"alpha2": data.country_code},{$push: {location: {
+            "latitude": data.latitude,
+            "longitude": data.longitude,
+        }}})
+        await db.map({"alpha2": data.country_code},{$inc: {total: 1}})
+    }
 }
+
 
 module.exports = {
     sendMap,

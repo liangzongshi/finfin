@@ -78,7 +78,7 @@ module.exports = (app) => {
                 id: encId(id),
             }
 
-            const user = await db.user({id: id}, "info")
+            const user = await db.user({id: id}, "info role")
 
             const capitalTotal = await price.capitalTotal(id)
             const salesTotal = await price.salesTotal(id)
@@ -92,7 +92,7 @@ module.exports = (app) => {
             const priceFFT = await price.get('FFT')
 
             res.render('invest', {
-                title: "DIGIGO | Investment",
+                title: "Finfine | Investment",
                 userInfo: user[0].info,
                 role: user[0].role,
                 id: id,
@@ -123,7 +123,7 @@ module.exports = (app) => {
                         id: encId(id),
                     }
                     const idNow = decId(getId(req,''))
-                    const user = await db.user({id: idNow}, "info")
+                    const user = await db.user({id: idNow}, "info role")
 
                     const capitalTotal = await price.capitalTotal(idNow)
                     const salesTotal = await price.salesTotal(idNow)
@@ -136,7 +136,7 @@ module.exports = (app) => {
                     const totalByTimePast = await price.totalByTime(idNow, 1)
                     const priceFFT = await price.get('FFT')
                     res.render('invest', {
-                        title: "DIGIGO | Invest",
+                        title: "Finfine | Investment",
                         userInfo: user[0].info,
                         role: user[0].role,
                         id: idNow,
@@ -163,7 +163,7 @@ module.exports = (app) => {
         
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
-            const user = await db.user({id: id}, "info")
+            const user = await db.user({id: id}, "info role")
 
             const capitalTotal = await price.capitalTotal(id)
             const salesTotal = await price.salesTotal(id)
@@ -177,7 +177,7 @@ module.exports = (app) => {
             const priceFFT = await price.get('FFT')
 
             res.render('invest', {
-                title: "DIGIGO | Investment",
+                title: "Finfine | Investment",
                 userInfo: user[0].info,
                 role: user[0].role,
                 id: id,
@@ -206,7 +206,7 @@ module.exports = (app) => {
             const preOrders = await price.trading(timeskip = 1)
             const hftOrders = await price.liveOrder()
             res.render('trading', {
-                title: "FINFINE | Trading",
+                title: "Finfine | Trading",
                 userInfo: user[0].info,
                 role: user[0].role,
                 curOrders: curOrders,
@@ -224,7 +224,7 @@ module.exports = (app) => {
             const user = await db.user({id: id}, 'info role')
             const timeline = await tree.upTime(id , "two")
             res.render('timeline', {
-                title: "FINFINE | Timeline",
+                title: "Finfine | Timeline",
                 userInfo: user[0].info,
                 role: user[0].role,
                 timeline: timeline
@@ -239,7 +239,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('market', {
-                title: "FINFINE | Market",
+                title: "Finfine | Market",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -254,7 +254,7 @@ module.exports = (app) => {
             const user = await db.user({id: id}, 'info currency role')
             const currencies = user[0].currency
             res.render('balance', {
-                title: "FINFINE | Balance",
+                title: "Finfine | Balance",
                 userInfo: user[0].info,
                 role: user[0].role,
                 currencies: currencies
@@ -270,7 +270,7 @@ module.exports = (app) => {
             const user = await db.user({id: id}, 'info history role')
             const deposit = R.filter( n => n.type == 'deposit', user[0].history)
             res.render('deposit', {
-                title: "FINFINE | Deposit",
+                title: "Finfine | Deposit",
                 userInfo: user[0].info,
                 role: user[0].role,
                 deposit: deposit
@@ -286,7 +286,7 @@ module.exports = (app) => {
             const user = await db.user({id: id}, 'info history role')
             const withdraw = R.filter( n => n.type == 'withdraw', user[0].history)
             res.render('withdraw', {
-                title: "FINFINE | Withdraw",
+                title: "Finfine | Withdraw",
                 userInfo: user[0].info,
                 role: user[0].role,
                 withdraw: withdraw
@@ -302,7 +302,7 @@ module.exports = (app) => {
             const user = await db.user({id: id}, 'info history role')
             const swap = R.filter( n => n.type == 'swap', user[0].history)
             res.render('swap', {
-                title: "FINFINE | Swap",
+                title: "Finfine | Swap",
                 userInfo: user[0].info,
                 role: user[0].role,
                 swap: swap
@@ -318,7 +318,7 @@ module.exports = (app) => {
             const user = await db.user({id: id}, 'info role history')
             const switchHis = R.filter( n => n.type == 'switch', user[0].history)
             res.render('switch', {
-                title: "FINFINE | Switch",
+                title: "Finfine | Switch",
                 userInfo: user[0].info,
                 role: user[0].role,
                 switchHis: switchHis
@@ -334,7 +334,7 @@ module.exports = (app) => {
             const user = await db.user({id: id}, 'info role')
             const mybonus = await group.getListBonus(id)
             res.render('mybonus', {
-                title: "FINFINE | My Bonus",
+                title: "Finfine | My Bonus",
                 userInfo: user[0].info,
                 role: user[0].role,
                 mybonus: mybonus
@@ -351,7 +351,7 @@ module.exports = (app) => {
             const bonus = (await group.getBonus())[(await group.getBonus()).length - 1]
             const time = (bonus != undefined ? (await unixTo(bonus.timestamp)).months: new Date().getMonth() + 1)
             res.render('bonus', {
-                title: "FINFINE | Bonus",
+                title: "Finfine | Bonus",
                 userInfo: user[0].info,
                 role: user[0].role,
                 bonus: bonus,
@@ -367,7 +367,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('airdrop', {
-                title: "FINFINE | Airdrop",
+                title: "Finfine | Airdrop",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -404,7 +404,7 @@ module.exports = (app) => {
             }
             
             res.render('finance', {
-                "title": "FINFINE | Finance Management",
+                "title": "Finfine | Finance Management",
                 userInfo: user[0].info,
                 role: user[0].role,
                 UserFinance: user_fin
@@ -428,7 +428,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('news', {
-                title: "FINFINE | News",
+                title: "Finfine | News",
                 userInfo: user[0].info,
                 role: user[0].role,
                 posts: posts,
@@ -462,7 +462,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('details', { 
-                title: "FINFINE | " + currentNews.sub,
+                title: "Finfine | " + currentNews.sub,
                 role: user[0].role,
                 userInfo: user[0].info,
                 currentNews: currentNews,
@@ -484,7 +484,7 @@ module.exports = (app) => {
             const user = await db.user({id: id}, "info role")
             if(user[0].role === "editor" || user[0].role === "admin"){
                 res.render('upload', {
-                    title: "FINFINE | Upload News",
+                    title: "Finfine | Upload News",
                     userInfo: user[0].info,
                     role: user[0].role
                 })
@@ -501,7 +501,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('tree', {
-                title: "FINFINE | Tree",
+                title: "Finfine | Tree",
                 userInfo: user[0].info,
                 role: user[0].role,
             })
@@ -517,7 +517,7 @@ module.exports = (app) => {
 
             const view_child = await tree.view_child(id)
             res.render('list', {
-                title: "FINFINE | Lists",
+                title: "Finfine | Lists",
                 userInfo: user[0].info,
                 role: user[0].role,
 
@@ -535,7 +535,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('map', {
-                title: "FINFINE | Map",
+                title: "Finfine | Map",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -548,10 +548,14 @@ module.exports = (app) => {
         if ( !!getId(req,'') ){
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
+            const listGroup = await group.listGroup(id)
+            const listMem = await group.listMember(id)
             res.render('group', {
-                title: "FINFINE | Group",
+                title: "Finfine | Group",
                 userInfo: user[0].info,
-                role: user[0].role
+                role: user[0].role,
+                listGroup: listGroup,
+                listMem: listMem
             })
         } else {
             res.redirect('/login')
@@ -570,7 +574,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('events', {
-                title: "FINFINE | News",
+                title: "Finfine | News",
                 userInfo: user[0].info,
                 role: user[0].role,
                 events: events,
@@ -602,7 +606,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('details-event', { 
-                title: "FINFINE | " + currentEvent.title,
+                title: "Finfine | " + currentEvent.title,
                 role: user[0].role,
                 userInfo: user[0].info,
                 currentEvent: currentEvent,
@@ -626,7 +630,7 @@ module.exports = (app) => {
             const topInvester = await group.topInvester()
             const topSaler = await group.topSaler()
             res.render('top', {
-                title: "FINFINE | Top",
+                title: "Finfine | Top",
                 userInfo: user[0].info,
                 role: user[0].role,
                 topGroup: topGroup,
@@ -643,7 +647,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id:id}, "info role")
             res.render('token', {
-                title: "FINFINE | Token",
+                title: "Finfine | Token",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -657,7 +661,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('follow', {
-                title: "FINFINE | Follow",
+                title: "Finfine | Follow",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -671,7 +675,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('livestream', {
-                title: "FINFINE | Livestream",
+                title: "Finfine | Livestream",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -690,7 +694,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('generalinformation', {
-                title: "FINFINE | General Information",
+                title: "Finfine | General Information",
                 userInfo: user[0].info,
                 role: user[0].role,
                 docs: docs,
@@ -708,7 +712,7 @@ module.exports = (app) => {
             await db.Doc.deleteMany({"link": null})
             if(user[0].role === "editor" || user[0].role === "admin"){
                 res.render('upload-document', {
-                    title: "FINFINE | Upload Document",
+                    title: "Finfine | Upload Document",
                     userInfo: user[0].info,
                     role: user[0].role
                 })
@@ -729,7 +733,7 @@ module.exports = (app) => {
             const doc = await db.Doc.findOne({docId: docId})
             if(user[0].role === "editor" || user[0].role === "admin"){
                 res.render('edit-document', {
-                    title: "FINFINE | Edit Document",
+                    title: "Finfine | Edit Document",
                     userInfo: user[0].info,
                     role: user[0].role,
                     doc: doc
@@ -753,7 +757,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('financialreport', {
-                title: "FINFINE | Finance Reports",
+                title: "Finfine | Finance Reports",
                 userInfo: user[0].info,
                 role: user[0].role,
                 docs: docs,
@@ -775,7 +779,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id:id}, "info role")
             res.render('marketing', {
-                title: "FINFINE | Marketing",
+                title: "Finfine | Marketing",
                 userInfo: user[0].info,
                 role: user[0].role,
                 docs: docs,
@@ -792,7 +796,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id:id}, "info role")
             res.render('ai', {
-                title: "FINFINE | AI",
+                title: "Finfine | AI",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -806,7 +810,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id:id}, "info role")
             res.render('helper', {
-                title: "FINFINE | Helper",
+                title: "Finfine | Helper",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -820,7 +824,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role message")
             res.render('securitynotice', {
-                title: "FINFINE | Security Notice",
+                title: "Finfine | Security Notice",
                 userInfo: user[0].info,
                 role: user[0].role,
                 settings: user[0].message
@@ -835,7 +839,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('capitalallocation', {
-                title: "FINFINE | Capital Allocation",
+                title: "Finfine | Capital Allocation",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -849,7 +853,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id:id}, "info role")
             res.render('walletsettings', {
-                title: "FINFINE | Wallet Settings",
+                title: "Finfine | Wallet Settings",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -863,7 +867,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('myprofile', {
-                title: "FINFINE | Profile",
+                title: "Finfine | Profile",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -888,7 +892,7 @@ module.exports = (app) => {
                 await db.user({id:id}, {$set: {"info.finance_total": 0}})
             }
             res.render('kyc', {
-                title: "FINFINE | KYC",
+                title: "Finfine | KYC",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -901,7 +905,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('2fa', {
-                title: "FINFINE | 2FA",
+                title: "Finfine | 2FA",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -915,7 +919,7 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('limitfees', {
-                title: "FINFINE | Limit And Fees",
+                title: "Finfine | Limit And Fees",
                 userInfo: user[0].info,
                 role: user[0].role
             })
@@ -942,7 +946,7 @@ module.exports = (app) => {
             const countSystem = await countNoti(id, "system")
             const countAll = countTrade + countActivities + countSystem
             res.render('seeall', {
-                title: "FINFINE | See All",
+                title: "Finfine | See All",
                 userInfo: user[0].info,
                 role: user[0].role,
                 countAll: countAll,
@@ -953,6 +957,32 @@ module.exports = (app) => {
         } else {
             res.redirect('/login')
         }
+    })
+    app.get('/recover', async (req,res)=>{
+        if ( !!getId(req,'') ){
+            const id = decId(getId(req,''))
+            const user = await db.user({id: id}, "info role")
+            res.render('recover', { 
+                title: "Finfine | Recover Password ",
+                userInfo: user[0].info,
+                role: user[0].role
+             })
+        } else {
+            res.render('recover', { 
+                title: "Finfine | Recover Password ",
+                userInfo: null
+             })
+        }
+    })
+    app.get('/recover-password/:id', async (req, res) => {
+        const curUserId = req.params.id;
+        if ( !!getId(req,'') ){
+            res.redirect('/invest')
+            return
+        }
+        res.render('new-password', {
+            userId: curUserId,
+        })
     })
 
     app.get('/logout', async (req, res) => {
@@ -968,13 +998,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/index', { 
-                title: "FINFINE | Home ",
+                title: "Finfine | Home ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/index', { 
-                title: "FINFINE | Home ",
+                title: "Finfine | Home ",
                 userInfo: null
              })
         }
@@ -984,13 +1014,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/company/about', { 
-                title: "FINFINE | About Us ",
+                title: "Finfine | About Us ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/company/about', { 
-                title: "FINFINE | About Us ",
+                title: "Finfine | About Us ",
                 userInfo: null
              })
         }
@@ -1000,13 +1030,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/company/help', { 
-                title: "FINFINE | Help Center",
+                title: "Finfine | Help Center",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/company/help', { 
-                title: "FINFINE | Help Center",
+                title: "Finfine | Help Center",
                 userInfo: null
              })
         }
@@ -1016,13 +1046,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/company/service', { 
-                title: "FINFINE | Our Services  ",
+                title: "Finfine | Our Services  ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/company/service', { 
-                title: "FINFINE | Our Services  ",
+                title: "Finfine | Our Services  ",
                 userInfo: null
              })
         }
@@ -1032,13 +1062,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/company/team', { 
-                title: "FINFINE | Our Team ",
+                title: "Finfine | Our Team ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/company/team', { 
-                title: "FINFINE | Our Team ",
+                title: "Finfine | Our Team ",
                 userInfo: null
              })
         }
@@ -1050,13 +1080,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/stock/stock', { 
-                title: "FINFINE | Stock ",
+                title: "Finfine | Stock ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/stock/stock', { 
-                title: "FINFINE | Stock ",
+                title: "Finfine | Stock ",
                 userInfo: null
              })
         }
@@ -1068,13 +1098,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/product/platform', { 
-                title: "FINFINE | FinFine Platform ",
+                title: "Finfine | FinFine Platform ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/product/platform', { 
-                title: "FINFINE | FinFine Platform ",
+                title: "Finfine | FinFine Platform ",
                 userInfo: null
              })
         }
@@ -1084,13 +1114,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/product/exchange', { 
-                title: "FINFINE | Exchange ",
+                title: "Finfine | Exchange ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/product/exchange', { 
-                title: "FINFINE | Exchange ",
+                title: "Finfine | Exchange ",
                 userInfo: null
              })
         }
@@ -1100,13 +1130,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/product/bot', { 
-                title: "FINFINE | FinFineBot ",
+                title: "Finfine | FinFineBot ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/product/bot', { 
-                title: "FINFINE | FinFineBot ",
+                title: "Finfine | FinFineBot ",
                 userInfo: null
              })
         }
@@ -1117,13 +1147,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/fund/term', { 
-                title: "FINFINE | Terms And Conditions ",
+                title: "Finfine | Terms And Conditions ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/fund/term', { 
-                title: "FINFINE | Terms And Conditions ",
+                title: "Finfine | Terms And Conditions ",
                 userInfo: null
              })
         }
@@ -1133,13 +1163,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/fund/invest', { 
-                title: "FINFINE | Investment Information ",
+                title: "Finfine | Investment Information ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/fund/invest', { 
-                title: "FINFINE | Investment Information ",
+                title: "Finfine | Investment Information ",
                 userInfo: null
              })
         }
@@ -1150,13 +1180,13 @@ module.exports = (app) => {
             const id = decId(getId(req,''))
             const user = await db.user({id: id}, "info role")
             res.render('home/fund/partner', { 
-                title: "FINFINE | Partner ",
+                title: "Finfine | Partner ",
                 userInfo: user[0].info,
                 role: user[0].role
              })
         } else {
             res.render('home/fund/partner', { 
-                title: "FINFINE | Partner ",
+                title: "Finfine | Partner ",
                 userInfo: null
              })
         }
@@ -1165,7 +1195,7 @@ module.exports = (app) => {
     app.get('/test', async (req, res) => {
             const user = await db.user({id: 100003}, "info")
             res.render('test', {
-                title: "FINFINE | Tree",
+                title: "Finfine | Tree",
                 userInfo: user[0].info
             })
     })

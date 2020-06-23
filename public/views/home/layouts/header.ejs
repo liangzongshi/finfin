@@ -38,7 +38,7 @@
 <body id="default_theme" class="dark_home_page">
     <!-- loader -->
     <div class="bg_load">
-        <img class="loader_animation" style="width: 300px;" src="assets-home/home/loader1.png" alt="#">
+        <img class="loader_animation" style="width: 200px;" src="assets-home/home/loader1.png" alt="#">
     </div>
     <!-- end loader -->
     <!-- header -->
@@ -63,8 +63,83 @@
                                 <li><a href="/login"><i class="fa fa-sign-in"></i> Login</a></li>
                                 <li><a href="/register"><i class="fa fa-lock"></i> Register</a></li>
                                 <% }else{ %>
-                                <li><a href="/invest"><img src="<%= (userInfo.avatar)? `../../assets/avatars/${userInfo.avatar}` : "../../assets/default.png" %>" style="border-radius: 9999px;" width="30" height="30" />&nbsp;&nbsp;<%= userInfo.first_name %></li>
+                                    <ul>                                 
+                                        <li class="has-sub">
+                                            <span class="submenu-button"></span>
+                                            
+                                    <nav role="navigation" class="primary-navigation">
+                                        <ul>
+                                            <li>
+                                                <a href="javascript:;" style="color:white"><img src="<%= (userInfo.avatar)? `../../assets/avatars/${userInfo.avatar}` : "../../assets/default.png" %>" style="border-radius: 9999px;" width="30" height="30" />&nbsp;&nbsp;<%= userInfo.first_name %></a>
+                                                <ul class="dropdown">
+                                                    <li><a href="/invest">Dashboard</a></li>
+                                                    <li><a href="/myprofile">My Profile</a></li>
+                                                    <li><a href="/limitfees">Limit & Fees</a></li>
+                                                    <li><a href="/logout">Logout</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 <% } %>
+                                <style>
+                                    nav.primary-navigation {
+                                        margin: 0 auto;
+                                        display: block;
+                                        text-align: center;
+                                    }
+                                    nav.primary-navigation ul li {
+                                        display: inline-block;
+                                        padding: 0 5px;
+                                        position: relative;
+                                        text-align: center;
+                                    }
+                                    nav.primary-navigation li a {
+                                        color: black;
+                                    }
+                                    nav.primary-navigation li a:hover {
+                                        color: #3ca0e7;
+                                    }
+                                    nav.primary-navigation li:hover {
+                                        cursor: pointer;
+                                    }
+                                    nav.primary-navigation ul li ul {
+                                        visibility: hidden;
+                                        opacity: 0;
+                                        position: absolute;
+                                        padding-left: 0;
+                                        left: 0;
+                                        display: none;
+                                        background: white;
+                                    }
+                                    nav.primary-navigation ul li:hover > ul,
+                                    nav.primary-navigation ul li ul:hover {
+                                        visibility: visible;
+                                        opacity: 1;
+                                        display: block;
+                                        min-width: 150px;
+                                        text-align: left;
+                                        padding-top: 10px;
+                                        box-shadow: 0px 3px 5px -1px #ccc;
+                                        z-index: 1000;
+                                    }
+                                    nav.primary-navigation ul li ul li {
+                                        clear: both;
+                                        width: 100%;
+                                        text-align: left;
+                                        margin-bottom: 10px;
+                                        border-style: none;
+                                    }
+                                    nav.primary-navigation ul li ul li a:hover {
+                                        padding-left: 10px;
+                                        border-left: 2px solid #3ca0e7;
+                                        transition: all 0.3s ease;
+                                    }
+
+                                    nav.primary-navigation ul li ul li a {
+                                        transition: all 0.5s ease;
+                                    }
+
+                                </style>
                             </ul>
                         </div>
                     </div>
@@ -125,10 +200,8 @@
                         <!-- right header section -->
                         <ul class="social-links">
                             <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fab fa-telegram"></i></a></li>
                             <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                         <div class="search_bar">
                         </div>

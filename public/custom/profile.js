@@ -329,4 +329,42 @@ $(document).ready(() => {
         $("#select_bd_form").removeClass("d-inline")
         $("#post_bd_profile").html(data).removeClass("d-none")
     })
+    //change password
+    $("#submit_change_pass").click((e)=>{
+        e.preventDefault()
+        const oldPass = $("#old_pass_val").val()
+        const newPass = $("#new_pass_val").val()
+        const re_newPass = $("#re_new_pass_val").val()
+        const hash1 = CryptoJS.MD5(oldPass)
+        const hash2 = CryptoJS.MD5(newPass)
+        const hash3 = CryptoJS.MD5(re_newPass)
+        $("#cef_old").val(hash1)
+        $("#cef_new").val(hash2)
+        $("#cef_re_new").val(hash3)
+        socket.emit("change_pass_event", {
+            oldPass: $("#cef_old").val(),
+            newPass: $("#cef_new").val(),
+            re_newPass: $("#cef_re_new").val()
+        })
+    })
+    socket.on("change_pass_err", data=>{
+        $.notify(data, "error")
+        $("#old_pass_val").val("")
+        $("#new_pass_val").val("")
+        $("#re_new_pass_val").val("")
+    })
+    socket.on("change_pass_event_success", data=>{
+        $.notify(data, "success")
+        $("#old_pass_val").val("")
+        $("#new_pass_val").val("")
+        $("#re_new_pass_val").val("")
+        $("#change_pass_md").modal("hide")
+    })
+    socket.on("change_pass_confirm_error", data=>{
+        $.notify(data, "error")
+        $("#old_pass_val").val("")
+        $("#new_pass_val").val("")
+        $("#re_new_pass_val").val("")
+        
+    })
 })

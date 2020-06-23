@@ -12,7 +12,7 @@ const getCoinInfo = require("./price")
 const path = require("path")
 const fsExtra = require("fs-extra")
 const {v4: uuidv4} = require("uuid")
-const { sendMap, updateMap} = require("./map.js")
+const { sendMap, updateMap, updateMap2} = require("./map.js")
 const price = require('./token')
 const airdrop = require('./airdrop')
 const group = require('./group')
@@ -117,7 +117,7 @@ module.exports = (io,siofu) => {
                 await db.user({id:id}, {
                     "info.status_upload": ""
                 })
-                if( failNo === 4 || failNo === 11 || failNo === 18){
+                if( failNo === 4 || failNo === 7){
                     noKyc[0].info.kyc_img.forEach(async (item)=>{
                         await db.user({id:id}, {$pull: {"info.kyc_img": item}})
                         const imgpPath = path.join(__dirname, `public/assets/avatars/${item}`)
@@ -126,7 +126,7 @@ module.exports = (io,siofu) => {
                     noKyc[0].info.finance_fund.forEach(async (item)=>{
                         await db.user({id:id}, {$pull: {"info.finance_fund": {"balance": {$gte: 0}}}})
                     })
-                    await db.user({id:id}, {"info.finance_fund": 0})
+                    await db.user({id:id}, {"info.finance_total": 0})
                     socket.emit("upload_kyc_faile", nost)
                 } else {                   
                     
@@ -168,7 +168,6 @@ module.exports = (io,siofu) => {
             console.log("Error from uploader", event);
         });
 
-
         
         //Register
         socket.on('verify_email', async (data) => {
@@ -178,7 +177,7 @@ module.exports = (io,siofu) => {
                 console.log(verify_code)
                 redis.set(socket.id, verify_code)
                 redis.expire(socket.id, 300)
-                // mail(data, verify_code)
+                mail(data, verify_code)
             } else {
                 socket.emit('exist_email', 'Email already exists')
             }
@@ -242,7 +241,38 @@ module.exports = (io,siofu) => {
             }
 
         })
-
+        //recover password
+        socket.on('recover_password', async (data) => {
+            var curUser = await db.user({'info.email': data},'info')
+            var token_recover = uuidv4()
+            token_recover = encId(token_recover)
+            console.log(token_recover);
+            if (curUser){
+                await db.user({'info.email': data}, {
+                    "info.token_recover": token_recover
+                })
+                const link = `https://${process.env.host}/recover-password/${token_recover}`
+                console.log(link)
+                const text = `
+                    <a href="${link}" style="padding: 5px; background: transparent; border: solid 1px yellow; color: yellow; margin: 20px;">Change Password</a>
+                `
+                mail(data, text)
+            }
+        })
+        socket.on('change_password_recover', async (data)=>{
+            const userId = data.userId
+            const password = encId(data.password)
+            const curUser = await db.user({"info.token_recover": userId}, 'info')
+            if(curUser.length > 0) {
+                await db.user({"info.token_recover": userId}, {
+                    "info.hash_password": password,
+                    "info.token_recover": null
+                })
+                socket.emit("change_password_recover_success", "Change password success")
+            }else{
+                socket.emit("user_not_found","User not found")
+            }
+        })
         //Wallet
         socket.on('balance', async (data) => {
             // Them phan Switch
@@ -980,23 +1010,105 @@ module.exports = (io,siofu) => {
         })
         //change T wallet admin
         socket.on("change_t_wallet", async (data)=>{
-            await db.admin({role: "admin"}, {"wallet.t": data})
+            if(data.type == "btc"){
+                await db.admin({role: "admin"}, {"wallet.t.btc": data.address})
+            }
+            if(data.type == "eth"){
+                await db.admin({role: "admin"}, {"wallet.t.eth": data.address})
+            }
+            if(data.type == "bnb"){
+                await db.admin({role: "admin"}, {"wallet.t.bnb": data.address})
+            }
+            if(data.type == "usdt"){
+                await db.admin({role: "admin"}, {"wallet.t.usdt": data.address})
+            }
             socket.emit("change_t_wallet_success", true)
         })
         //change M wallet admin
         socket.on("change_m_wallet", async (data)=>{
-            await db.admin({role: "admin"}, {"wallet.m": data})
+            if(data.type == "btc"){
+                await db.admin({role: "admin"}, {"wallet.m.btc": data.address})
+            }
+            if(data.type == "eth"){
+                await db.admin({role: "admin"}, {"wallet.m.eth": data.address})
+            }
+            if(data.type == "bnb"){
+                await db.admin({role: "admin"}, {"wallet.m.bnb": data.address})
+            }
+            if(data.type == "usdt"){
+                await db.admin({role: "admin"}, {"wallet.m.usdt": data.address})
+            }
             socket.emit("change_m_wallet_success", true)
         })
         //change L wallet admin
         socket.on("change_l_wallet", async (data)=>{
-            await db.admin({role: "admin"}, {"wallet.l": data})
+            if(data.type == "btc"){
+                await db.admin({role: "admin"}, {"wallet.l.btc": data.address})
+            }
+            if(data.type == "eth"){
+                await db.admin({role: "admin"}, {"wallet.l.eth": data.address})
+            }
+            if(data.type == "bnb"){
+                await db.admin({role: "admin"}, {"wallet.l.bnb": data.address})
+            }
+            if(data.type == "usdt"){
+                await db.admin({role: "admin"}, {"wallet.l.usdt": data.address})
+            }
             socket.emit("change_l_wallet_success", true)
         })
         //admin submit kyc
         socket.on("a_submit_kyc", async (data)=>{
             await db.user({_id: data}, {"info.kyc": true})
             socket.emit("a_submit_kyc_success", data)
+        })
+        //admin refuse kyc
+        socket.on("a_refuse_kyc", async (data)=>{
+            var user = (await db.user({_id:data}, "info.kyc_img info.finance_fund"))[0]
+            for(var i = 0; i < user.info.kyc_img.length; i++){
+                await db.user({_id:data}, {$pull: {"info.kyc_img": user.info.kyc_img[i]}})
+                var imgPath = path.join(__dirname, `public/assets/avatars/${user.info.kyc_img[i]}`)
+                await fsExtra.remove(imgPath)
+            }
+            for(var j = 0; j < user.info.finance_fund.lenth; j++){
+                await db.user({_id:data}, {$pull: {"info.finance_fund": {"balance": {$gte: 0}}}})
+            }
+            await db.user({_id:data}, {"info.finance_total": 0})
+            socket.emit("a_refuse_kyc_success", data)
+        })
+        //change password
+        socket.on("change_pass_event", async (data)=>{
+            const id= decId(getId(socket, 'socket'))
+            var user= (await db.user({id: id}, "info"))[0]
+            if(data.oldPass != decId(user.info.hash_password)){
+                socket.emit('change_pass_err', "Password is Incorrect")
+            }else{
+                if(data.newPass == data.re_newPass){
+                    await db.user({id:id}, {"info.hash_password": encId(data.newPass)})
+                    socket.emit("change_pass_event_success", "Change Password Success")
+                }else{
+                    socket.emit("change_pass_confirm_error",'Comfirm New password Error')
+                }
+            }
+        })
+        //join group
+        socket.on("join_group", async (data)=>{
+            const id= decId(getId(socket, 'socket'))
+            const result = await group.join(id, data)
+            if(result == true){
+                socket.emit("join_group_success", {note: "You Joined A Group Success", listMem: (await group.listMember(id))})
+            }else{
+                socket.emit("join_group_err", "Join Group Faile, Please Try Again")
+            }
+        })
+        socket.on("remove_mem", async (data)=>{
+            const id = decId(getId(socket, 'socket'))
+            const role = (await db.user({id: id}, 'role'))[0].role
+            if(role == "leader" || role == "admin"){
+                await group.deleteMember(id, data.groupId, data.userid)
+                socket.emit("remove_mem_success", data.userId)
+            }else{
+                socket.emit("remove_mem_err", "Remove Member Error, You aren't A Leader")
+            }
         })
     })
 }
