@@ -37,7 +37,6 @@
 		}
 		.dhx_sample-controls {
 			background: #fff;
-			display: none;
 		}
 		.dhx_sample-slider__container {
 			width: 350px;
@@ -145,7 +144,6 @@
 			}
 			.dhx_sample-controls {
 				background: #fff;
-				display: none;
 			}
 			.dhx_sample-slider__container {
 				width: 350px;
@@ -271,24 +269,24 @@
 				<!-- begin card -->
 				<!-- <div class="card border-0 mb-3 ">
 					<div class="card-body"> -->
+								<section class="dhx_sample-controls">
+									<div class="dhx_sample-slider__container" id="slider"></div>
+								</section>
+								
+								<section class="main__container">
+									<div class="sample__container" id="diagram"></div>
+									<div class="sidebar__container">
+										<img id="image" src="" alt="">
+										<span id="name" style="font-weight:500">Name</span>
+										<span id="post">Post</span>
+										<span id="phone">Phone</span>
+										<span id="mail" style="color:#0288D1">Mail</span>
+										<span id="birthday">Birthday</span>
+										<span id="start">Start work</span>
+										<a id="send" href=""  target="_blank">Send email</a>
+									</div>
+								</section>
 						
-						<section class="dhx_sample-controls">
-							<div class="dhx_sample-slider__container" id="slider"></div>
-						</section>
-						
-						<section class="main__container">
-							<div class="sample__container" id="diagram"></div>
-							<div class="sidebar__container">
-								<img id="image" src="" alt="">
-								<span id="name" style="font-weight:500">Name</span>
-								<span id="post">Post</span>
-								<span id="phone">Phone</span>
-								<span id="mail" style="color:#0288D1">Mail</span>
-								<span id="birthday">Birthday</span>
-								<span id="start">Start work</span>
-								<a id="send" href=""  target="_blank">Send email</a>
-							</div>
-						</section>
 						<script>
 							function tickTemplate(v) {
 								return v;
@@ -484,8 +482,6 @@
 			<!-- end col-4 -->
 		</div>
 		<!-- end #content -->
-		
-		<%- include("../frame/theme") -%>
 		
 		<!-- begin scroll to top btn -->
 		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
